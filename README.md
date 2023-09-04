@@ -86,8 +86,6 @@ Results on dataset (higher is better).
 
 #### F
 
-Bioavailability is...
-
 The range of bioavailability value is 0-100. One threshold (30%) was applied in order to split compounds into posititve and negative. A probability that less than 30% of substance reaches systemic circulation.
 
 Overall, the dataset contains 986 compounds, where positive category contains 660 compounds and negative 326.
