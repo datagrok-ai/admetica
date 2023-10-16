@@ -11,7 +11,7 @@ We welcome everyone with the expertise in the field. If you are interested in co
 
 ## Table of Contents
 
-- [Purpose](#purpose)
+- [Goals](#goals)
 - [Using at Datagrok](#using-at-datagrok)
 - [Available predictive models](#available-predictive-models)
   - [Absorption](#absorption)
@@ -35,15 +35,16 @@ We welcome everyone with the expertise in the field. If you are interested in co
   - [Training](#training)
   - [Predicting](#predicting)
 
-## Purpose
+## Goals
 
-Our goal is to provide state-of-the-art ADME prediction tools and resources. We are committed to:
+Our goal is to provide a tool that is:
 
-- **Efficient drug discovery**: Early identification of compounds with favorable pharmacokinetic profiles minimizes late-stage failures and cost implications.
-
-- **Minimum side effects**: Early detection of potential toxicity issues prevents adverse effects during clinical trials and post-market use.
-
-- **Streamlined drug design**:  Predicting ADMET properties during the drug development process empowers medicinal chemists to optimize candidate molecules for greater success and efficiency.
+- **Accurate**: It has higher characteristics compared to other open-source tools such as ADMETLab, Chemprop, QikProp etc.
+- **Open-source**: The source code is freely available for anyone to view, use, modify and distribute.
+- **With simple API**: It has an easy-to-use interface and can be integrated into various applications and platforms.
+- **Reproducible**: You can access data sources, modeling workflow notebooks and models to easily reproduce and verify the entire modeling process.
+- **Easily deployable**: It is easy to set up and use.
+- **Performant**: It offers a reliable and high-performance solution for datasets of all sizes.
 
 ## Using at Datagrok
 
