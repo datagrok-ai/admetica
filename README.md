@@ -1,14 +1,19 @@
-![Admetica Logo](./adme_logo.png)
-
 # Admetica
 
-This repository is dedicated to advancing pharmaceutical research through cutting-edge ADME (Absorption, Distribution, Metabolism, and Excretion) prediction.
+It is an open-source global effort with collaborators from academia, biotech startups and big pharma.
+
+Our goal is to improve pharmaceutical research using advanced ADMET (Absorption, Distribution, Metabolism, and Excretion) prediction tools.
+
+We welcome everyone with the expertise in the field. If you are interested in collaboration, feel free to reach us:
+
+- **Email**: [oserhiienko@datagrok.ai](mailto:oserhiienko@datagrok.ai)
+- **LinkedIn**: [Oleksandra Serhiienko](https://www.linkedin.com/in/oleksandra-serhiienko-674ab6239)
 
 ## Table of Contents
 
 - [Purpose](#purpose)
 - [Using at Datagrok](#using-at-datagrok)
-- [Available Predictive Models](#available-predictive-models)
+- [Available predictive models](#available-predictive-models)
   - [Absorption](#absorption)
     - [Pgp-Inhibitor](#pgp-inhibitor)
     - [Pgp-Substrate](#pgp-substrate)
@@ -32,25 +37,25 @@ This repository is dedicated to advancing pharmaceutical research through cuttin
 
 ## Purpose
 
-Our goal is to provide state-of-the-art ADME prediction tools and resources. We are commited to:
+Our goal is to provide state-of-the-art ADME prediction tools and resources. We are committed to:
 
-- **Efficient Drug Discovery**: Early identification of compounds with favorable pharmacokinetic profiles minimizes late-stage failures and cost implications.
+- **Efficient drug discovery**: Early identification of compounds with favorable pharmacokinetic profiles minimizes late-stage failures and cost implications.
 
-- **Minimum Side Effects**: Early detection of potential toxicity issues prevents adverse effects during clinical trials and post-market use.
+- **Minimum side effects**: Early detection of potential toxicity issues prevents adverse effects during clinical trials and post-market use.
 
-- **Streamlined Drug Design**:  Predicting ADMET properties during the drug development process empowers medicinal chemists to optimize candidate molecules for greater success and efficiency.
+- **Streamlined drug design**:  Predicting ADMET properties during the drug development process empowers medicinal chemists to optimize candidate molecules for greater success and efficiency.
 
-## Using at DataGrok
+## Using at Datagrok
 
-DataGrok provides:
+Datagrok provides:
 
-- **Cutting-Edge Machine Learning Models:** We provide cutting-edge machine learning models for accurate ADMET property prediction.
+- **Cutting-edge machine learning models:** We provide cutting-edge machine learning models for accurate ADMET property prediction.
 
-- **Unique Data Integration Capability:** Users can integrate their own experimental data. This empowers researchers to customize and refine predictive models to suit their specific research goals
+- **Unique data integration capability:** Users can integrate their own experimental data. This empowers researchers to customize and refine predictive models to suit their specific research goals
 
-- **Visual Results Interpretation:** Datagrok provides an expanded range of tools and functionalities for enhancing predictions, data analysis, and results visualization. It is helpful in interpreting the results.
+- **Visual results interpretation:** Datagrok provides an expanded range of tools and functionalities for enhancing predictions, data analysis, and results visualization. It is helpful in interpreting the results.
 
-## Available Predictive Models
+## Available predictive models
 
 ### Absorption
 
