@@ -38,9 +38,9 @@ Our goal is to provide a tool that is:
 
 Our tool easily works with many platforms and applications. Here's what you can do with it when using Datagrok:
 
-- **Mix your data:** Combine your data with Datagrok for customized predictive models.
+- **Mix your data:** Combine your data with Datagrok's collected experimantal data for customized predictive models.
 
-- **Visualize results:** Use Datagrok tools for better predictions, data analysis, and visualizing your data.
+- **Visualize results:** Use Datagrok tools for better predictions, data analysis and data visualization.
 
 ## Available predictive models
 
