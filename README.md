@@ -12,17 +12,17 @@ We welcome everyone with the expertise in the field. If you are interested in co
 ## Table of Contents
 
 - [Goals](#goals)
-- [Using at Datagrok](#using-at-datagrok)
+- [Integration with Datagrok](#integration-with-datagrok)
 - [Available predictive models](#available-predictive-models)
   - [Absorption](#absorption)
   - [Metabolism](#metabolism)
-  - [Distribution](#distribution)
 - [Personal use](#personal-use)
   - [Requirements](#requirements)
   - [Data](#data)
   - [Training](#training)
   - [Predicting](#predicting)
 - [References](#references)
+
 ## Goals
 
 Our goal is to provide a tool that is:
@@ -34,15 +34,13 @@ Our goal is to provide a tool that is:
 - **Easily deployable**: It is easy to set up and use.
 - **Performant**: It offers a reliable and high-performance solution for datasets of all sizes.
 
-## Using at Datagrok
+## Integration with Datagrok
 
-Datagrok provides:
+Our tool easily works with many platforms and applications. Here's what you can do with it when using Datagrok:
 
-- **Cutting-edge machine learning models:** We provide cutting-edge machine learning models for accurate ADMET property prediction.
+- **Mix your data:** Combine your data with Datagrok for customized predictive models.
 
-- **Unique data integration capability:** Users can integrate their own experimental data. This empowers researchers to customize and refine predictive models to suit their specific research goals
-
-- **Visual results interpretation:** Datagrok provides an expanded range of tools and functionalities for enhancing predictions, data analysis, and results visualization. It is helpful in interpreting the results.
+- **Visualize results:** Use Datagrok tools for better predictions, data analysis, and visualizing your data.
 
 ## Available predictive models
 
@@ -65,8 +63,6 @@ Name | Model | Size | Specificity | Sensitivity | Accuracy | ROC AUC
 | [CYP2C9-Substrate](./Descriptions/Metabolism.md#cyp2c9-substrate) | Chemprop | 899 | 0.8314 | 0.7302 |  0.7899 | ![cyp2c9_substrate_roc](./Roc_Auc/CYP2C9-Substrate.PNG) |
 | [CYP2D6-Inhibitor](./Descriptions/Metabolism.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.7226 | 0.9252 |  0.7630 | ![cyp2d6_inhibitor_roc](./Roc_Auc/CYP2D6-Inhibitor.PNG) |
 | [CYP2D6-Substrate](./Descriptions/Metabolism.md#cyp2d6-substrate) | Chemprop | 941 | 0.8529 | 0.783 |  0.8185 | ![cyp2d6_substrate_roc](./Roc_Auc/CYP2D6-Substrate.PNG) |
-
-### Distribution
 
 ## Personal use
 
