@@ -2,7 +2,7 @@
 
 It is an open-source global effort with collaborators from academia, biotech startups and big pharma.
 
-Our goal is to improve pharmaceutical research using advanced ADMET (Absorption, Distribution, Metabolism, and Excretion) prediction tools.
+Our goal is to improve ADMET (Absorption, Distribution, Metabolism, and Excretion) prediction tools.
 
 We welcome everyone with the expertise in the field. If you are interested in collaboration, feel free to reach us:
 
@@ -102,7 +102,7 @@ To load a trained model and make predictions, run all the commands specified in 
 
 ## References
 
-Our project is about improving and combining existing solutions, not reinventing the wheel. Here is the list of resources we've used:
+Our project is about improving and combining existing solutions, not reinventing the wheel. Here is the list of resources we've investigated:
 
 1. ADMETlab: a platform for systematic ADMET evaluation based on a comprehensively collected ADMET database / Jie Dong, Ning-Ning Wang, Zhi-Jiang Yao та ін. // J Cheminform. – 2018. – <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6020094/>.
 2. Evaluation of Free Online ADMET Tools for Academic or Small Biotech Environments / Júlia Dulsat, Blanca López-Nieto, Roger Estrada-Tejedor, José I. Borrell // Molecules. – 2023. – <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9864198/>.
