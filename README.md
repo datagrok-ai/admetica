@@ -16,8 +16,8 @@ We welcome everyone with the expertise in the field. If you are interested in co
 - [Available predictive models](#available-predictive-models)
   - [Absorption](#absorption)
   - [Metabolism](#metabolism)
-- [Personal use](#personal-use)
-  - [Requirements](#requirements)
+- [Usage](#usage)
+  - [Install](#install)
   - [Data](#data)
   - [Training](#training)
   - [Predicting](#predicting)
@@ -64,23 +64,25 @@ Name | Model | Size | Specificity | Sensitivity | Accuracy | ROC AUC
 | [CYP2D6-Inhibitor](./Descriptions/Metabolism.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.7226 | 0.9252 |  0.7630 | ![cyp2d6_inhibitor_roc](./Roc_Auc/CYP2D6-Inhibitor.PNG) |
 | [CYP2D6-Substrate](./Descriptions/Metabolism.md#cyp2d6-substrate) | Chemprop | 941 | 0.8529 | 0.783 |  0.8185 | ![cyp2d6_substrate_roc](./Roc_Auc/CYP2D6-Substrate.PNG) |
 
-## Personal use
+## Usage
 
-### Requirements
+### Install
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/chemprop)](https://badge.fury.io/py/chemprop)
-[![PyPI version](https://badge.fury.io/py/chemprop.svg)](https://badge.fury.io/py/chemprop)
+[![Chemprop PyPI version](https://badge.fury.io/py/chemprop.svg)](https://badge.fury.io/py/chemprop)
 
-To use the provided notebook for chemical prediction and evaluation, you need:
-
-- chemprop >= 1.5.2
-- subprocess
-- pandas
-- numpy
-- sklearn
-- matplotlib
-
-All the modules can either be installed from `PyPi` via pip or from `source` (i.e., directly from the git repository).
+To install dependencies using [pipenv](https://pipenv.pypa.io/en/latest/) run the following command:
+```bash
+pipenv install
+```
+To install dependencies using [pip](https://pip.pypa.io/en/stable/):
+```bash
+pip install -r requirements.txt
+```
+To install dependencies using [conda](https://docs.conda.io/en/latest/):
+```bash
+conda install --file requirements.txt
+```
 
 ### Data
 
