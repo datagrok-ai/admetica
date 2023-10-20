@@ -11,6 +11,7 @@ sklearn = "*"
 matplotlib = "*"
 
 [dev-packages]
+jupyterlab = "*"
 
 [requires]
 python_version = "3.8"

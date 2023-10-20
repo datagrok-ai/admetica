@@ -72,14 +72,19 @@ Name | Model | Size | Specificity | Sensitivity | Accuracy | ROC AUC
 [![Chemprop PyPI version](https://badge.fury.io/py/chemprop.svg)](https://badge.fury.io/py/chemprop)
 
 To install dependencies using [pipenv](https://pipenv.pypa.io/en/latest/) run the following command:
+
 ```bash
 pipenv install
 ```
+
 To install dependencies using [pip](https://pip.pypa.io/en/stable/):
+
 ```bash
 pip install -r requirements.txt
 ```
+
 To install dependencies using [conda](https://docs.conda.io/en/latest/):
+
 ```bash
 conda install --file requirements.txt
 ```
