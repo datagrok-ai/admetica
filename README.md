@@ -86,7 +86,7 @@ All the modules can either be installed from `PyPi` via pip or from `source` (i.
 
 In order to train a model or obtain predictions, you must provide data containing molecules (as SMILES strings) and known target values.
 
-The data used in this research can be found in the `Datasets` folder.
+The data used in this research and [its overview](./Datasets/README.md) can be found in the `Datasets` folder.
 
 ### Training
 
