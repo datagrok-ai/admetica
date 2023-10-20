@@ -36,9 +36,9 @@ The CYP3A4 Substrate dataset encompasses 1,149 compounds, with 832 being substra
 
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Accuracy |
+| Dataset | Size | Specificity | Sensitivity | Balanced Accuracy |
 | :---: | :---: | :---: | :---: | :---: |
-| CYP3A4-Substrate | 1,149 | 0.5619 | 0.8566 |  0.7755 |
+| CYP3A4-Substrate | 1,149 | 0.5619 | 0.8566 |  0.7093 |
 
 ![CYP3A4-Substrate](../Roc_Auc/CYP3A4-Substrate.PNG)
 
