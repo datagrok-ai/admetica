@@ -9,9 +9,9 @@ It is a probability of being an inhibitor of cytochrome CYP1A2 which catalyzes d
 The CYP1A2 Inhibitor dataset comprises 13,239 compounds, with 5,997 being inhibitors and 7,242 non-inhibitors, sourced from PubChem AID 1851.
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Accuracy |
+| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | :---: | :---: | :---: | :---: | :---: |
-| CYP1A2-Inhibitor | 13,239 | 0.8991 | 0.9563 |  0.925 |
+| CYP1A2-Inhibitor | 13,239 | 0.899 | 0.956 | 0.925 | 0.928 |
 
 ![CYP1A2-Inhibitor](../Roc_Auc/CYP1A2-Inhibitor.PNG)
 
@@ -22,9 +22,9 @@ It is a probability of being an inhibitor of cytochrome CYP3A4 which catalyzes d
 The CYP3A4 Inhibitor dataset consists of 12,997 compounds, including 5,265 inhibitors and 7,732 non-inhibitors, obtained from PubChem AID 1851.
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Accuracy |
+| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | :---: | :---: | :---: | :---: | :---: |
-| CYP3A4-Inhibitor | 12,997 | 0.8607 | 0.9492 |  0.896 |
+| CYP3A4-Inhibitor | 12,997 | 0.8607 | 0.9492 | 0.896 | 0.905 |
 
 ![CYP3A4-Inhibitor](../Roc_Auc/CYP3A4-Inhibitor.PNG)
 
@@ -36,9 +36,9 @@ The CYP3A4 Substrate dataset encompasses 1,149 compounds, with 832 being substra
 
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Balanced Accuracy |
+| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | :---: | :---: | :---: | :---: | :---: |
-| CYP3A4-Substrate | 1,149 | 0.5619 | 0.8566 |  0.7093 |
+| CYP3A4-Substrate | 1,149 | 0.562 | 0.857 | 0.776 | 0.709 |
 
 ![CYP3A4-Substrate](../Roc_Auc/CYP3A4-Substrate.PNG)
 
@@ -50,9 +50,9 @@ The CYP2C19 Inhibitor dataset contains 13,427 compounds, featuring 5,905 inhibit
 
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Accuracy |
+| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | :---: | :---: | :---: | :---: | :---: |
-| CYP2C19-Inhibitor | 13,427 | 0.8865 | 0.8895 |  0.8879 |
+| CYP2C19-Inhibitor | 13,427 | 0.887 | 0.890 | 0.888 | 0.889 |
 
 ![CYP2C19-Inhibitor](../Roc_Auc/CYP2C19-Inhibitor.PNG)
 
@@ -63,9 +63,9 @@ It is a probability of being an inhibitor of cytochrome CYP2C9 which catalyzes d
 The CYP2C9 Inhibitor dataset comprises 12,881 compounds, including 4,109 inhibitors and 8,772 non-inhibitors, sourced from PubChem AID 1851.
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Accuracy |
+| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | :---: | :---: | :---: | :---: | :---: |
-| CYP2C9-Inhibitor | 12,881 | 0.8991 | 0.8797 |  0.8929 |
+| CYP2C9-Inhibitor | 12,881 | 0.899 | 0.880 | 0.893 | 0.890 |
 
 ![CYP2C9-Inhibitor](../Roc_Auc/CYP2C9-Inhibitor.PNG)
 
@@ -77,9 +77,9 @@ The CYP2C9 Substrate dataset contains 899 compounds, with 368 being substrates a
 
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Accuracy |
+| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | :---: | :---: | :---: | :---: | :---: |
-| CYP2C9-Substrate | 899 | 0.8314 | 0.7302 |  0.7899 |
+| CYP2C9-Substrate | 899 | 0.831 | 0.730 | 0.790 | 0.781 |
 
 ![CYP2C9-Substrate](../Roc_Auc/CYP2C9-Substrate.PNG)
 
@@ -91,9 +91,9 @@ The CYP2D6 Inhibitor dataset comprises 13,896 compounds, featuring 2,769 inhibit
 
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Accuracy |
+| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | :---: | :---: | :---: | :---: | :---: |
-| CYP2D6-Inhibitor | 11,127 | 0.7226 | 0.9252 |  0.7630 |
+| CYP2D6-Inhibitor | 11,127 | 0.723 | 0.925 | 0.763 | 0.824 |
 
 ![CYP2D6-Inhibitor](../Roc_Auc/CYP2D6-Inhibitor.PNG)
 
@@ -105,8 +105,8 @@ The CYP2D6 Substrate dataset contains 941 compounds, with 461 being substrates a
 
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Accuracy |
+| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | :---: | :---: | :---: | :---: | :---: |
-| CYP2D6-Substrate | 941 | 0.8529 | 0.783 |  0.8185 |
+| CYP2D6-Substrate | 941 | 0.853 | 0.783 | 0.819 | 0.818 |
 
 ![CYP2D6-Substrate](../Roc_Auc/CYP2D6-Substrate.PNG)
