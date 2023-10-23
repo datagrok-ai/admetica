@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "*"
+pandas = "*"
+chemprop = ">=1.5.2"
+sklearn = "*"
+matplotlib = "*"
+
+[dev-packages]
+jupyterlab = "*"
+
+[requires]
+python_version = "3.8"
