@@ -17,7 +17,7 @@ We welcome everyone with the expertise in the field. If you are interested in co
   - [Absorption](#absorption)
   - [Metabolism](#metabolism)
 - [Usage](#usage)
-  - [Install](#install)
+  - [Installation](#installation)
   - [Data](#data)
   - [Training](#training)
   - [Predicting](#predicting)
@@ -66,24 +66,26 @@ Name | Model | Size | Specificity | Sensitivity | Accuracy | ROC AUC
 
 ## Usage
 
-### Install
+### Installation
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/chemprop)](https://badge.fury.io/py/chemprop)
 [![Chemprop PyPI version](https://badge.fury.io/py/chemprop.svg)](https://badge.fury.io/py/chemprop)
 
-To install dependencies using [pipenv](https://pipenv.pypa.io/en/latest/) run the following command:
+To install dependencies, run one of the following commands.
+
+Using [pipenv](https://pipenv.pypa.io/en/latest/) (preferred):
 
 ```bash
 pipenv install
 ```
 
-To install dependencies using [pip](https://pip.pypa.io/en/stable/):
+Using [pip](https://pip.pypa.io/en/stable/):
 
 ```bash
 pip install -r requirements.txt
 ```
 
-To install dependencies using [conda](https://docs.conda.io/en/latest/):
+Using [conda](https://docs.conda.io/en/latest/):
 
 ```bash
 conda install --file requirements.txt
