@@ -24,7 +24,7 @@ Results on dataset (higher is better).
 
 | Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| CYP3A4-Inhibitor | 12,997 | 0.8607 | 0.9492 | 0.896 | 0.905 |
+| CYP3A4-Inhibitor | 12,997 | 0.861 | 0.949 | 0.896 | 0.905 |
 
 ![CYP3A4-Inhibitor](../Roc_Auc/CYP3A4-Inhibitor.PNG)
 

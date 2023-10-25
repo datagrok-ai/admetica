@@ -46,23 +46,23 @@ Our tool easily works with many platforms and applications. Here's what you can 
 
 ### Absorption
 
-Name | Model | Size | Specificity | Sensitivity | Accuracy | ROC AUC |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Pgp-Inhibitor](./Descriptions/Absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.8771 | 0.9269 |  0.9038 | ![pgp_inhibitor_roc](./Roc_Auc/Pgp-Inhibitor.PNG) |
-| [Pgp-Substrate](./Descriptions/Absorption.md#pgp-substrate) | Chemprop | 332 | 0.7857 | 0.8203 |  0.8072 | ![pgp_substrate_roc](./Roc_Auc/Pgp-Substrate.PNG) |
+Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| [Pgp-Inhibitor](./Descriptions/Absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.877 | 0.923 |  0.904 | 0.902 | ![pgp_inhibitor_roc](./Roc_Auc/Pgp-Inhibitor.PNG) |
+| [Pgp-Substrate](./Descriptions/Absorption.md#pgp-substrate) | Chemprop | 332 | 0.786 | 0.820 |  0.807 | 0.803 | ![pgp_substrate_roc](./Roc_Auc/Pgp-Substrate.PNG) |
 
 ### Metabolism
 
-Name | Model | Size | Specificity | Sensitivity | Accuracy | ROC AUC
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [CYP1A2-Inhibitor](./Descriptions/Metabolism.md#cyp1a2-inhibitor) | Chemprop | 13,239 | 0.8991 | 0.9563 |  0.925 | ![cyp1a2_inhibitor_roc](./Roc_Auc/CYP1A2-Inhibitor.PNG) |
-| [CYP3A4-Inhibitor](./Descriptions/Metabolism.md#cyp3a4-inhibitor) | Chemprop | 12,997 | 0.8607 | 0.9492 |  0.896 | ![cyp3a4_inhibitor_roc](./Roc_Auc/CYP3A4-Inhibitor.PNG) |
-| [CYP3A4-Substrate](./Descriptions/Metabolism.md#cyp3a4-substrate) | Chemprop | 1,149 | 0.5619 | 0.8566 |  0.7755 | ![cyp3a4_substrate_roc](./Roc_Auc/CYP3A4-Substrate.PNG) |
-| [CYP2C19-Inhibitor](./Descriptions/Metabolism.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.8865 | 0.8895 |  0.8879 | ![cyp2c19_inhibitor_roc](./Roc_Auc/CYP2C19-Inhibitor.PNG) |
-| [CYP2C9-Inhibitor](./Descriptions/Metabolism.md#cyp2c9-inhibitor) | Chemprop | 12,881 | 0.8991 | 0.8797 |  0.8929 | ![cyp2c9_inhibitor_roc](./Roc_Auc/CYP2C9-Inhibitor.PNG) |
-| [CYP2C9-Substrate](./Descriptions/Metabolism.md#cyp2c9-substrate) | Chemprop | 899 | 0.8314 | 0.7302 |  0.7899 | ![cyp2c9_substrate_roc](./Roc_Auc/CYP2C9-Substrate.PNG) |
-| [CYP2D6-Inhibitor](./Descriptions/Metabolism.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.7226 | 0.9252 |  0.7630 | ![cyp2d6_inhibitor_roc](./Roc_Auc/CYP2D6-Inhibitor.PNG) |
-| [CYP2D6-Substrate](./Descriptions/Metabolism.md#cyp2d6-substrate) | Chemprop | 941 | 0.8529 | 0.783 |  0.8185 | ![cyp2d6_substrate_roc](./Roc_Auc/CYP2D6-Substrate.PNG) |
+Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| [CYP1A2-Inhibitor](./Descriptions/Metabolism.md#cyp1a2-inhibitor) | Chemprop | 13,239 | 0.899 | 0.956 |  0.925 | 0.928 | ![cyp1a2_inhibitor_roc](./Roc_Auc/CYP1A2-Inhibitor.PNG) |
+| [CYP3A4-Inhibitor](./Descriptions/Metabolism.md#cyp3a4-inhibitor) | Chemprop | 12,997 | 0.861 | 0.949 |  0.896 | 0.905 | ![cyp3a4_inhibitor_roc](./Roc_Auc/CYP3A4-Inhibitor.PNG) |
+| [CYP3A4-Substrate](./Descriptions/Metabolism.md#cyp3a4-substrate) | Chemprop | 1,149 | 0.562 | 0.857 |  0.776 | 0.709 | ![cyp3a4_substrate_roc](./Roc_Auc/CYP3A4-Substrate.PNG) |
+| [CYP2C19-Inhibitor](./Descriptions/Metabolism.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.887 | 0.890 |  0.888 | 0.889 | ![cyp2c19_inhibitor_roc](./Roc_Auc/CYP2C19-Inhibitor.PNG) |
+| [CYP2C9-Inhibitor](./Descriptions/Metabolism.md#cyp2c9-inhibitor) | Chemprop | 12,881 | 0.899 | 0.880 |  0.893 | 0.890 | ![cyp2c9_inhibitor_roc](./Roc_Auc/CYP2C9-Inhibitor.PNG) |
+| [CYP2C9-Substrate](./Descriptions/Metabolism.md#cyp2c9-substrate) | Chemprop | 899 | 0.831 | 0.730 |  0.790 | 0.781 | ![cyp2c9_substrate_roc](./Roc_Auc/CYP2C9-Substrate.PNG) |
+| [CYP2D6-Inhibitor](./Descriptions/Metabolism.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.723 | 0.926 |  0.763 | 0.824 | ![cyp2d6_inhibitor_roc](./Roc_Auc/CYP2D6-Inhibitor.PNG) |
+| [CYP2D6-Substrate](./Descriptions/Metabolism.md#cyp2d6-substrate) | Chemprop | 941 | 0.853 | 0.783 |  0.819 | 0.818 | ![cyp2d6_substrate_roc](./Roc_Auc/CYP2D6-Substrate.PNG) |
 
 ## Usage
 

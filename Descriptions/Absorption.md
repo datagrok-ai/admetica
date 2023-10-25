@@ -26,7 +26,7 @@ Results on dataset (higher is better).
 
 | Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| Pgp-Substrate | 332 | 0.786 | 0.82 |  0.807 | 0.803 |
+| Pgp-Substrate | 332 | 0.786 | 0.820 |  0.807 | 0.803 |
 
 ![Pgp-Substrate](../Roc_Auc/Pgp-Substrate.PNG)
 
