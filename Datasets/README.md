@@ -1,6 +1,6 @@
 # Datasets
 
-Below is a list of the datsets used to train models.
+Below is a list of the datasets used to train models.
 
 ## ADMET
 

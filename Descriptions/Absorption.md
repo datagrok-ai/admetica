@@ -10,9 +10,9 @@ The Pgp-Inhibitor dataset combines data from two sources, comprising 1,275 compo
 
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Accuracy |
-| :---: | :---: | :---: | :---: | :---: |
-| Pgp-Inhibitor | 1,275 | 0.8771 | 0.9269 |  0.9038 |
+| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| Pgp-Inhibitor | 1,275 | 0.877 | 0.927 |  0.904 | 0.902 |
 
 ![Pgp-Inhibitor](../Roc_Auc/Pgp-Inhibitor.PNG)
 
@@ -24,9 +24,9 @@ The Pgp-Substrate dataset is derived from a single source, encompassing 332 comp
 
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Accuracy |
-| :---: | :---: | :---: | :---: | :---: |
-| Pgp-Substrate | 332 | 0.7857 | 0.8203 |  0.8072 |
+| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| Pgp-Substrate | 332 | 0.786 | 0.82 |  0.807 | 0.803 |
 
 ![Pgp-Substrate](../Roc_Auc/Pgp-Substrate.PNG)
 
