@@ -46,23 +46,53 @@ Our tool easily works with many platforms and applications. Here's what you can 
 
 ### Absorption
 
+#### Classifiction models
+
 Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Pgp-Inhibitor](./Descriptions/Absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.877 | 0.923 |  0.904 | 0.902 | ![pgp_inhibitor_roc](./Roc_Auc/Pgp-Inhibitor.PNG) |
-| [Pgp-Substrate](./Descriptions/Absorption.md#pgp-substrate) | Chemprop | 332 | 0.786 | 0.820 |  0.807 | 0.803 | ![pgp_substrate_roc](./Roc_Auc/Pgp-Substrate.PNG) |
+|-|-|-|-|-|-|-|-|
+| [Pgp-Inhibitor](./Descriptions/Absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.877 | 0.923 |  0.904 | 0.902 | ![pgp_inhibitor_roc](./images/Pgp-Inhibitor.PNG) |
+| [Pgp-Substrate](./Descriptions/Absorption.md#pgp-substrate) | Chemprop | 332 | 0.786 | 0.820 |  0.807 | 0.803 | ![pgp_substrate_roc](./images/Pgp-Substrate.PNG) |
+
+#### Regression models
+Name | Model | Size | MAE | RMSE | R2 | Spearman | True vs. Predicted | True vs. Residuals |
+|-|-|-|-|-|-|-|-|-|
+| Caco2 | Chemprop | 910 | 0.417 | 0.528 | 0.408 | 0.816 | ![Caco2 True vs. Predicted plot](./images/caco2_wang_true_vs_pred.png) | ![Caco2 True vs. Residuals plot](./images/caco2_wang_residuals.png) |
+| Lipophilicity | Chemprop | 4200 | 0.456 | 0.612 | 0.734 | 0.842 | ![Lipophilicity True vs. Predicted plot](./images/lipophilicity_astrazeneca_true_vs_pred.png) | ![Lipophilicity True vs. Residuals plot](./images/lipophilicity_astrazeneca_residuals.png) |
+| Solubility | Chemprop | 9982 | 0.825 | 1.118 | 0.762 | 0.852 | ![Solubility True vs. Predicted plot](./images/solubility_aqsoldb_true_vs_pred.png) | ![Solubility True vs. Residuals plot](./images/solubility_aqsoldb_residuals.png) |
+
+### Distribution
+
+#### Regression models
+
+Name | Model | Size | MAE | RMSE | R2 | Spearman | True vs. Predicted | True vs. Residuals |
+|-|-|-|-|-|-|-|-|-|
+| PPBR | Chemprop | 2790 | 7.945 | 11.642 | 0.410 | 0.650 | ![PPBR True vs. Predicted plot](./images/ppbr_az_true_vs_pred.png) | ![PPBR True vs. Residuals plot](./images/ppbr_az_residuals.png) |
+| VDss | Chemprop | 1130 | 3.100 | 5.232 | 0.069 | 0.500 | ![VDss True vs. Predicted plot](./images/vdss_lombardo_true_vs_pred.png) | ![VDss True vs. Residuals plot](./images/vdss_lombardo_residuals.png) |
 
 ### Metabolism
 
+#### Classification models
+
 Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [CYP1A2-Inhibitor](./Descriptions/Metabolism.md#cyp1a2-inhibitor) | Chemprop | 13,239 | 0.899 | 0.956 |  0.925 | 0.928 | ![cyp1a2_inhibitor_roc](./Roc_Auc/CYP1A2-Inhibitor.PNG) |
-| [CYP3A4-Inhibitor](./Descriptions/Metabolism.md#cyp3a4-inhibitor) | Chemprop | 12,997 | 0.861 | 0.949 |  0.896 | 0.905 | ![cyp3a4_inhibitor_roc](./Roc_Auc/CYP3A4-Inhibitor.PNG) |
-| [CYP3A4-Substrate](./Descriptions/Metabolism.md#cyp3a4-substrate) | Chemprop | 1,149 | 0.562 | 0.857 |  0.776 | 0.709 | ![cyp3a4_substrate_roc](./Roc_Auc/CYP3A4-Substrate.PNG) |
-| [CYP2C19-Inhibitor](./Descriptions/Metabolism.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.887 | 0.890 |  0.888 | 0.889 | ![cyp2c19_inhibitor_roc](./Roc_Auc/CYP2C19-Inhibitor.PNG) |
-| [CYP2C9-Inhibitor](./Descriptions/Metabolism.md#cyp2c9-inhibitor) | Chemprop | 12,881 | 0.899 | 0.880 |  0.893 | 0.890 | ![cyp2c9_inhibitor_roc](./Roc_Auc/CYP2C9-Inhibitor.PNG) |
-| [CYP2C9-Substrate](./Descriptions/Metabolism.md#cyp2c9-substrate) | Chemprop | 899 | 0.831 | 0.730 |  0.790 | 0.781 | ![cyp2c9_substrate_roc](./Roc_Auc/CYP2C9-Substrate.PNG) |
-| [CYP2D6-Inhibitor](./Descriptions/Metabolism.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.723 | 0.926 |  0.763 | 0.824 | ![cyp2d6_inhibitor_roc](./Roc_Auc/CYP2D6-Inhibitor.PNG) |
-| [CYP2D6-Substrate](./Descriptions/Metabolism.md#cyp2d6-substrate) | Chemprop | 941 | 0.853 | 0.783 |  0.819 | 0.818 | ![cyp2d6_substrate_roc](./Roc_Auc/CYP2D6-Substrate.PNG) |
+|-|-|-|-|-|-|-|-|
+| [CYP1A2-Inhibitor](./Descriptions/Metabolism.md#cyp1a2-inhibitor) | Chemprop | 13,239 | 0.899 | 0.956 |  0.925 | 0.928 | ![cyp1a2_inhibitor_roc](./images/CYP1A2-Inhibitor.PNG) |
+| [CYP3A4-Inhibitor](./Descriptions/Metabolism.md#cyp3a4-inhibitor) | Chemprop | 12,997 | 0.861 | 0.949 |  0.896 | 0.905 | ![cyp3a4_inhibitor_roc](./images/CYP3A4-Inhibitor.PNG) |
+| [CYP3A4-Substrate](./Descriptions/Metabolism.md#cyp3a4-substrate) | Chemprop | 1,149 | 0.562 | 0.857 |  0.776 | 0.709 | ![cyp3a4_substrate_roc](./images/CYP3A4-Substrate.PNG) |
+| [CYP2C19-Inhibitor](./Descriptions/Metabolism.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.887 | 0.890 |  0.888 | 0.889 | ![cyp2c19_inhibitor_roc](./images/CYP2C19-Inhibitor.PNG) |
+| [CYP2C9-Inhibitor](./Descriptions/Metabolism.md#cyp2c9-inhibitor) | Chemprop | 12,881 | 0.899 | 0.880 |  0.893 | 0.890 | ![cyp2c9_inhibitor_roc](./images/CYP2C9-Inhibitor.PNG) |
+| [CYP2C9-Substrate](./Descriptions/Metabolism.md#cyp2c9-substrate) | Chemprop | 899 | 0.831 | 0.730 |  0.790 | 0.781 | ![cyp2c9_substrate_roc](./images/CYP2C9-Substrate.PNG) |
+| [CYP2D6-Inhibitor](./Descriptions/Metabolism.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.723 | 0.926 |  0.763 | 0.824 | ![cyp2d6_inhibitor_roc](./images/CYP2D6-Inhibitor.PNG) |
+| [CYP2D6-Substrate](./Descriptions/Metabolism.md#cyp2d6-substrate) | Chemprop | 941 | 0.853 | 0.783 |  0.819 | 0.818 | ![cyp2d6_substrate_roc](./images/CYP2D6-Substrate.PNG) |
+
+### Excretion
+
+#### Regression models
+
+Name | Model | Size | MAE | RMSE | R2 | Spearman | True vs. Predicted | True vs. Residuals  |
+|-|-|-|-|-|-|-|-|-|
+| Half Life | Chemprop | 667 | 9.947 | 21.780 | -0.007 | 0.208 | ![Half Life True vs. Predicted plot](./images/half_life_obach_true_vs_pred.png) | ![Half Life True vs. Residuals plot](./images/half_life_obach_residuals.png) |
+| Clearance Hepatocyte | Chemprop | 1213 | 35.930 | 45.848 | 0.088 | 0.379 | ![Clearance Hepatocyte True vs. Predicted plot](./images/clearance_hepatocyte_az_true_vs_pred.png) | ![Clearance Hepatocyte True vs. Redsiduals plot](./images/clearance_hepatocyte_az_residuals.png) |
+| Clearance Microsome | Chemprop | 1102 | 21.797 | 35.914 | 0.305 | 0.573 | ![Clearance Microsome True vs. Predicted plot](./images/clearance_microsome_az_true_vs_pred.png) | ![Clearance Microsome True vs. Residuals plot](./images/clearance_microsome_az_residuals.png) |
 
 ## Usage
 

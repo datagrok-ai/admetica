@@ -10,10 +10,10 @@ The CYP1A2 Inhibitor dataset comprises 13,239 compounds, with 5,997 being inhibi
 Results on dataset (higher is better).
 
 | Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-| :---: | :---: | :---: | :---: | :---: | :--- |
+|-|-|-|-|-| :--- |
 | CYP1A2-Inhibitor | 13,239 | 0.899 | 0.956 | 0.925 | 0.928 |
 
-![CYP1A2-Inhibitor](../Roc_Auc/CYP1A2-Inhibitor.PNG)
+![CYP1A2-Inhibitor](../images/CYP1A2-Inhibitor.PNG)
 
 ## CYP3A4 Inhibitor
 
@@ -23,10 +23,10 @@ The CYP3A4 Inhibitor dataset consists of 12,997 compounds, including 5,265 inhib
 Results on dataset (higher is better).
 
 | Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+|-|-|-|-|-|-|
 | CYP3A4-Inhibitor | 12,997 | 0.861 | 0.949 | 0.896 | 0.905 |
 
-![CYP3A4-Inhibitor](../Roc_Auc/CYP3A4-Inhibitor.PNG)
+![CYP3A4-Inhibitor](../images/CYP3A4-Inhibitor.PNG)
 
 ## CYP3A4 Substrate
 
@@ -37,10 +37,10 @@ The CYP3A4 Substrate dataset encompasses 1,149 compounds, with 832 being substra
 Results on dataset (higher is better).
 
 | Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+|-|-|-|-|-|-|
 | CYP3A4-Substrate | 1,149 | 0.562 | 0.857 | 0.776 | 0.709 |
 
-![CYP3A4-Substrate](../Roc_Auc/CYP3A4-Substrate.PNG)
+![CYP3A4-Substrate](../images/CYP3A4-Substrate.PNG)
 
 ## CYP2C19 Inhibitor
 
@@ -51,10 +51,10 @@ The CYP2C19 Inhibitor dataset contains 13,427 compounds, featuring 5,905 inhibit
 Results on dataset (higher is better).
 
 | Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+|-|-|-|-|-|-|
 | CYP2C19-Inhibitor | 13,427 | 0.887 | 0.890 | 0.888 | 0.889 |
 
-![CYP2C19-Inhibitor](../Roc_Auc/CYP2C19-Inhibitor.PNG)
+![CYP2C19-Inhibitor](../images/CYP2C19-Inhibitor.PNG)
 
 ## CYP2C9 Inhibitor
 
@@ -64,10 +64,10 @@ The CYP2C9 Inhibitor dataset comprises 12,881 compounds, including 4,109 inhibit
 Results on dataset (higher is better).
 
 | Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+|-|-|-|-|-|-|
 | CYP2C9-Inhibitor | 12,881 | 0.899 | 0.880 | 0.893 | 0.890 |
 
-![CYP2C9-Inhibitor](../Roc_Auc/CYP2C9-Inhibitor.PNG)
+![CYP2C9-Inhibitor](../images/CYP2C9-Inhibitor.PNG)
 
 ## CYP2C9 Substrate
 
@@ -78,10 +78,10 @@ The CYP2C9 Substrate dataset contains 899 compounds, with 368 being substrates a
 Results on dataset (higher is better).
 
 | Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+|-|-|-|-|-|-|
 | CYP2C9-Substrate | 899 | 0.831 | 0.730 | 0.790 | 0.781 |
 
-![CYP2C9-Substrate](../Roc_Auc/CYP2C9-Substrate.PNG)
+![CYP2C9-Substrate](../images/CYP2C9-Substrate.PNG)
 
 ## CYP2D6 Inhibitor
 
@@ -92,10 +92,10 @@ The CYP2D6 Inhibitor dataset comprises 13,896 compounds, featuring 2,769 inhibit
 Results on dataset (higher is better).
 
 | Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+|-|-|-|-|-|-|
 | CYP2D6-Inhibitor | 11,127 | 0.723 | 0.925 | 0.763 | 0.824 |
 
-![CYP2D6-Inhibitor](../Roc_Auc/CYP2D6-Inhibitor.PNG)
+![CYP2D6-Inhibitor](../images/CYP2D6-Inhibitor.PNG)
 
 ## CYP2D6 Substrate
 
@@ -106,7 +106,7 @@ The CYP2D6 Substrate dataset contains 941 compounds, with 461 being substrates a
 Results on dataset (higher is better).
 
 | Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+|-|-|-|-|-|-|
 | CYP2D6-Substrate | 941 | 0.853 | 0.783 | 0.819 | 0.818 |
 
-![CYP2D6-Substrate](../Roc_Auc/CYP2D6-Substrate.PNG)
+![CYP2D6-Substrate](../images/CYP2D6-Substrate.PNG)
