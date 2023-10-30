@@ -8,9 +8,9 @@ Below is a list of the datasets used to train models.
 
 | Target | Unit | Size | Task | Metric | References |
 |-|-|-|-|-|-|
-| Bioavailability | % | 986 | Binary classification | AUROC | [Tingjun Hou, Falcon-Cano, et al., PharmaInformatic](#bioavailability) |
-| Pgp Inibitor | % | 1275 | Binary classification | AUROC | [F, B., et al., Tingjun Hou](#pgp-inibitor) |
-| Pgp Substrate | % | 332 | Binary classification | AUROC | [Wang, et al.](#pgp-substrate) |
+| Bioavailability |  | 986 | Binary classification | AUROC | [Tingjun Hou, Falcon-Cano, et al., PharmaInformatic](#bioavailability) |
+| Pgp Inibitor |  | 1275 | Binary classification | AUROC | [F, B., et al., Tingjun Hou](#pgp-inibitor) |
+| Pgp Substrate |  | 332 | Binary classification | AUROC | [Wang, et al.](#pgp-substrate) |
 | Caco-2 | cm/s | 910 | Regression | MAE | [Wang, et al.](#caco-2) |
 | Lipophilicity | log-ratio | 4200 | Regression | MAE | [AstraZeneca, Wu, et al.](#lipophilicity) |
 | Solubility | log mol/L | 9982 | Regression | MAE | [Sorkun et al.](#solubility) |
@@ -19,22 +19,22 @@ Below is a list of the datasets used to train models.
 
 | Target | Unit | Size | Task | Metric | References |
 |-|-|-|-|-|-|
-| BBB | % | 27829 | Binary classification | AUROC | [Meng, et al., Li, et al., Shen, et al.](#bbb) |
-| PPBR | % | 2790 | Regression | MAE | [AstraZeneca](#ppbr) |
+| BBB |  | 27829 | Binary classification | AUROC | [Meng, et al., Li, et al., Shen, et al.](#bbb) |
+| PPBR |  | 2790 | Regression | MAE | [AstraZeneca](#ppbr) |
 | VDss | L/kg | 1130 | Regression | Spearman | [Lombardo and Yankang](#vdss) |
 
 ### Metabolism
 
 | Target | Unit | Size | Task | Metric | References |
 |-|-|-|-|-|-|
-| CYP1A2 Inhibitor | % | 13239 | Binary classficiation | AUROC | [PubChem](#cyp1a2-inhibitor) |
-| CYP2C9 Inhibitior | % | 12881 | Binary classification | AUPRC | [PubChem](#cyp2c9-inhibitior) |
-| CYP2C19 Inhibitor | % | 13427 | Binary classficiation | AUROC | [PubChem](#cyp2c19-inhibitor) |
-| CYP2D6 Inhibitior | % | 13898 | Binary classification | AUPRC | [PubChem](#cyp2d6-inhibitior) |
-| CYP3A4 Inhibitior | % | 12997 | Binary classification | AUPRC | [PubChem](#cyp3a4-inhibitior) |
-| CYP2C9 Substrate | % | 900 | Binary classficiation | AUPRC | [PubChem](#cyp2c9-substrate) |
-| CYP2D6 Substrate | % | 941 | Binary classficiation | AUPRC | [Carbon-Mangels, et al., Zertzki, et al.](#cyp2d6-substrate) |
-| CYP3A4 Substrate | % | 1149 | Binary classficiation | AUROC | [Carbon-Mangels, et al., Zertzki, et al.](#cyp3a4-substrate) |
+| CYP1A2 Inhibitor |  | 13239 | Binary classficiation | AUROC | [PubChem](#cyp1a2-inhibitor) |
+| CYP2C9 Inhibitior |  | 12881 | Binary classification | AUPRC | [PubChem](#cyp2c9-inhibitior) |
+| CYP2C19 Inhibitor |  | 13427 | Binary classficiation | AUROC | [PubChem](#cyp2c19-inhibitor) |
+| CYP2D6 Inhibitior |  | 13898 | Binary classification | AUPRC | [PubChem](#cyp2d6-inhibitior) |
+| CYP3A4 Inhibitior |  | 12997 | Binary classification | AUPRC | [PubChem](#cyp3a4-inhibitior) |
+| CYP2C9 Substrate |  | 900 | Binary classficiation | AUPRC | [PubChem](#cyp2c9-substrate) |
+| CYP2D6 Substrate |  | 941 | Binary classficiation | AUPRC | [Carbon-Mangels, et al., Zertzki, et al.](#cyp2d6-substrate) |
+| CYP3A4 Substrate |  | 1149 | Binary classficiation | AUROC | [Carbon-Mangels, et al., Zertzki, et al.](#cyp3a4-substrate) |
 
 ### Excretion
 
