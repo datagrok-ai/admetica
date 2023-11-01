@@ -4,10 +4,7 @@ It is an open-source global effort with collaborators from academia, biotech sta
 
 Our goal is to improve ADMET (Absorption, Distribution, Metabolism, and Excretion) prediction tools.
 
-We welcome everyone with the expertise in the field. If you are interested in collaboration, feel free to reach us:
-
-- **Email**: [oserhiienko@datagrok.ai](mailto:oserhiienko@datagrok.ai)
-- **LinkedIn**: [Oleksandra Serhiienko](https://www.linkedin.com/in/oleksandra-serhiienko-674ab6239)
+We welcome everyone with the expertise in the field. If you're interested in collaboration, contact us via [email](mailto:oserhiienko@datagrok.ai) or [LinkedIn](https://www.linkedin.com/in/oleksandra-serhiienko-674ab6239).
 
 ## Table of Contents
 
@@ -69,10 +66,6 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | True vs. Predicted | True vs.
 | Lipophilicity | Chemprop | 4200 | 0.456 | 0.612 | 0.734 | 0.842 | ![Lipophilicity True vs. Predicted plot](./images/lipophilicity_astrazeneca_true_vs_pred.png) | ![Lipophilicity True vs. Residuals plot](./images/lipophilicity_astrazeneca_residuals.png) |
 | Solubility | Chemprop | 9982 | 0.825 | 1.118 | 0.762 | 0.852 | ![Solubility True vs. Predicted plot](./images/solubility_aqsoldb_true_vs_pred.png) | ![Solubility True vs. Residuals plot](./images/solubility_aqsoldb_residuals.png) |
 
-Here is a line chart illustrating various metrics for each of the corresponding models.
-
-![comparison_metabolism](./images/metabolism_linechart.png)
-
 ### Distribution
 
 #### Regression models
@@ -96,6 +89,10 @@ Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | [CYP2C9-Substrate](./Descriptions/Metabolism.md#cyp2c9-substrate) | Chemprop | 899 | 0.831 | 0.730 |  0.790 | 0.781 | ![cyp2c9_substrate_roc](./images/CYP2C9-Substrate.PNG) |
 | [CYP2D6-Inhibitor](./Descriptions/Metabolism.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.723 | 0.926 |  0.763 | 0.824 | ![cyp2d6_inhibitor_roc](./images/CYP2D6-Inhibitor.PNG) |
 | [CYP2D6-Substrate](./Descriptions/Metabolism.md#cyp2d6-substrate) | Chemprop | 941 | 0.853 | 0.783 |  0.819 | 0.818 | ![cyp2d6_substrate_roc](./images/CYP2D6-Substrate.PNG) |
+
+Here is a line chart illustrating various metrics for each of the corresponding models.
+
+![comparison_metabolism](./images/metabolism_linechart.png)
 
 ### Excretion
 
