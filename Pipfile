@@ -7,7 +7,7 @@ name = "pypi"
 numpy = "*"
 pandas = "*"
 chemprop = ">=1.5.2"
-sklearn = "*"
+scikit-learn = "*"
 matplotlib = "*"
 
 [dev-packages]
