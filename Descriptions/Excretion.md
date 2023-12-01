@@ -2,6 +2,12 @@
 
 Drug excretion is the removal of drugs from the body using various different routes of excretion, including urine, bile, sweat, saliva, tears, milk, and stool.
 
+## Table of Contents
+
+- [Half Life](#half-life)
+- [Clearance](#clearance)
+- [Data comparison](#data-comparison)
+
 ## Half Life
 
 Half life of a drug is the duration for the concentration of the drug in the body to be reduced by half. It measures the duration of actions of a drug.
@@ -46,3 +52,10 @@ Drug clearance is defined as the volume of plasma cleared of a drug over a speci
 #### True vs. Residuals plot
 
 ![Clearance Microsome True vs. Residuals plot](../images/clearance_microsome_az_residuals.png)
+
+## Data comparison
+
+Name | Size | Processed size | TDC size | TDC processed size | Common | Resulting |
+|-|-|-|-|-|-|-|
+| Half Life | 667 | 666 | 667 |666 | 666 | 667 |
+| Clearance-Microsome | 1102 | 1098 | 1102 | 1098 | 1098 | 1098 |

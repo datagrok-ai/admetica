@@ -2,6 +2,16 @@
 
 Absorption is the process by which drugs enter the bloodstream after administration. It is pivotal in pharmaceutical research, enabling enhanced bioavailability, precise dosing, formulation optimization, reduced variability among patient populations, and minimized side effects. In this part, we studied 3 absorption-related endpoints.
 
+## Table of Contents
+
+- [Pgp-Inhibitor](#pgp-inhibitor)
+- [Pgp-Substrate](#pgp-substrate)
+- [Bioavailability](#bioavailability)
+- [Caco-2](#caco-2)
+- [Lipophilicity](#lipophilicity)
+- [Solubility](#solubility)
+- [Data comparison](#data-comparison)
+
 ## Pgp-Inhibitor
 
 It is a probability of being an inhibitor of P-glycoprotein which is responsible for cell membrane transport. Inhibiting Pgp leads to low cell permeability of substance.
@@ -30,7 +40,7 @@ Results on dataset (higher is better).
 
 ![Pgp-Substrate](../images/Pgp-Substrate.PNG)
 
-## F
+## Bioavailability
 
 The range of bioavailability value is 0-100. One threshold (30%) was applied in order to split compounds into posititve and negative. A probability that less than 30% of substance reaches systemic circulation.
 
@@ -83,3 +93,14 @@ Dataset | Size | MAE | RMSE | R2 | Spearman |
 ### True vs. Residuals plot
 
 ![Solubility True vs. Residuals plot](../images/solubility_aqsoldb_residuals.png)
+
+## Data comparison
+
+Name | Size | Processed size | TDC size | TDC processed size | Common | Resulting |
+|-|-|-|-|-|-|-|
+| Pgp-Inhibitor | 1275 | 1227 | 1218 | 1218 | 1218 | 1227 |
+| Pgp-Substrate | 332 | 332 | - | - | - | 332 |
+| Bioavailability | 986 | 985 | 640 | 640 | 296 |  |
+| Caco-2 | 910 | 910 | 910 | 910 | 910 | 910 |
+| HIA | 769 | 769 | 578 | 578 | 578 | 769 |
+| Lipophilicity | 4200 | 4192 | 4200 | 4192 | 4192 | 4192 |

@@ -2,6 +2,13 @@
 
 Distribution refers to the process of transporting a drug from its point of entry into the bloodstream to its target organs, tissues, or specific sites where it exerts its therapeutic effects, with factors such as drug properties and physiological characteristics influencing this process.
 
+## Table of Contents
+
+- [BBB](#bbb)
+- [PPBR](#ppbr)
+- [VDss](#vdss)
+- [Data comparison](#data-comparison)
+
 ## BBB
 
 It is a probability of expected blood to brain ratio of compound to be less than 0.1. The low ratio represents not efficient distribution which is frequently happens to massive structures.
@@ -39,3 +46,11 @@ The volume of distribution at steady state (VDss) measures the degree of a drug'
 ### True vs. Residuals plot
 
 ![VDss True vs. Residuals plot](../images/vdss_lombardo_residuals.png) |
+
+## Data comparison
+
+Name | Size | Processed size | TDC size | TDC processed size | Common | Resulting |
+|-|-|-|-|-|-|-|
+| PPBR | 2790 | 2782 | 1614 | 1607 | 1607 | 2782 |
+| VDss | 1130 | 1125 | 1130 | 1125 | 1125 | 1125 |
+| BBB | 27791 | 27716 | 2030 | 2029 | 2029 | 27716 |

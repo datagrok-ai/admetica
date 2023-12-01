@@ -2,6 +2,18 @@
 
 Metabolism is the intricate biochemical system responsible for managing energy and molecular processes within living organisms. It consists of two essential components: anabolism, where complex molecules are built, requiring energy like an investment, and catabolism, which breaks down substances to release energy, akin to a controlled chemical breakdown. This highly regulated process is influenced by various factors such as genetics, age, and lifestyle choices, impacting energy utilization, growth, repair, and overall vitality in a formal and simplified overview.
 
+## Table of Contents
+
+- [CYP1A2 Inhibitor](#cyp1a2-inhibitor)
+- [CYP3A4 Inhibitor](#cyp3a4-inhibitor)
+- [CYP3A4 Substrate](#cyp3a4-substrate)
+- [CYP2C19 Inhibitor](#cyp2c19-inhibitor)
+- [CYP2C9 Inhibitor](#cyp2c9-inhibitor)
+- [CYP2C9 Substrate](#cyp2c9-substrate)
+- [CYP2D6 Inhibitor](#cyp2d6-inhibitor)
+- [CYP2D6 Substrate](#cyp2d6-substrate)
+- [Data comparison](#data-comparison)
+
 ## CYP1A2 Inhibitor
 
 It is a probability of being an inhibitor of cytochrome CYP1A2 which catalyzes drug metabolism. Inhibiting CYP1A2 could be both a desired and undesired property depending on drug development goals: elongation/reduction of drug effect, drug-drug interactions etc.
@@ -110,3 +122,18 @@ Results on dataset (higher is better).
 | CYP2D6-Substrate | 941 | 0.853 | 0.783 | 0.819 | 0.818 |
 
 ![CYP2D6-Substrate](../images/CYP2D6-Substrate.PNG)
+
+## Data comparison
+
+Name | Size | Processed size | TDC size | TDC processed size | Common | Resulting |
+|-|-|-|-|-|-|-|
+| CYP1A2-Inhibitor | 13239 | 13188 | 12579 | 12528 | 12528 | 13188 |
+| CYP1A2-Substrate | 709 | 707 | - | - | - | 707 |
+| CYP3A4-Inhibitor | 12997 | 12943 | 12328 | 12274 | 12274 | 12943 |
+| CYP3A4-Substrate | 1149 | 1143 | 670 | 669 | 669 | 1143 |
+| CYP2C19-Inhibitor | 13427 | 13383 | - | - | - | 13383 |
+| CYP2C19-Substrate | 615 | 613 | - | - | - | 613 |
+| CYP2C9-Inhibitor | 12881 | 12829 | - | - | - | 12829 |
+| CYP2C9-Substrate | 899 | 893 | 669 | 668 | 668 | 893 |
+| CYP2D6-Inhibitor | 13896 | 13849 | 13130 | 13083 | 13083 | 13849 |
+| CYP2D6-Substrate | 941 | 935 | 667 | 666 | 666 | 935 |
