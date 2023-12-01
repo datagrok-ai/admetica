@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import rdkit
 from rdkit import Chem
+from rdkit.Chem import AllChem
 from rdkit.Chem.MolStandardize import rdMolStandardize
 import pubchempy as pcp
 import nltk
@@ -167,8 +168,8 @@ def find_columns_with_conditions(data):
         "Target Name",
         "Target Organism"
     ]
-    return [col for col in data.columns if col in desired_columns]
 
+    return [col for col in data.columns if col in desired_columns]
 
 def find_columns_with_relations(data):
     """
@@ -204,6 +205,7 @@ def find_binary_columns(data):
         unique_values = data[col].dropna().unique()
         if len(unique_values) == 2 and 'class' in col.lower():
             binary_columns.append(col)
+
     return binary_columns
 
 def standardize_molecule(mol):
@@ -292,6 +294,39 @@ def process_molecule_data(data, smiles_column):
 
     return data
 
+def remove_duplicates(data, activity_column, concentration=False):
+    """
+    Remove duplicates from the DataFrame based on the specified bitset_column.
+
+    Parameters:
+        data (pd.DataFrame): The input DataFrame.
+        activity_column (str): Name of the activity column.
+        concentration (bool): Whether to handle concentration values.
+
+    Returns:
+        pd.DataFrame: DataFrame with duplicates removed based on the bitset_column.
+    """
+    # Function to generate bit strings from molecules
+    def get_bit_string(mol):
+        fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, 1024)
+        binary_array = np.array(fp)
+        return "".join(binary_array.astype(str))
+
+    bitset_column = 'Bitset'
+    data[bitset_column] = data['Molecule'].apply(lambda x: get_bit_string(x))
+
+    if concentration:
+        # If concentration is True, apply logarithmic transformation and calculate the median
+        activity_data = data.groupby(bitset_column)[activity_column].apply(lambda x: np.median(np.log(x))).reset_index()
+    else:
+        # If not handling concentration, calculate the median of activity values
+        activity_data = data.groupby(bitset_column)[activity_column].apply(lambda x: np.median(x)).reset_index()
+
+    del data[activity_column]
+    result = pd.merge(data, activity_data, on=bitset_column)
+    result = result.drop_duplicates(subset=bitset_column)
+
+    return result
 
 def get_dataset(data):
     """
@@ -311,6 +346,7 @@ def get_dataset(data):
     columns_to_exclude.extend(find_columns_with_relations(data))
     columns_to_exclude.extend(find_binary_columns(data))
     data_final = data[list(set(columns_to_exclude))]
+
     return data_final
 
 
