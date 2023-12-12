@@ -29,8 +29,8 @@ We focus on the following steps:
 | Source type | Patent, manuscript, commercial database with assays | Provides valuable insights, as these categories typically investigate diverse chemical classes, with notable variations in both the quality and quantity of data | Literature, Source|
 | Value units | mM/L, mg/L | Ensures accurate results by converting diverse units to a common standard | Units |
 | Endpoint type | Inh%, IC50, Ki | Helps to  handle diverse data challenges in model development by recognizing and addressing variations in endpoints, measurements, and experimental conditions | PubChem: Panel Name, Panel Target |
-| Confidence intervals | Data is presented with relations like >=, <, = | Depending on the task, this data can be used or eliminated | |
-| Moleculat target | CYPs, hERG | Determines if data is linked to a common biological target, its subunit, or a mutant with resistance to specific actions | |
+| Relation | Data is presented with relations like >=, <, = | Depending on the task, this data can be used or eliminated | Relation |
+| Molecular target | CYPs, hERG | Determines if data is linked to a common biological target, its subunit, or a mutant with resistance to specific actions | Molecular target |
 
 **Examples**:
 
@@ -67,5 +67,3 @@ Another major stage of curation deals with experimental numerical data. For this
 1. **Removal of incorrectly annotated data/irrelevant data**. We remove such data points if they are not specific to the model. For example, when developing a model for SARS-CoV-2 inhibitors, we exclude all entries for SARS-CoV, MERS, or SARS-CoV-2 mutants.
 2. **Duplicates handling**. Mixed datasets often contain several property/activity values for a single structure. We explore the distribution of these entries and exclude outliers. We usually take the median. For concentration values, the harmonic mean or median of logarithmic transformed values are also accepted.
 For modeling tasks, duplicates are not just equal structures. We compare and search for duplicates of descriptors/fingerprints vectors.
-3. **Activity cliffs handling**. The majority of machine learning approaches use smooth functions as a model. The last are fitted to capture the data. Although structures highly similar to others but with a high difference in property/activity can give a strong bias to parameter estimates. We exclude them when there is just a single activity cliff in the subgroup.
-4. **Normalization of values obtained in different testing systems**. When property/activity values are obtained under different experimental conditions, we try to make a transformation considering differences in one of the experimental conditions.
