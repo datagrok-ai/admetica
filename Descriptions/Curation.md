@@ -29,7 +29,7 @@ We focus on the following steps:
 | Source type | Patent, manuscript, commercial database with assays | Provides valuable insights, as these categories typically investigate diverse chemical classes, with notable variations in both the quality and quantity of data | Literature, Source|
 | Value units | mM/L, mg/L | Ensures accurate results by converting diverse units to a common standard | Units |
 | Endpoint type | Inh%, IC50, Ki | Helps to  handle diverse data challenges in model development by recognizing and addressing variations in endpoints, measurements, and experimental conditions | PubChem: Panel Name, Panel Target |
-| Confidence intervals | Data is presented with relations like >=, <, = | epending on the task, this data can be used or eliminated | |
+| Confidence intervals | Data is presented with relations like >=, <, = | Depending on the task, this data can be used or eliminated | |
 | Moleculat target | CYPs, hERG | Determines if data is linked to a common biological target, its subunit, or a mutant with resistance to specific actions | |
 
 **Examples**:
@@ -50,9 +50,8 @@ Structural curation steps are:
    "R  ", "D  "  "He ", "Li ","Be ","B  ", "Ne ", "Al ", "Si ", "Ar ", "Sc ", "Ti ", "V  ", "Cr ", "Co ", "Ni ", "Ga ", "Ge ", "As ", "Se ", "Kr ", "Rb ", "Sr ", "Y  ", "Zr ", "Nb " "Mo ", "Tc ", "Ru ", "Rh ", "Pd ", "Ag ", "Cd ", "In ", "Sn ", "Sb ", "Te ", "Xe ", "Cs ", "Ba ", "La ", "Ce ", "Pr ", "Nd ", "Pm ","Sm ", "Eu ", "Gd ", "Tb ", "Dy ", "Ho ", "Er ", "Tm ", "Yb ", "Lu ", "Hf ", "Ta ", "W  ", "Re ", "Os ", "Ir ", "Pt ", "Au ", "Hg ", "Tl ","Pb ", "Bi ", "Po ", "At ", "Rn ", "Fr ", "Ra ", "Ac ", "Th ", "Pa ", "U  ", "Np ", "Pu ", "Am ", "Cm ", "Bk ", "Cf ", "Es ", "Fm ", "Md ", "No ", "Lr ", "Rf ", "Db ", "Sg ", "Bh ", "Hs ", "Mt ", "Ds ", "Rg ", "Cn ", "Nh ", "Fl ", "Mc ", "Lv ", "Ts ", "Og "
    ```
 
-3. **Taking the major component**. The desired property usually depends on the single structure. Entries in the dataset representing mixtures and salts contain more than one structural component. This can significantly affect generated descriptors/fingerprints: mixtures and single molecules will have different sets of features.
+3. **Taking the major component**. The desired property usually depends on the single structure. Entries in the dataset representing mixtures and salts contain more than one structural component. This can significantly affect generated descriptors/fingerprints. Mixtures and single molecules will have different sets of features.
 Depending on the task, it is not always relevant for salts (2 fragments, one of them is the ion of one atom). Salts should be handled by taking the major fragment and following neutralization (removing of charge) for the majority of molecular target associated models (like hERG) and not for properties.
-
 4. **Neutralization**. For most tasks, we neutralize molecules as their charge will significantly depend on biological/chemical environment.
 5. **Standardization of structural formulas**. Different chemotypes can be represented differently in various chemical notations. We perform standardization to obtain equal descriptors/fingerprints derived from such groups.
 6. **Equal aromatization**. We transform the whole dataset to an equal aromatic or kekule form.
@@ -65,11 +64,8 @@ Depending on the task, it is not always relevant for salts (2 fragments, one of 
 
 Another major stage of curation deals with experimental numerical data. For this, we focus on the following:
 
-1. **Removal of incorrectly annotated data/irrelevant data**. We remove such data points if they are not specific to the model. For example, if developing a model for SARS-CoV-2 inhibitors, we exclude all entries for SARS-CoV, MERS, or SARS-CoV-2 mutants.
-
-2. **Duplicates handling**. Mixed datasets often contain several property/activity values for a single structure. We explore the distribution of these entries and exclude outliers. We usually take the median, and for concentration values, the harmonic mean or median of logarithmic transformed values are also accepted.
+1. **Removal of incorrectly annotated data/irrelevant data**. We remove such data points if they are not specific to the model. For example, when developing a model for SARS-CoV-2 inhibitors, we exclude all entries for SARS-CoV, MERS, or SARS-CoV-2 mutants.
+2. **Duplicates handling**. Mixed datasets often contain several property/activity values for a single structure. We explore the distribution of these entries and exclude outliers. We usually take the median. For concentration values, the harmonic mean or median of logarithmic transformed values are also accepted.
 For modeling tasks, duplicates are not just equal structures. We compare and search for duplicates of descriptors/fingerprints vectors.
-
-3. **Activity cliffs handling**. The majority of machine learning approaches use smooth functions as a model. The last are fitted to capture the data, although structures highly similar to others but with a high difference in property/activity can give a strong bias to parameter estimates. We exclude them when there is just a single activity cliff in the subgroup.
-
+3. **Activity cliffs handling**. The majority of machine learning approaches use smooth functions as a model. The last are fitted to capture the data. Although structures highly similar to others but with a high difference in property/activity can give a strong bias to parameter estimates. We exclude them when there is just a single activity cliff in the subgroup.
 4. **Normalization of values obtained in different testing systems**. When property/activity values are obtained under different experimental conditions, we try to make a transformation considering differences in one of the experimental conditions.
