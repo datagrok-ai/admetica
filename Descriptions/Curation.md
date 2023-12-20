@@ -60,7 +60,7 @@ Depending on the task, it is not always relevant for salts (2 fragments, one of 
 9. **Handling stereo information**. We conserve stereo information only when all the data contains it, otherwise we exclude it.
 10. **Handling hydrogen information**. The presence or absence of hydrogens in the structures leads to unequal descriptors/fingerprints generation. We exclude or add explicit hydrogens to all the structures in the dataset depending on the analyzed problem.
 
-![Curation](../images/curation.png)
+![Curation](../images/structure_curation.png)
 
 ## Endpoint Data Curation
 
