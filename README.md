@@ -111,25 +111,42 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | True vs. Predicted | True vs.
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/chemprop)](https://badge.fury.io/py/chemprop)
 [![Chemprop PyPI version](https://badge.fury.io/py/chemprop.svg)](https://badge.fury.io/py/chemprop)
 
-To install dependencies, run one of the following commands.
+Admetica is a powerful tool for making ADMET predictions and can be easily installed on any operating system. You can install it using pip, and optionally, you can set up a conda environment for better package management.
 
-Using [pipenv](https://pipenv.pypa.io/en/latest/) (preferred):
+#### Creating a Conda Environment (Optional)
 
-```bash
-pipenv install
-```
-
-Using [pip](https://pip.pypa.io/en/stable/):
+To create a new conda environment and install Admetica, use the following commands:
 
 ```bash
-pip install -r requirements.txt
+conda create --name admetica-env python=3.11
+conda activate admetica-env
 ```
 
-Using [conda](https://docs.conda.io/en/latest/):
+#### Installing Admetica
+
+To install Admetica, run:
 
 ```bash
-conda install --file requirements.txt
+pip install admetica==1.3
 ```
+
+By default, the pip installation will include all necessary dependencies for making ADMET predictions.
+
+### Making Predictions
+
+Admetica provides a command-line interface to make predictions. To use it, run:
+
+```bash
+admetica_predict \
+    --dataset-path data.csv \
+    --smiles-column smiles \
+    --properties Caco2,PPBR \
+    --save-path predictions.csv
+```
+
+This command assumes the presence of a file named `data.csv` with SMILES strings in the column `smiles`. In addition, you should specify the properties to be calculated (e.g. `Caco2`). The predictions will be saved to `predictions.csv`.
+
+All models available in the repository are included and can be used.
 
 ### Data
 
