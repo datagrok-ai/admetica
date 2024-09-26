@@ -35,7 +35,7 @@ Our goal is to provide a tool that is:
 
 ## Integration with Datagrok
 
-Our tool easily works with many platforms and applications. Here's what you can do with it when using Datagrok:
+Our tool easily works with many platforms and applications. With the [Admetica package](https://github.com/datagrok-ai/public/tree/master/packages/Admetica) developed at Datagrok, you can:
 
 - **Mix your data:** Combine your data with Datagrok's collected experimental data for customized predictive models.
 
