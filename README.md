@@ -37,13 +37,13 @@ Our goal is to provide a tool that is:
 
 Our tool easily works with many platforms and applications. Here's what you can do with it when using Datagrok:
 
-- **Mix your data:** Combine your data with Datagrok's collected experimantal data for customized predictive models.
+- **Mix your data:** Combine your data with Datagrok's collected experimental data for customized predictive models.
 
 - **Visualize results:** Use Datagrok tools for better predictions, data analysis and data visualization.
 
 ## Available predictive models
 
-Currently, we have a total of 32 predictive models developed for [Absorption](#absorption), [Distribution](#distribution), [Metabolism](#distribution), [Excretion](#distribution) and Toxicity.
+Currently, we have a total of 32 predictive models developed for [Absorption](#absorption), [Distribution](#distribution), [Metabolism](#metabolism), [Excretion](#excretion) and Toxicity.
 
 ### Absorption
 
@@ -101,7 +101,7 @@ Here is a line chart illustrating various metrics for each of the corresponding 
 Name | Model | Size | MAE | RMSE | R2 | Spearman | True vs. Predicted | True vs. Residuals  |
 |-|-|-|-|-|-|-|-|-|
 | Half Life | Chemprop | 667 | 9.947 | 21.780 | -0.007 | 0.208 | ![Half Life True vs. Predicted plot](./images/half_life_obach_true_vs_pred.png) | ![Half Life True vs. Residuals plot](./images/half_life_obach_residuals.png) |
-| Clearance Hepatocyte | Chemprop | 1213 | 35.930 | 45.848 | 0.088 | 0.379 | ![Clearance Hepatocyte True vs. Predicted plot](./images/clearance_hepatocyte_az_true_vs_pred.png) | ![Clearance Hepatocyte True vs. Redsiduals plot](./images/clearance_hepatocyte_az_residuals.png) |
+| Clearance Hepatocyte | Chemprop | 1213 | 35.930 | 45.848 | 0.088 | 0.379 | ![Clearance Hepatocyte True vs. Predicted plot](./images/clearance_hepatocyte_az_true_vs_pred.png) | ![Clearance Hepatocyte True vs. Residuals plot](./images/clearance_hepatocyte_az_residuals.png) |
 | Clearance Microsome | Chemprop | 1102 | 21.797 | 35.914 | 0.305 | 0.573 | ![Clearance Microsome True vs. Predicted plot](./images/clearance_microsome_az_true_vs_pred.png) | ![Clearance Microsome True vs. Residuals plot](./images/clearance_microsome_az_residuals.png) |
 
 ## Usage
