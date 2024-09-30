@@ -23,13 +23,9 @@ The human plasma protein binding rate (PPBR) is expressed as the percentage of a
 |-|-|-|-|-|-|
 | PPBR | 2790 | 7.945 | 11.642 | 0.410 | 0.650 |
 
-### True vs. Predicted plot
+### Observed vs. Predicted plot
 
-![PPBR True vs. Predicted plot](../images/ppbr_az_true_vs_pred.png)
-
-### True vs. Residuals plot
-
-![PPBR True vs. Residuals plot](../images/ppbr_az_residuals.png)
+![PPBR True vs. Predicted plot](../images/ppbr_az_observed_vs_pred.png)
 
 ## VDss
 
@@ -41,11 +37,7 @@ The volume of distribution at steady state (VDss) measures the degree of a drug'
 
 ### True vs. Predicted plot
 
-![VDss True vs. Predicted plot](../images/vdss_lombardo_true_vs_pred.png)
-
-### True vs. Residuals plot
-
-![VDss True vs. Residuals plot](../images/vdss_lombardo_residuals.png) |
+![VDss Observed vs. Predicted plot](../images/vdss_lombardo_observed_vs_pred.png)
 
 ## Data comparison
 

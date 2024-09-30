@@ -54,13 +54,9 @@ Dataset | Size | MAE | RMSE | R2 | Spearman |
 |-|-|-|-|-|-|
 | Caco2 | 910 | 0.417 | 0.528 | 0.408 | 0.816 |
 
-### True vs. Predicted plot
+### Observed vs. Predicted plot
 
-![Caco2 True vs. Predicted plot](../images/caco2_wang_true_vs_pred.png)
-
-### True vs. Residuals plot
-
-![Caco2 True vs. Residuals plot](../images/caco2_wang_residuals.png) |
+![Caco2 Observed vs. Predicted plot](../images/caco2_wang_observed_vs_pred.png)
 
 ## Lipophilicity
 
@@ -70,13 +66,9 @@ Dataset | Size | MAE | RMSE | R2 | Spearman |
 |-|-|-|-|-|-|
 | Lipophilicity | Chemprop | 4200 | 0.456 | 0.612 | 0.734 | 0.842 |
 
-### True vs. Predicted plot
+### Observed vs. Predicted plot
 
-![Lipophilicity True vs. Predicted plot](../images/lipophilicity_astrazeneca_true_vs_pred.png)
-
-### True vs. Residuals plot
-
-![Lipophilicity True vs. Residuals plot](../images/lipophilicity_astrazeneca_residuals.png)
+![Lipophilicity Observed vs. Predicted plot](../images/lipophilicity_astrazeneca_observed_vs_pred.png)
 
 ## Solubility
 
@@ -86,13 +78,9 @@ Dataset | Size | MAE | RMSE | R2 | Spearman |
 |-|-|-|-|-|-|
 | Solubility | Chemprop | 9982 | 0.825 | 1.118 | 0.762 | 0.852 |
 
-### True vs. Predicted plot
+### Observed vs. Predicted plot
 
-![Solubility True vs. Predicted plot](../images/solubility_aqsoldb_true_vs_pred.png)
-
-### True vs. Residuals plot
-
-![Solubility True vs. Residuals plot](../images/solubility_aqsoldb_residuals.png)
+![Solubility True vs. Predicted plot](../images/solubility_aqsoldb_observed_vs_pred.png)
 
 ## Data comparison
 
