@@ -54,26 +54,22 @@ Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 | [Pgp-Inhibitor](./Descriptions/Absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.877 | 0.923 |  0.904 | 0.902 | ![pgp_inhibitor_roc](./images/Pgp-Inhibitor.PNG) |
 | [Pgp-Substrate](./Descriptions/Absorption.md#pgp-substrate) | Chemprop | 332 | 0.786 | 0.820 |  0.807 | 0.803 | ![pgp_substrate_roc](./images/Pgp-Substrate.PNG) |
 
-Below is a line chart that visually represents various metrics for the respective models.
-
-![comparison_absorption](./images/absorption_linechart.png)
-
 #### Regression models
 
-Name | Model | Size | MAE | RMSE | R2 | Spearman | True vs. Predicted | True vs. Residuals |
-|-|-|-|-|-|-|-|-|-|
-| Caco2 | Chemprop | 910 | 0.417 | 0.528 | 0.408 | 0.816 | ![Caco2 True vs. Predicted plot](./images/caco2_wang_true_vs_pred.png) | ![Caco2 True vs. Residuals plot](./images/caco2_wang_residuals.png) |
-| Lipophilicity | Chemprop | 4200 | 0.456 | 0.612 | 0.734 | 0.842 | ![Lipophilicity True vs. Predicted plot](./images/lipophilicity_astrazeneca_true_vs_pred.png) | ![Lipophilicity True vs. Residuals plot](./images/lipophilicity_astrazeneca_residuals.png) |
-| Solubility | Chemprop | 9982 | 0.825 | 1.118 | 0.762 | 0.852 | ![Solubility True vs. Predicted plot](./images/solubility_aqsoldb_true_vs_pred.png) | ![Solubility True vs. Residuals plot](./images/solubility_aqsoldb_residuals.png) |
+Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
+|-|-|-|-|-|-|-|-|
+| Caco2 | Chemprop | 910 | 0.417 | 0.528 | 0.408 | 0.816 | ![Caco2 Observed vs. Predicted plot](./images/caco2_wang_observed_vs_pred.png) |
+| Lipophilicity | Chemprop | 4200 | 0.456 | 0.612 | 0.734 | 0.842 | ![Lipophilicity Observed vs. Predicted plot](./images/lipophilicity_astrazeneca_observed_vs_pred.png) |
+| Solubility | Chemprop | 9982 | 0.825 | 1.118 | 0.762 | 0.852 | ![Solubility Observed vs. Predicted plot](./images/solubility_aqsoldb_observed_vs_pred.png) |
 
 ### Distribution
 
 #### Regression models
 
-Name | Model | Size | MAE | RMSE | R2 | Spearman | True vs. Predicted | True vs. Residuals |
-|-|-|-|-|-|-|-|-|-|
-| PPBR | Chemprop | 2790 | 7.945 | 11.642 | 0.410 | 0.650 | ![PPBR True vs. Predicted plot](./images/ppbr_az_true_vs_pred.png) | ![PPBR True vs. Residuals plot](./images/ppbr_az_residuals.png) |
-| VDss | Chemprop | 1130 | 3.100 | 5.232 | 0.069 | 0.500 | ![VDss True vs. Predicted plot](./images/vdss_lombardo_true_vs_pred.png) | ![VDss True vs. Residuals plot](./images/vdss_lombardo_residuals.png) |
+Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
+|-|-|-|-|-|-|-|-|
+| PPBR | Chemprop | 2790 | 7.945 | 11.642 | 0.410 | 0.650 | ![PPBR Observed vs. Predicted plot](./images/ppbr_az_observed_vs_pred.png) |
+| VDss | Chemprop | 1130 | 3.100 | 5.232 | 0.069 | 0.500 | ![VDss Observed vs. Predicted plot](./images/vdss_lombardo_observed_vs_pred.png) |
 
 ### Metabolism
 
@@ -98,11 +94,11 @@ Here is a line chart illustrating various metrics for each of the corresponding 
 
 #### Regression models
 
-Name | Model | Size | MAE | RMSE | R2 | Spearman | True vs. Predicted | True vs. Residuals  |
-|-|-|-|-|-|-|-|-|-|
-| Half Life | Chemprop | 667 | 9.947 | 21.780 | -0.007 | 0.208 | ![Half Life True vs. Predicted plot](./images/half_life_obach_true_vs_pred.png) | ![Half Life True vs. Residuals plot](./images/half_life_obach_residuals.png) |
-| Clearance Hepatocyte | Chemprop | 1213 | 35.930 | 45.848 | 0.088 | 0.379 | ![Clearance Hepatocyte True vs. Predicted plot](./images/clearance_hepatocyte_az_true_vs_pred.png) | ![Clearance Hepatocyte True vs. Residuals plot](./images/clearance_hepatocyte_az_residuals.png) |
-| Clearance Microsome | Chemprop | 1102 | 21.797 | 35.914 | 0.305 | 0.573 | ![Clearance Microsome True vs. Predicted plot](./images/clearance_microsome_az_true_vs_pred.png) | ![Clearance Microsome True vs. Residuals plot](./images/clearance_microsome_az_residuals.png) |
+Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
+|-|-|-|-|-|-|-|-|
+| Half Life | Chemprop | 667 | 9.947 | 21.780 | -0.007 | 0.208 | ![Half Life Observed vs. Predicted plot](./images/half_life_obach_observed_vs_pred.png) |
+| Clearance Hepatocyte | Chemprop | 1213 | 35.930 | 45.848 | 0.088 | 0.379 | ![Clearance Hepatocyte Observed vs. Predicted plot](./images/clearance_hepatocyte_az_observed_vs_pred.png) |
+| Clearance Microsome | Chemprop | 1102 | 21.797 | 35.914 | 0.305 | 0.573 | ![Clearance Microsome True vs. Predicted plot](./images/clearance_microsome_az_observed_vs_pred.png) |
 
 ## Usage
 
