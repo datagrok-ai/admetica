@@ -236,6 +236,19 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 
 Both the original Caco-2 dataset and the processed data are available in the [comparison](./comparison/novartis/caco2/) folder. Additionally, the folder contains a Jupyter notebook, [comparison_caco2.ipynb](./comparison/comparison_caco2.ipynb), which fully reproduces the preprocessing steps, obtained datasets and metrics.
 
+### Results
+
+During our model comparison, we discovered that the Novartis model outperformed the Admetica model for the targets CYP3A4, CYP2C9, and Caco2. Consequently, we opted to continue training with the surrogate Novartis data used in our comparison. Given the significant class imbalance in the data for CYP3A4 and CYP2C9, we implemented under-sampling techniques to reduce the risk of overfitting during the training process.
+
+| **Property** | **Class Distribution** | **Number of Rows in Final Dataset** |
+|--------------|-----------------------|-------------------------------------|
+| **CYP3A4**   | 0: 22618, 1: 22618   | 57781                               |
+| **CYP2C9**   | 0: 3975, 1: 3975     | 20299                               |
+
+This table summarizes the class distributions and the row counts in the final combined datasets for each property. 
+
+For further details, the [comparison](./comparison/) folder contains a Jupyter notebook, [undersampling.ipynb](./comparison/undersampling.ipynb), that fully reproduces the process of obtaining the final datasets for training.
+
 ## Usage
 
 ### Installation
