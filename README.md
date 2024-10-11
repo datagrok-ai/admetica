@@ -16,6 +16,7 @@ We welcome everyone with the expertise in the field. If you're interested in col
   - [Metabolism](#metabolism)
   - [Excretion](#excretion)
 - [Comparison of Admetica and Novartis models](#comparison-of-admetica-and-novartis-models)
+- [Evaluation of free online ADMET tools](#evaluation-of-free-online-admet-tools)
 - [Usage](#usage)
   - [Installation](#installation)
   - [Data](#data)
@@ -151,7 +152,9 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 | Balanced Accuracy         | 0.6155                | 0.6532                |
 | AUC                       | 0.6155                | 0.6532                |
 
-![3A4 Admetica vs. Novartis](./images/3a4_nx_admetica.png)
+<p align="center">
+  <img src="./images/3a4_nx_admetica.png" alt="3A4 Admetica vs. Novartis" style="width:70%;">
+</p>
 
 ### 2C9
 
@@ -175,7 +178,9 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 | Balanced Accuracy         | 0.5860                | 0.6142                |
 | AUC                       | 0.5860                | 0.6142                |
 
-![2C9 Admetica vs. Novartis](./images/2c9_nx_admetica.png)
+<p align="center">
+  <img src="./images/2c9_nx_admetica.png" alt="2C9 Admetica vs. Novartis" style="width:70%;">
+</p>
 
 ### 2D6
 
@@ -199,7 +204,9 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 | Balanced Accuracy         | 0.5961                | 0.5949                |
 | AUC                       | 0.5961                | 0.5949                |
 
-![2D6 Admetica vs. Novartis](./images/2d6_nx_admetica.png)
+<p align="center">
+  <img src="./images/2d6_nx_admetica.png" alt="2D6 Admetica vs. Novartis" style="width:70%;">
+</p>
 
 The comparison is fully reproducible, and you can find the Jupyter notebook, [comparison_cyp.ipynb](./comparison/comparison_cyp.ipynb), in the folder.
 
@@ -248,6 +255,10 @@ During our model comparison, we discovered that the Novartis model outperformed 
 This table summarizes the class distributions and the row counts in the final combined datasets for each property. 
 
 For further details, the [comparison](./comparison/) folder contains a Jupyter notebook, [undersampling.ipynb](./comparison/undersampling.ipynb), that fully reproduces the process of obtaining the final datasets for training.
+
+## Evaluation of free online ADMET tools
+
+For our evaluation, we used 24 tyrosine kinase inhibitors (TKIs) and a comparison table from the supplementary materials of the study [Evaluation of Free Online ADMET Tools for Academic or Small Biotech Environments](https://pubmed.ncbi.nlm.nih.gov/36677832/). The table contained predictions for the 24 structures from various web services, including ADMETlab, admetSAR, SwissADMET, and others. Since the table was slightly outdated, we updated the ADMETlab 2.0 predictions with those from ADMETlab 3.0.
 
 ## Usage
 
