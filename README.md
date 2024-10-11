@@ -152,9 +152,7 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 | Balanced Accuracy         | 0.6155                | 0.6532                |
 | AUC                       | 0.6155                | 0.6532                |
 
-<p align="center">
-  <img src="./images/3a4_nx_admetica.png" alt="3A4 Admetica vs. Novartis" style="width:70%;">
-</p>
+<img src="./images/3a4_nx_admetica.png" alt="3A4 Admetica vs. Novartis" style="width:70%;">
 
 ### 2C9
 
@@ -178,9 +176,7 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 | Balanced Accuracy         | 0.5860                | 0.6142                |
 | AUC                       | 0.5860                | 0.6142                |
 
-<p align="center">
-  <img src="./images/2c9_nx_admetica.png" alt="2C9 Admetica vs. Novartis" style="width:70%;">
-</p>
+<img src="./images/2c9_nx_admetica.png" alt="2C9 Admetica vs. Novartis" style="width:70%;">
 
 ### 2D6
 
@@ -204,9 +200,7 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 | Balanced Accuracy         | 0.5961                | 0.5949                |
 | AUC                       | 0.5961                | 0.5949                |
 
-<p align="center">
-  <img src="./images/2d6_nx_admetica.png" alt="2D6 Admetica vs. Novartis" style="width:70%;">
-</p>
+<img src="./images/2d6_nx_admetica.png" alt="2D6 Admetica vs. Novartis" style="width:70%;">
 
 The comparison is fully reproducible, and you can find the Jupyter notebook, [comparison_cyp.ipynb](./comparison/comparison_cyp.ipynb), in the folder.
 
