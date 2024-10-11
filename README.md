@@ -262,6 +262,14 @@ We conducted a comparative analysis of predictions from four in silico tools: [A
 
 ADMETLab consistently provided the most accurate predictions. Both Admetica and preADMET demonstrated generally good performance, with many results closely aligning with the true values, although Admetica exhibited a few instances of overestimation. In contrast, admetSAR frequently underestimated binding values, making it the least reliable model overall.
 
+### Half-Life
+
+Among all online web services, only ADMETLab offers predictions for Half-Life. Consequently, we performed a comparative analysis of the predictions between ADMETLab and Admetica for 24 structures.
+
+<img src="./images/half-life_web_comparison.png" alt="Half-Life ADMET tools" style="width:70%;">
+
+ADMETLab tends to underestimate Half-Life predictions compared to the actual values, while Admetica often overestimates, leading to significant variability in its predictions. This highlights the importance of carefully evaluating the predictions from both tools.
+
 ## Usage
 
 ### Installation
