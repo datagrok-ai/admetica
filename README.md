@@ -127,7 +127,7 @@ We generated test datasets using data from the ChEMBL database. To ensure the te
   | | Less than 50%: `0`    |
   | Other values | Left unchanged (already in µM) |
 
-Both the original ChEMBL dataset and the processed data are available in the [comparison](./comparison/novartis/chembl/) folder. Additionally, the folder contains a Jupyter notebook, [preprocessing_pipeline.ipynb](./comparison/preprocessing_pipeline.ipynb), which fully reproduces the preprocessing steps and obtained datasets.
+Both the original ChEMBL dataset and the processed data are available in the [comparison](./comparison/novartis/cyp/) folder. Additionally, the folder contains a Jupyter notebook, [preprocessing_pipeline.ipynb](./comparison/preprocessing_pipeline.ipynb), which fully reproduces the preprocessing steps and obtained datasets.
 
 ### 3A4
 
@@ -153,8 +153,6 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 
 ![3A4 Admetica vs. Novartis](./images/3a4_nx_admetica.png)
 
-These results indicate that the Novartis model performed better overall, leading us to decide to further train our model using their dataset to enhance its predictive capabilities.
-
 ### 2C9
 
 After performing the pipeline for ChEMBL 2C9, we obtained a dataset structured as follows:
@@ -178,8 +176,6 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 | AUC                       | 0.5860                | 0.6142                |
 
 ![2C9 Admetica vs. Novartis](./images/2c9_nx_admetica.png)
-
-These results indicate that the Novartis model performed better overall, leading us to decide to further train our model using their dataset to enhance its predictive capabilities.
 
 ### 2D6
 
@@ -205,9 +201,40 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 
 ![2D6 Admetica vs. Novartis](./images/2d6_nx_admetica.png)
 
-Given these results, we decided to continue with the Admetica model in its current form, as it demonstrated better performance overall.
-
 The comparison is fully reproducible, and you can find the Jupyter notebook, [comparison_cyp.ipynb](./comparison/comparison_cyp.ipynb), in the folder.
+
+
+### Caco-2 permeability
+
+We generated test datasets using data from the supplementary material of the paper [In Silico Prediction of Caco-2 Cell Permeability by a Classification QSAR Approach](https://pubmed.ncbi.nlm.nih.gov/27466954/). The following preprocessing steps were applied:
+
+*  **Identifying common structures**:
+
+   We compared the Novartis and Caco-2 dataset to identify shared molecular structures. Additionally, we filtered out values that overlapped with the Admetica training set to prevent redundancy.
+   
+* **Unit normalization**:  
+   
+   To ensure consistent units across all datasets predicting Caco-2 permeability (including Novartis and Admetica), we applied a log10 transformation to the values.
+
+After performing the preprocessing for Caco-2, we obtained a dataset that contains 34 structures.
+
+We conducted comprehensive calculations of ADMET properties and assessed the performance metrics for both the Admetica and Novartis models, resulting in the following outcomes:
+
+| **Metric**   | **Admetica**   | **Novartis**   |
+|--------------|----------------|----------|
+| MAE          | 0.411552       | 0.351543 |
+| MSE          | 0.286792       | 0.201841 |
+| RMSE         | 0.535530       | 0.449267 |
+| R²           | 0.319010       | 0.520728 |
+
+<table>
+  <tr>
+    <td><img src="./images/caco2_admetica_obs.png" alt="Admetica OvP"/></td>
+    <td><img src="./images/caco2_nx_obs.png" alt="Novartis OvP"/></td>
+  </tr>
+</table>
+
+Both the original Caco-2 dataset and the processed data are available in the [comparison](./comparison/novartis/caco2/) folder. Additionally, the folder contains a Jupyter notebook, [comparison_caco2.ipynb](./comparison/comparison_caco2.ipynb), which fully reproduces the preprocessing steps, obtained datasets and metrics.
 
 ## Usage
 
