@@ -134,7 +134,7 @@ Both the original ChEMBL dataset and the processed data are available in the [co
 
 After performing the pipeline for ChEMBL 3A4, we obtained a dataset structured as follows:
 
-| **Class** | **Number of Entries** |
+| **Class** | **Number of entries** |
 |-----------|-----------------------|
 | Inhibitor   | 549                   |
 | Non-Inhibitor   | 239                   |
@@ -158,7 +158,7 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 
 After performing the pipeline for ChEMBL 2C9, we obtained a dataset structured as follows:
 
-| **Class** | **Number of Entries** |
+| **Class** | **Number of entries** |
 |-----------|-----------------------|
 | Inhibitor   | 329                   |
 | Non-Inhibitor   | 135                   |
@@ -182,7 +182,7 @@ We conducted comprehensive calculations of ADMET properties and assessed the per
 
 After performing the pipeline for ChEMBL 2D6, we obtained a dataset structured as follows:
 
-| **Class** | **Number of Entries** |
+| **Class** | **Number of entries** |
 |-----------|-----------------------|
 | Inhibitor   | 444                   |
 | Non-Inhibitor   | 195                   |
@@ -241,7 +241,7 @@ Both the original Caco-2 dataset and the processed data are available in the [co
 
 During our model comparison, we discovered that the Novartis model outperformed the Admetica model for the targets CYP3A4, CYP2C9, and Caco2. Consequently, we opted to continue training with the surrogate Novartis data used in our comparison. Given the significant class imbalance in the data for CYP3A4 and CYP2C9, we implemented under-sampling techniques to reduce the risk of overfitting during the training process.
 
-| **Property** | **Class Distribution** | **Number of Rows in Final Dataset** |
+| **Property** | **Class distribution** | **Number of rows in final dataset** |
 |--------------|-----------------------|-------------------------------------|
 | **CYP3A4**   | 0: 22618, 1: 22618   | 57781                               |
 | **CYP2C9**   | 0: 3975, 1: 3975     | 20299                               |
@@ -253,6 +253,14 @@ For further details, the [comparison](./comparison/) folder contains a Jupyter n
 ## Evaluation of free online ADMET tools
 
 For our evaluation, we used 24 tyrosine kinase inhibitors (TKIs) and a comparison table from the supplementary materials of the study [Evaluation of Free Online ADMET Tools for Academic or Small Biotech Environments](https://pubmed.ncbi.nlm.nih.gov/36677832/). The table contained predictions for the 24 structures from various web services, including ADMETlab, admetSAR, SwissADMET, and others. Since the table was slightly outdated, we updated the ADMETlab 2.0 predictions with those from ADMETlab 3.0.
+
+### Plasma Protein Binding
+
+We conducted a comparative analysis of predictions from four in silico tools: [ADMETLab](https://admetlab3.scbdd.com/), [admetSAR](https://lmmd.ecust.edu.cn/admetsar2/), [preADMET](https://preadmet.webservice.bmdrc.org/), and Admetica. The plot below summarizes the plasma protein binding (PPB) predictions for 24 selected tyrosine kinase inhibitors (TKIs).
+
+<img src="./images/ppb_web_comparison.png" alt="PPB ADMET tools" style="width:70%;">
+
+ADMETLab consistently provided the most accurate predictions. Both Admetica and preADMET demonstrated generally good performance, with many results closely aligning with the true values, although Admetica exhibited a few instances of overestimation. In contrast, admetSAR frequently underestimated binding values, making it the least reliable model overall.
 
 ## Usage
 
