@@ -1,0 +1,25 @@
+Entry,Stability,1A2,3A4,2D6,2C9,2C19,BBB,P-gp,hERG,Ames
+1,no,out,out,out,out,out,out,inh / subs,yes,out
+2,out,inh,inh,no-inh,no-inh,no-inh,out,no-inh / no-sub,yes,out
+3,out,inh,inh,no-inh,no-inh,no-inh,out,inh,yes,out
+4,out,out,out,out,out,out,out,out,out,out
+5,yes,out,out,out,out,out,out,out,yes,out
+6,out,out,out,out,out,out,out,no-sub,out,out
+7,out,out,inh,out,out,out,out,sub,out,out
+8,out,out,out,out,out,out,out,inh / subs,yes,out
+9,out,inh,inh,no-inh,no-inh,no-inh,out,inh,yes,out
+10,out,out,out,out,out,out,out,out,out,out
+11,out,out,out,out,out,out,out,out,out,out
+12,out,out,out,out,out,out,out,out,out,out
+13,out,out,out,out,out,out,out,sub,yes,out
+14,out,out,out,out,out,out,out,out,out,out
+15,out,out,out,out,out,out,out,out,yes,out
+16,out,out,out,out,out,out,out,out,out,out
+17,out,out,out,out,out,out,out,out,out,out
+18,out,out,out,out,out,out,out,out,out,out
+19,out,inh,inh,no-inh,no-inh,no-inh,out,out,no,out
+20,out,out,out,out,out,out,out,out,out,out
+21,out,out,out,out,out,out,out,out,out,out
+22,out,out,out,out,out,out,out,out,out,out
+23,out,out,out,out,out,out,out,out,out,out
+24,out,out,out,out,out,out,out,out,out,out

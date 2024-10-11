@@ -1,0 +1,25 @@
+Entry,logP,Solubility (log mol/L),Caco2 (log cm/s),HIA (%),Pgp-Substrate,Pgp-Inhibitor,BBB (log BB),CYP2D6-substrate,CYP2D6-Inhibitor,CYP3A4-inhibitor,CYP3A4-substrate,CYP1A2-inh,CYP2C19-inhibitor,CYP2C9-inhibitor,Cl (log mL/min/kg),AMES,hERG,VDss (log L/kg),LD50 (mol/kg)
+1,4.59,-3.031,1.092,93.8,Yes,Yes,-1.376,No,No,Yes,Yes,no,yes,yes,0.716,no,yes,1.315,2.9
+2,4.28,-4.124,1.246,90.9,Yes,Yes,-0.738,No,No,Yes,Yes,yes,no,no,0.937,no,yes,1.08,2.859
+3,3.40,-4.403,1.238,95.5,No,Yes,-0.670,No,No,Yes,Yes,yes,yes,yes,0.591,no,yes,-0.053,2.368
+4,5.55,-5.089,0.959,85.3,Yes,Yes,-1.642,No,No,No,Yes,no,yes,yes,-0.212,no,yes,-0.218,2.131
+5,3.33,-4.164,0.917,89.1,Yes,Yes,-0.900,Yes,No,Yes,Yes,no,no,no,0.960,no,yes,1.054,2.327
+6,3.31,-3.073,0.878,83.2,Yes,Yes,-1.530,No,No,Yes,Yes,no,no,no,0.477,no,no,1.441,2.676
+7,6.14,-4.324,-0.402,100.0,Yes,Yes,-0.785,No,No,Yes,Yes,no,yes,yes,0.542,yes,yes,-0.221,3.171
+8,6.35,-2.927,1.728,100.0,Yes,Yes,-1.152,No,No,Yes,Yes,no,yes,yes,0.440,no,yes,0.005,2.716
+9,5.00,-4.919,2.128,90.8,Yes,Yes,-0.264,No,No,Yes,No,no,no,no,0.584,no,yes,0.596,2.702
+10,4.64,-4.040,0.913,92.3,Yes,Yes,-1.087,No,No,Yes,Yes,yes,yes,yes,0.116,yes,yes,-0.18,2.918
+11,5.54,-4.489,0.859,100.0,Yes,Yes,-0.574,No,No,Yes,Yes,no,yes,yes,0.251,no,yes,-0.669,2.734
+12,5.68,-4.993,0.554,84.3,Yes,Yes,-1.804,No,No,Yes,Yes,no,yes,yes,-0.036,no,yes,-0.222,2.179
+13,4.38,-4.696,0.998,93.3,Yes,Yes,-1.384,No,No,Yes,Yes,no,no,yes,0.612,no,yes,0.748,2.613
+14,4.04,-4.492,0.104,77.4,Yes,Yes,-1.012,No,No,Yes,Yes,no,yes,yes,0.465,no,yes,0.071,2.633
+15,4.07,-3.376,0.031,88.9,Yes,Yes,-1.342,No,No,Yes,Yes,no,no,yes,0.213,no,yes,0.304,2.227
+16,4.51,-3.299,1.138,93.4,Yes,Yes,-1.129,No,No,Yes,Yes,no,yes,yes,0.632,no,yes,1.081,2.936
+17,5.09,-3.466,1.104,87.6,Yes,Yes,-1.179,No,No,Yes,Yes,no,yes,yes,0.417,no,yes,2.098,2.966
+18,5.93,-4.046,0.112,92.3,Yes,Yes,-1.666,No,Yes,Yes,Yes,no,yes,yes,0.714,no,yes,0.955,3.024
+19,5.16,-4.246,0.575,92.6,Yes,Yes,-1.476,No,No,Yes,Yes,no,no,no,0.674,no,yes,1.536,3.146
+20,4.18,-4.329,1.141,96.1,Yes,Yes,-1.032,No,No,Yes,Yes,no,no,no,0.690,no,yes,0.909,2.748
+21,2.61,-2.795,1.894,99.8,Yes,Yes,-1.528,No,No,Yes,Yes,no,yes,no,0.276,no,yes,0.553,2.767
+22,3.66,-3.112,1.303,93.6,Yes,Yes,-2.068,No,No,Yes,Yes,no,no,no,0.773,no,yes,0.882,2.951
+23,5.67,-3.871,0.904,90.1,Yes,Yes,-1.316,No,No,Yes,Yes,yes,yes,yes,-0.073,no,yes,0.061,2.608
+24,5.53,-4.321,0.323,100.0,Yes,Yes,-0.601,No,No,Yes,Yes,no,yes,yes,0.430,no,yes,-0.033,2.946
