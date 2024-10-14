@@ -103,12 +103,6 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 
 ### Toxicity
 
-#### Classification models
-
-Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC |
-|-|-|-|-|-|-|-|-|
-| [hERG](./toxicity) | Chemprop | 22248 | |  | | | ![] |
-
 #### Regression models
 
 Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
