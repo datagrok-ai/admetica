@@ -11,6 +11,14 @@ Toxicity measures how much damage a drug could cause to organisms.
 
 Acute toxicity LD50 measures the most conservative dose that can lead to lethal adverse effects. The higher the dose, the more lethal of a drug.
 
+| Name | Size | MAE | RMSE | R2 | Spearman |
+|-|-|-|-|-|-|
+| LD50 | 7282 | 0.437 | 0.609 | 0.596 | 0.745 |
+
+### Observed vs. Predicted plot
+
+![LD50 Observed vs. Predicted plot](../../images/ld50_observed_vs_pred.png)
+
 ## Data comparison
 
 Name | Size | Processed size | TDC size | TDC processed size | Common | Resulting |

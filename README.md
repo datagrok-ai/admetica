@@ -15,6 +15,7 @@ We welcome everyone with the expertise in the field. If you're interested in col
   - [Distribution](#distribution)
   - [Metabolism](#metabolism)
   - [Excretion](#excretion)
+  - [Toxicity](#toxicity)
 - [Comparison of Admetica and Novartis models](#comparison-of-admetica-and-novartis-models)
 - [Evaluation of free online ADMET tools](#evaluation-of-free-online-admet-tools)
 - [Usage](#usage)
@@ -98,7 +99,21 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 |-|-|-|-|-|-|-|-|
 | [Half Life](./excretion/excretion.md#half-life) | Chemprop | 667 | 9.947 | 21.780 | -0.007 | 0.208 | ![Half Life Observed vs. Predicted plot](./images/half_life_obach_observed_vs_pred.png) |
 | [Clearance Hepatocyte](./excretion/excretion.md#hepatocyte) | Chemprop | 1213 | 35.930 | 45.848 | 0.088 | 0.379 | ![Clearance Hepatocyte Observed vs. Predicted plot](./images/clearance_hepatocyte_az_observed_vs_pred.png) |
-| [Clearance Microsome](./excretion/excretion.md#microsome) | Chemprop | 1102 | 21.797 | 35.914 | 0.305 | 0.573 | ![Clearance Microsome True vs. Predicted plot](./images/clearance_microsome_az_observed_vs_pred.png) |
+| [Clearance Microsome](./excretion/excretion.md#microsome) | Chemprop | 1102 | 21.797 | 35.914 | 0.305 | 0.573 | ![Clearance Microsome Observed vs. Predicted plot](./images/clearance_microsome_az_observed_vs_pred.png) |
+
+### Toxicity
+
+#### Classification models
+
+Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC |
+|-|-|-|-|-|-|-|-|
+| [hERG](./toxicity) | Chemprop | 22248 | |  | | | ![] |
+
+#### Regression models
+
+Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
+|-|-|-|-|-|-|-|-|
+| [LD50](./toxicity/toxicity.md#) | Chemprop | 7282 |  0.437 | 0.609 | 0.596 | 0.745 | ![LD50 Observed vs. Predicted plot](./images/ld50_observed_vs_pred.png) |
 
 ## Comparison of Admetica and Novartis models
 
