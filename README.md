@@ -246,29 +246,76 @@ During our model comparison, we discovered that the Novartis model outperformed 
 | **CYP3A4**   | 0: 22618, 1: 22618   | 57781                               |
 | **CYP2C9**   | 0: 3975, 1: 3975     | 20299                               |
 
-This table summarizes the class distributions and the row counts in the final combined datasets for each property. 
+This table summarizes the class distributions and the row counts in the final dataset for each property. 
 
 For further details, the [comparison](./comparison/) folder contains a Jupyter notebook, [undersampling.ipynb](./comparison/undersampling.ipynb), that fully reproduces the process of obtaining the final datasets for training.
 
 ## Evaluation of free online ADMET tools
 
-For our evaluation, we used 24 tyrosine kinase inhibitors (TKIs) and a comparison table from the supplementary materials of the study [Evaluation of Free Online ADMET Tools for Academic or Small Biotech Environments](https://pubmed.ncbi.nlm.nih.gov/36677832/). The table contained predictions for the 24 structures from various web services, including ADMETlab, admetSAR, SwissADMET, and others. Since the table was slightly outdated, we updated the ADMETlab 2.0 predictions with those from ADMETlab 3.0.
+For our evaluation, we used 24 tyrosine kinase inhibitors (TKIs) and a comparison table from the supplementary materials of the study [Evaluation of Free Online ADMET Tools for Academic or Small Biotech Environments](https://pubmed.ncbi.nlm.nih.gov/36677832/). The table contained predictions for the 24 structures from various web services, including ADMETlab, admetSAR, SwissADME, and others. Since the table was slightly outdated, we updated the ADMETlab 2.0 predictions with those from ADMETlab 3.0.
 
 ### Plasma Protein Binding
 
-We conducted a comparative analysis of predictions from four in silico tools: [ADMETLab](https://admetlab3.scbdd.com/), [admetSAR](https://lmmd.ecust.edu.cn/admetsar2/), [preADMET](https://preadmet.webservice.bmdrc.org/), and Admetica. The plot below summarizes the plasma protein binding (PPB) predictions for 24 selected tyrosine kinase inhibitors (TKIs).
+We conducted a comparative analysis of predictions from four tools: [ADMETLab](https://admetlab3.scbdd.com/), [admetSAR](https://lmmd.ecust.edu.cn/admetsar2/), [preADMET](https://preadmet.webservice.bmdrc.org/), and Admetica. The plot below summarizes the plasma protein binding (PPB) predictions for 24 selected tyrosine kinase inhibitors (TKIs).
 
-<img src="./images/ppb_web_comparison.png" alt="PPB ADMET tools" style="width:70%;">
+<img src="./images/ppbr_web_comparison.png" alt="PPB ADMET tools" style="width:70%;">
 
-ADMETLab consistently provided the most accurate predictions. Both Admetica and preADMET demonstrated generally good performance, with many results closely aligning with the true values, although Admetica exhibited a few instances of overestimation. In contrast, admetSAR frequently underestimated binding values, making it the least reliable model overall.
+| Model      |        MSE        |       MAE       |       RMSE       |
+|------------|-------------------|------------------|-------------------|
+| ADMETLab   |  37.42            |  3.25            |  6.12             |
+| admetSAR   | 148.04            |  6.71            | 12.17             |
+| Admetica   | 139.08            |  8.52            | 11.79             |
+| preADMET   | 265.00            | 13.00            | 16.28             |
+
+ADMETLab consistently provided the most accurate predictions, achieving the lowest error metrics across all measures (MSE, MAE, RMSE). Admetica and admetSAR had similar performance, with Admetica exhibiting slightly better metrics overall, despite both having higher error rates compared to ADMETLab. PreADMET showed the least accuracy overall, as indicated by its significantly higher error metrics. Overall, ADMETLab remains the top choice for precise plasma protein binding predictions.
 
 ### Half-Life
 
-Among all online web services, only ADMETLab offers predictions for Half-Life. Consequently, we performed a comparative analysis of the predictions between ADMETLab and Admetica for 24 structures.
+Among all online web services, only [ADMETLab](https://admetlab3.scbdd.com/) provides predictions for Half-Life. To assess the accuracy of these predictions, we performed a comparative analysis between ADMETLab and Admetica for 24 structures.
 
 <img src="./images/half-life_web_comparison.png" alt="Half-Life ADMET tools" style="width:70%;">
 
-ADMETLab tends to underestimate Half-Life predictions compared to the actual values, while Admetica often overestimates, leading to significant variability in its predictions. This highlights the importance of carefully evaluating the predictions from both tools.
+| Model      |        MSE         |       MAE         |       RMSE        |
+|------------|--------------------|--------------------|--------------------|
+| ADMETLab   | 1647.99            | 32.86              | 40.60              |
+| Admetica   | 1162.88            | 29.21              | 34.10              |
+
+ADMETLab tends to underestimate Half-Life predictions compared to actual values, resulting in relatively high error metrics. In contrast, Admetica often overestimates Half-Life, but it has lower error metrics overall. This disparity highlights the importance of carefully evaluating the predictions from both tools, as they exhibit different tendencies in their predictions, leading to significant variability.
+
+### CYP3A4-Substrate
+
+We conducted a comparative analysis of predictions for CYP3A4 substrates using five services: [ADMETLab](https://admetlab3.scbdd.com/), [admetSAR](https://lmmd.ecust.edu.cn/admetsar2/), [pkCSM](http://pkcsmlab.com/), [preADMET](https://preadmet.webservice.bmdrc.org/), and Admetica.
+
+<img src="./images/cyp3a4_web_comparison.png" alt="CYP3A4 ADMET tools" style="width:100%;">
+
+| Model      | Accuracy | Precision | Recall | F1 Score |
+|------------|----------|-----------|--------|----------|
+| ADMETLab   |   0.83   |    1.0    |  0.83  |   0.91   |
+| admetSAR   |   1.0    |    1.0    |  1.0   |   1.0    |
+| pkCSM      |   0.96   |    1.0    |  0.96  |   0.98   |
+| preADMET   |   0.46   |    1.0    |  0.46  |   0.63   |
+| Admetica   |   0.96   |    1.0    |  0.96  |   0.98   |
+
+The results revealed that admetSAR was the best-performing model, demonstrating exceptional accuracy in predicting CYP3A4 substrates. Both pkCSM and Admetica also showed strong performance, making them reliable options for these predictions. ADMETLab provided decent results, but its performance was not as robust as the top three models. Conversely, preADMET exhibited the lowest performance, indicating that it is less reliable for CYP3A4 substrate predictions. Overall, we can confidently rely on admetSAR, pkCSM, and Admetica for accurate predictions in this area.
+
+### HIA
+
+We conducted a comparative analysis of several models for predicting human intestinal absorption (HIA) using 6 free tools: [ADMETLab](https://admetlab3.scbdd.com/), [admetSAR](https://lmmd.ecust.edu.cn/admetsar2/), [FAF-Drug4](https://fafdrugs4.rpbs.univ-paris-diderot.fr/), [pkCSM](http://pkcsmlab.com/), [SwissADME](http://www.swissadme.ch/) and Admetica.
+
+<img src="./images/hia_web_comparison.png" alt="HIA ADMET tools" style="width:100%;">
+
+| Model       | Accuracy | Precision | Recall |
+|-------------|----------|-----------|--------|
+| ADMETLab    |   0.62   |   0.61    |  1.0   |
+| SwissADMET  |   0.62   |   0.63    |  0.86  |
+| admetSAR    |   0.58   |   0.58    |  1.0   |
+| FAF-Drug4   |   0.58   |   0.58    |  1.0   |
+| pkCSM       |   0.58   |   0.58    |  1.0   |
+| Admetica    |   0.58   |   0.58    |  1.0   |
+
+ADMETLab and SwissADMET demonstrated the highest accuracy, effectively identifying absorbed compounds, while admetSAR, FAF-Drug4, pkCSM, and Admetica showed similar performance levels but lower precision. Overall, all models exhibited perfect recall, indicating their effectiveness in identifying absorbed compounds, though there is still room for improvement in minimizing false positives.
+
+You can find both the original dataset and the processed data in the [comparison](./comparison/predictors/) folder. This folder also includes a Jupyter notebook, [comparison_services.ipynb](./comparison/comparison_services.ipynb), that reproduces the steps taken to conduct the comparison.
 
 ## Usage
 
