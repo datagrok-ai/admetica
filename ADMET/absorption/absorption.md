@@ -24,7 +24,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | Pgp-Inhibitor | 1,275 | 0.877 | 0.927 |  0.904 | 0.902 |
 
-![Pgp-Inhibitor](../images/Pgp-Inhibitor.PNG)
+![Pgp-Inhibitor](../../images/Pgp-Inhibitor.PNG)
 
 ## Pgp-Substrate
 
@@ -38,7 +38,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | Pgp-Substrate | 332 | 0.786 | 0.820 |  0.807 | 0.803 |
 
-![Pgp-Substrate](../images/Pgp-Substrate.PNG)
+![Pgp-Substrate](../../images/Pgp-Substrate.PNG)
 
 ## Bioavailability
 
@@ -56,7 +56,7 @@ Dataset | Size | MAE | RMSE | R2 | Spearman |
 
 ### Observed vs. Predicted plot
 
-![Caco2 Observed vs. Predicted plot](../images/caco2_wang_observed_vs_pred.png)
+![Caco2 Observed vs. Predicted plot](../../images/caco2_wang_observed_vs_pred.png)
 
 ## Lipophilicity
 
@@ -68,7 +68,7 @@ Dataset | Size | MAE | RMSE | R2 | Spearman |
 
 ### Observed vs. Predicted plot
 
-![Lipophilicity Observed vs. Predicted plot](../images/lipophilicity_astrazeneca_observed_vs_pred.png)
+![Lipophilicity Observed vs. Predicted plot](../../images/lipophilicity_astrazeneca_observed_vs_pred.png)
 
 ## Solubility
 
@@ -80,7 +80,7 @@ Dataset | Size | MAE | RMSE | R2 | Spearman |
 
 ### Observed vs. Predicted plot
 
-![Solubility True vs. Predicted plot](../images/solubility_aqsoldb_observed_vs_pred.png)
+![Solubility True vs. Predicted plot](../../images/solubility_aqsoldb_observed_vs_pred.png)
 
 ## Data comparison
 

@@ -25,7 +25,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-| :--- |
 | CYP1A2-Inhibitor | 13,239 | 0.899 | 0.956 | 0.925 | 0.928 |
 
-![CYP1A2-Inhibitor](../images/CYP1A2-Inhibitor.PNG)
+![CYP1A2-Inhibitor](../../images/CYP1A2-Inhibitor.PNG)
 
 ## CYP3A4 Inhibitor
 
@@ -38,7 +38,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP3A4-Inhibitor | 12,997 | 0.861 | 0.949 | 0.896 | 0.905 |
 
-![CYP3A4-Inhibitor](../images/CYP3A4-Inhibitor.PNG)
+![CYP3A4-Inhibitor](../../images/CYP3A4-Inhibitor.PNG)
 
 ## CYP3A4 Substrate
 
@@ -52,7 +52,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP3A4-Substrate | 1,149 | 0.562 | 0.857 | 0.776 | 0.709 |
 
-![CYP3A4-Substrate](../images/CYP3A4-Substrate.PNG)
+![CYP3A4-Substrate](../../images/CYP3A4-Substrate.PNG)
 
 ## CYP2C19 Inhibitor
 
@@ -66,7 +66,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP2C19-Inhibitor | 13,427 | 0.887 | 0.890 | 0.888 | 0.889 |
 
-![CYP2C19-Inhibitor](../images/CYP2C19-Inhibitor.PNG)
+![CYP2C19-Inhibitor](../../images/CYP2C19-Inhibitor.PNG)
 
 ## CYP2C9 Inhibitor
 
@@ -79,7 +79,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP2C9-Inhibitor | 12,881 | 0.899 | 0.880 | 0.893 | 0.890 |
 
-![CYP2C9-Inhibitor](../images/CYP2C9-Inhibitor.PNG)
+![CYP2C9-Inhibitor](../../images/CYP2C9-Inhibitor.PNG)
 
 ## CYP2C9 Substrate
 
@@ -93,7 +93,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP2C9-Substrate | 899 | 0.831 | 0.730 | 0.790 | 0.781 |
 
-![CYP2C9-Substrate](../images/CYP2C9-Substrate.PNG)
+![CYP2C9-Substrate](../../images/CYP2C9-Substrate.PNG)
 
 ## CYP2D6 Inhibitor
 
@@ -107,7 +107,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP2D6-Inhibitor | 11,127 | 0.723 | 0.925 | 0.763 | 0.824 |
 
-![CYP2D6-Inhibitor](../images/CYP2D6-Inhibitor.PNG)
+![CYP2D6-Inhibitor](../../images/CYP2D6-Inhibitor.PNG)
 
 ## CYP2D6 Substrate
 
@@ -121,7 +121,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP2D6-Substrate | 941 | 0.853 | 0.783 | 0.819 | 0.818 |
 
-![CYP2D6-Substrate](../images/CYP2D6-Substrate.PNG)
+![CYP2D6-Substrate](../../images/CYP2D6-Substrate.PNG)
 
 ## Data comparison
 

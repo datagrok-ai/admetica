@@ -18,7 +18,7 @@ Half life of a drug is the duration for the concentration of the drug in the bod
 
 ### Observed vs. Predicted plot
 
-![Half Life Observed vs. Predicted plot](../images/half_life_obach_observed_vs_pred.png)
+![Half Life Observed vs. Predicted plot](../../images/half_life_obach_observed_vs_pred.png)
 
 ## Clearance
 
@@ -33,13 +33,13 @@ Drug clearance is defined as the volume of plasma cleared of a drug over a speci
 
 #### Observed vs. Predicted plot
 
-![Clearance Hepatocyte Observed vs. Predicted plot](../images/clearance_hepatocyte_az_observed_vs_pred.png)
+![Clearance Hepatocyte Observed vs. Predicted plot](../../images/clearance_hepatocyte_az_observed_vs_pred.png)
 
 ### Microsome
 
 #### Observed vs. Predicted plot
 
-![Clearance Microsome Observed vs. Predicted plot](../images/clearance_microsome_az_observed_vs_pred.png)
+![Clearance Microsome Observed vs. Predicted plot](../../images/clearance_microsome_az_observed_vs_pred.png)
 
 ## Data comparison
 
