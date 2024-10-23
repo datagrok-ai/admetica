@@ -17,7 +17,22 @@ We welcome everyone with the expertise in the field. If you're interested in col
   - [Excretion](#excretion)
   - [Toxicity](#toxicity)
 - [Comparison of Admetica and Novartis models](#comparison-of-admetica-and-novartis-models)
+  - [Cytochrome P450](#cytochrome-p450)
+    - [Pipeline](#pipeline)
+    - [3A4](#3a4)
+    - [2C9](#2c9)
+    - [2D6](#2d6)
+  - [Caco-2 permeability](#caco-2-permeability)
+  - [Results](#results)
+- [Model enhancement](#model-enhancement)
+  - [Data preparation](#data-preparation)
+  - [CYP3A4-Inhibitor](#cyp3a4-inhibitor)
 - [Evaluation of free online ADMET tools](#evaluation-of-free-online-admet-tools)
+  - [Plasma Protein Binding](#plasma-protein-binding)
+  - [Half-Life](#half-life)
+  - [CYP3A4-Substrate](#cyp3a4-substrate)
+  - [HIA](#hia)
+  - [Summary](#summary)
 - [Usage](#usage)
   - [Installation](#installation)
   - [Data](#data)
@@ -262,6 +277,8 @@ During our model comparison, we discovered that the Novartis model outperformed 
 
 After performing the comparison and seeing that in some cases the Novartis model is better, we consequently opted to continue training with the surrogate Novartis data used in our comparison.
 
+### Data preparation
+
 Given the significant class imbalance in the data for CYP3A4 and CYP2C9, we implemented under-sampling techniques to reduce the risk of overfitting during the training process.
 
 | **Property** | **Class distribution** | **Number of rows in final dataset** |
@@ -272,6 +289,16 @@ Given the significant class imbalance in the data for CYP3A4 and CYP2C9, we impl
 This table summarizes the class distributions and the row counts in the final dataset for each property.
 
 For further details, the [comparison](./comparison/) folder contains a Jupyter notebook, [undersampling.ipynb](./comparison/undersampling.ipynb), that fully reproduces the process of obtaining the final datasets for training.
+
+### CYP3A4-Inhibitor
+
+Using the same [pipeline](#pipeline) from our comparison, we assessed the performance metrics of the newly trained model on the prepared data. The results, showcasing both the old and new Admetica metrics, are summarized in the table below:
+
+| **Metric**                | **Admetica (Old)** | **Admetica (New)** |
+|---------------------------|--------------------|---------------------|
+| Sensitivity (Recall)      | 0.5607             | 0.537          |
+| Specificity               | 0.6703             | 0.711              |
+| Balanced Accuracy         | 0.6155             | 0.6243               |
 
 ## Evaluation of free online ADMET tools
 
