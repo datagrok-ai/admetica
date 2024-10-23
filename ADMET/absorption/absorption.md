@@ -20,25 +20,17 @@ The Pgp-Inhibitor dataset combines data from two sources, comprising 1,275 compo
 
 Results on dataset (higher is better).
 
-| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
+| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 |-|-|-|-|-|-|
-| Pgp-Inhibitor | 1,275 | 0.877 | 0.927 |  0.904 | 0.902 |
+| Pgp-Inhibitor | 1,275 | 0.916 | 0.863 |  0.888 | 0.889  |
 
-![Pgp-Inhibitor](../../images/Pgp-Inhibitor.PNG)
+![Pgp-Inhibitor](../../images/pgp-inhibitor.png)
 
 ## Pgp-Substrate
 
 It is a probability of being a substrate of P-glycoprotein which is responsible for cell membrane permeability. Compounds with high molecular mass and a large number of polar atoms are the most probable substrates. Binding the substrate leads to low cell permeability of substance.
 
 The Pgp-Substrate dataset is derived from a single source, encompassing 332 compounds, of which 126 are substrates, and 206 are non-substrates.
-
-Results on dataset (higher is better).
-
-| Dataset | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-|-|-|-|-|-|-|
-| Pgp-Substrate | 332 | 0.786 | 0.820 |  0.807 | 0.803 |
-
-![Pgp-Substrate](../../images/Pgp-Substrate.PNG)
 
 ## Bioavailability
 
@@ -50,41 +42,41 @@ Overall, the dataset contains 986 compounds, where positive category contains 66
 
 The human colon epithelial cancer cell line, Caco-2, is used as an in vitro model to simulate the human intestinal tissue. The experimental result on the rate of drug passing through the Caco-2 cells can approximate the rate at which the drug permeates through the human intestinal tissue.
 
-Dataset | Size | MAE | RMSE | R2 | Spearman |
+| Name | Size | MAE | RMSE | R2 | Spearman |
 |-|-|-|-|-|-|
-| Caco2 | 910 | 0.417 | 0.528 | 0.408 | 0.816 |
+| Caco2 | 910 | 0.317 | 0.415 | 0.701 |  0.832 |
 
 ### Observed vs. Predicted plot
 
-![Caco2 Observed vs. Predicted plot](../../images/caco2_wang_observed_vs_pred.png)
+![Caco2 Observed vs. Predicted plot](../../images/caco2_observed_vs_pred.png)
 
 ## Lipophilicity
 
 Lipophilicity measures the ability of a drug to dissolve in a lipid (e.g. fats, oils) environment. High lipophilicity often leads to high rate of metabolism, poor solubility, high turn-over, and low absorption. From MoleculeNet.
 
-Dataset | Size | MAE | RMSE | R2 | Spearman |
+| Name | Size | MAE | RMSE | R2 | Spearman |
 |-|-|-|-|-|-|
-| Lipophilicity | Chemprop | 4200 | 0.456 | 0.612 | 0.734 | 0.842 |
+| Lipophilicity | 4200 | 0.399 | 0.596 | 0.748 | 0.881 |
 
 ### Observed vs. Predicted plot
 
-![Lipophilicity Observed vs. Predicted plot](../../images/lipophilicity_astrazeneca_observed_vs_pred.png)
+![Lipophilicity Observed vs. Predicted plot](../../images/lipophilicity_observed_vs_pred.png)
 
 ## Solubility
 
 Aqeuous solubility measures a drug's ability to dissolve in water. Poor water solubility could lead to slow drug absorptions, inadequate bioavailablity and even induce toxicity. More than 40% of new chemical entities are not soluble.
 
-Dataset | Size | MAE | RMSE | R2 | Spearman |
+| Name | Size | MAE | RMSE | R2 | Spearman |
 |-|-|-|-|-|-|
-| Solubility | Chemprop | 9982 | 0.825 | 1.118 | 0.762 | 0.852 |
+| Solubility | 9982 | 0.714 | 1.089 | 0.788 | 0.897 |
 
 ### Observed vs. Predicted plot
 
-![Solubility True vs. Predicted plot](../../images/solubility_aqsoldb_observed_vs_pred.png)
+![Solubility True vs. Predicted plot](../../images/solubility_observed_vs_pred.png)
 
 ## Data comparison
 
-Name | Size | Processed size | TDC size | TDC processed size | Common | Resulting |
+| Name | Size | Processed size | TDC size | TDC processed size | Common | Resulting |
 |-|-|-|-|-|-|-|
 | Pgp-Inhibitor | 1275 | 1227 | 1218 | 1218 | 1218 | 1227 |
 | Pgp-Substrate | 332 | 332 | - | - | - | 332 |

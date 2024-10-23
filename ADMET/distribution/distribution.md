@@ -21,27 +21,19 @@ The human plasma protein binding rate (PPBR) is expressed as the percentage of a
 
 | Name | Size | MAE | RMSE | R2 | Spearman |
 |-|-|-|-|-|-|
-| PPBR | 2790 | 7.945 | 11.642 | 0.410 | 0.650 |
+| PPBR | 2790 | 6.919 | 11.294 | 0.609 | 0.762 |
 
 ### Observed vs. Predicted plot
 
-![PPBR True vs. Predicted plot](../../images/ppbr_az_observed_vs_pred.png)
+![PPBR True vs. Predicted plot](../../images/ppbr_observed_vs_pred.png)
 
 ## VDss
 
 The volume of distribution at steady state (VDss) measures the degree of a drug's concentration in body tissue compared to concentration in blood. Higher VD indicates a higher distribution in the tissue and usually indicates the drug with high lipid solubility, low plasma protein binidng rate.
 
-| Name | Size | MAE | RMSE | R2 | Spearman |
-|-|-|-|-|-|-|
-| VDss | 1130 | 3.100 | 5.232 | 0.069 | 0.500 |
-
-### True vs. Predicted plot
-
-![VDss Observed vs. Predicted plot](../../images/vdss_lombardo_observed_vs_pred.png)
-
 ## Data comparison
 
-Name | Size | Processed size | TDC size | TDC processed size | Common | Resulting |
+| Name | Size | Processed size | TDC size | TDC processed size | Common | Resulting |
 |-|-|-|-|-|-|-|
 | PPBR | 2790 | 2782 | 1614 | 1607 | 1607 | 2782 |
 | VDss | 1130 | 1125 | 1130 | 1125 | 1125 | 1125 |

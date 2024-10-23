@@ -52,16 +52,15 @@ Currently, we have a total of 32 predictive models developed for [Absorption](#a
 
 Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC |
 |-|-|-|-|-|-|-|-|
-| [Pgp-Inhibitor](./absorption/absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.877 | 0.923 |  0.904 | 0.902 | ![pgp_inhibitor_roc](./images/Pgp-Inhibitor.PNG) |
-| [Pgp-Substrate](./absorption/absorption.md#pgp-substrate) | Chemprop | 332 | 0.786 | 0.820 |  0.807 | 0.803 | ![pgp_substrate_roc](./images/Pgp-Substrate.PNG) |
+| [Pgp-Inhibitor](./absorption/absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.916 | 0.863 |  0.888 | 0.889  | ![pgp_inhibitor_roc](./images/pgp-inhibitor.png) |
 
 #### Regression models
 
 Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 |-|-|-|-|-|-|-|-|
-| [Caco2](./absorption/absorption.md#caco-2) | Chemprop | 910 | 0.417 | 0.528 | 0.408 | 0.816 | ![Caco2 Observed vs. Predicted plot](./images/caco2_wang_observed_vs_pred.png) |
-| [Lipophilicity](./absorption/absorption.md#lipophilicity) | Chemprop | 4200 | 0.456 | 0.612 | 0.734 | 0.842 | ![Lipophilicity Observed vs. Predicted plot](./images/lipophilicity_astrazeneca_observed_vs_pred.png) |
-| [Solubility](./absorption/absorption.md#solubility) | Chemprop | 9982 | 0.825 | 1.118 | 0.762 | 0.852 | ![Solubility Observed vs. Predicted plot](./images/solubility_aqsoldb_observed_vs_pred.png) |
+| [Caco2](./absorption/absorption.md#caco-2) | Chemprop | 910 | 0.317 | 0.415 | 0.701 |  0.832 | ![Caco2 Observed vs. Predicted plot](./images/caco2_observed_vs_pred.png) |
+| [Lipophilicity](./absorption/absorption.md#lipophilicity) | Chemprop | 4200 | 0.399 | 0.596 | 0.748 | 0.881 | ![Lipophilicity Observed vs. Predicted plot](./images/lipophilicity_observed_vs_pred.png) |
+| [Solubility](./absorption/absorption.md#solubility) | Chemprop | 9982 | 0.714 | 1.089 | 0.788 | 0.897 | ![Solubility Observed vs. Predicted plot](./images/solubility_observed_vs_pred.png) |
 
 ### Distribution
 
@@ -69,8 +68,7 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 
 Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 |-|-|-|-|-|-|-|-|
-| [PPBR](./distribution/distribution.md#ppbr) | Chemprop | 2790 | 7.945 | 11.642 | 0.410 | 0.650 | ![PPBR Observed vs. Predicted plot](./images/ppbr_az_observed_vs_pred.png) |
-| [VDss](./distribution/distribution.md#vdss) | Chemprop | 1130 | 3.100 | 5.232 | 0.069 | 0.500 | ![VDss Observed vs. Predicted plot](./images/vdss_lombardo_observed_vs_pred.png) |
+| [PPBR](./distribution/distribution.md#ppbr) | Chemprop | 2790 | 6.919 | 11.294 | 0.609 | 0.762 | ![PPBR Observed vs. Predicted plot](./images/ppbr_observed_vs_pred.png) |
 
 ### Metabolism
 
@@ -78,14 +76,14 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 
 Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC
 |-|-|-|-|-|-|-|-|
-| [CYP1A2-Inhibitor](./absorption/absorption.md#cyp1a2-inhibitor) | Chemprop | 13,239 | 0.899 | 0.956 |  0.925 | 0.928 | ![cyp1a2_inhibitor_roc](./images/CYP1A2-Inhibitor.PNG) |
-| [CYP3A4-Inhibitor](./absorption/absorption.md#cyp3a4-inhibitor) | Chemprop | 12,997 | 0.861 | 0.949 |  0.896 | 0.905 | ![cyp3a4_inhibitor_roc](./images/CYP3A4-Inhibitor.PNG) |
-| [CYP3A4-Substrate](./absorption/absorption.md#cyp3a4-substrate) | Chemprop | 1,149 | 0.562 | 0.857 |  0.776 | 0.709 | ![cyp3a4_substrate_roc](./images/CYP3A4-Substrate.PNG) |
-| [CYP2C19-Inhibitor](./absorption/absorption.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.887 | 0.890 |  0.888 | 0.889 | ![cyp2c19_inhibitor_roc](./images/CYP2C19-Inhibitor.PNG) |
-| [CYP2C9-Inhibitor](./absorption/absorption.md#cyp2c9-inhibitor) | Chemprop | 12,881 | 0.899 | 0.880 |  0.893 | 0.890 | ![cyp2c9_inhibitor_roc](./images/CYP2C9-Inhibitor.PNG) |
-| [CYP2C9-Substrate](./absorption/absorption.md#cyp2c9-substrate) | Chemprop | 899 | 0.831 | 0.730 |  0.790 | 0.781 | ![cyp2c9_substrate_roc](./images/CYP2C9-Substrate.PNG) |
-| [CYP2D6-Inhibitor](./absorption/absorption.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.723 | 0.926 |  0.763 | 0.824 | ![cyp2d6_inhibitor_roc](./images/CYP2D6-Inhibitor.PNG) |
-| [CYP2D6-Substrate](./absorption/absorption.md#cyp2d6-substrate) | Chemprop | 941 | 0.853 | 0.783 |  0.819 | 0.818 | ![cyp2d6_substrate_roc](./images/CYP2D6-Substrate.PNG) |
+| [CYP1A2-Inhibitor](./absorption/absorption.md#cyp1a2-inhibitor) | Chemprop | 13,239 | 0.873 | 0.866 |  0.87 | 0.869 | ![cyp1a2_inhibitor_roc](./images/cyp1a2-inhibitor.png) |
+| [CYP3A4-Inhibitor](./absorption/absorption.md#cyp3a4-inhibitor) | Chemprop | 12,997 | 0.815 | 0.842 |  0.826 | 0.829 | ![cyp3a4_inhibitor_roc](./images/cyp3a4-inhibitor.png) |
+| [CYP3A4-Substrate](./absorption/absorption.md#cyp3a4-substrate) | Chemprop | 1,149 |  0.569 | 0.779 |  0.718 |  0.674 | ![cyp3a4_substrate_roc](./images/cyp3a4-substrate.png) |
+| [CYP2C19-Inhibitor](./absorption/absorption.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.819 | 0.830 |  0.824 | 0.825  | ![cyp2c19_inhibitor_roc](./images/cyp2c19-inhibitor.png) |
+| [CYP2C9-Inhibitor](./absorption/absorption.md#cyp2c9-inhibitor) | Chemprop | 12,881 | 0.830 | 0.819 |  0.826 | 0.824 | ![cyp2c9_inhibitor_roc](./images/cyp2c9-inhibitor.png) |
+| [CYP2C9-Substrate](./absorption/absorption.md#cyp2c9-substrate) | Chemprop | 899 | 0.728 | 0.757 |  0.738 | 0.742 | ![cyp2c9_substrate_roc](./images/cyp2c9-substrate.png) |
+| [CYP2D6-Inhibitor](./absorption/absorption.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.866 | 0.751 |  0.843 | 0.808 | ![cyp2d6_inhibitor_roc](./images/cyp2d6-inhibitor.png) |
+| [CYP2D6-Substrate](./absorption/absorption.md#cyp2d6-substrate) | Chemprop | 941 | 0.749 | 0.769 |  0.753 | 0.759 | ![cyp2d6_substrate_roc](./images/cyp2d6-substrate.png) |
 
 Here is a line chart illustrating various metrics for each of the corresponding models.
 
@@ -97,11 +95,16 @@ Here is a line chart illustrating various metrics for each of the corresponding 
 
 Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 |-|-|-|-|-|-|-|-|
-| [Half Life](./excretion/excretion.md#half-life) | Chemprop | 667 | 9.947 | 21.780 | -0.007 | 0.208 | ![Half Life Observed vs. Predicted plot](./images/half_life_obach_observed_vs_pred.png) |
-| [Clearance Hepatocyte](./excretion/excretion.md#hepatocyte) | Chemprop | 1213 | 35.930 | 45.848 | 0.088 | 0.379 | ![Clearance Hepatocyte Observed vs. Predicted plot](./images/clearance_hepatocyte_az_observed_vs_pred.png) |
-| [Clearance Microsome](./excretion/excretion.md#microsome) | Chemprop | 1102 | 21.797 | 35.914 | 0.305 | 0.573 | ![Clearance Microsome Observed vs. Predicted plot](./images/clearance_microsome_az_observed_vs_pred.png) |
+| [Clearance Hepatocyte](./excretion/excretion.md#hepatocyte) | Chemprop | 1213 | 34.103 | 47.144 | 0.086 | 0.485 | ![Clearance Hepatocyte Observed vs. Predicted plot](./images/clearance_hepatocyte_observed_vs_pred.png) |
+| [Clearance Microsome](./excretion/excretion.md#microsome) | Chemprop | 1102 |  26.715 | 39.201 | 0.216 | 0.576 | ![Clearance Microsome Observed vs. Predicted plot](./images/clearance_microsome_observed_vs_pred.png) |
 
 ### Toxicity
+
+### Classification models
+
+Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC
+|-|-|-|-|-|-|-|-|
+| [hERG](./ADMET/toxicity/toxicity.md#herg) | Chemprop | 22,249 | 0.811 | 0.897 | 0.885 |  0.854  | ![herg_roc](./images/herg.PNG) |
 
 #### Regression models
 
@@ -111,7 +114,12 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 
 ## Comparison of Admetica and Novartis models
 
-For the comparison, we utilized the surrogate dataset provided in the paper [Application of machine learning models for property prediction to targeted protein degraders](https://www.nature.com/articles/s41467-024-49979-3). This dataset includes publicly available structures and their predicted properties generated by the Novartis machine learning model.
+We conducted the comparison for two main reasons:
+
+- To explore the potential of using the surrogate dataset to enrich our predictions.
+- To benchmark the performance of the Novartis machine learning model against our own results.
+
+For this, we utilized the surrogate dataset from the paper [Application of machine learning models for property prediction to targeted protein degraders](https://www.nature.com/articles/s41467-024-49979-3), which includes publicly available structures and their predicted properties generated by the Novartis model.
 
 ### Cytochrome P450
 
@@ -148,7 +156,7 @@ After performing the pipeline for ChEMBL 3A4, we obtained a dataset structured a
 | Inhibitor   | 549                   |
 | Non-Inhibitor   | 239                   |
 
-We conducted comprehensive calculations of ADMET properties and assessed the performance metrics for both the Admetica and Novartis models, resulting in the following outcomes:
+We calculated CYP3A4-Inhibitor and assessed performance metrics for the Admetica and Novartis models, resulting in the following outcomes:
 
 | **Metric**                | **Admetica**   | **Novartis**   |
 |---------------------------|-----------------------|-----------------------|
@@ -172,7 +180,7 @@ After performing the pipeline for ChEMBL 2C9, we obtained a dataset structured a
 | Inhibitor   | 329                   |
 | Non-Inhibitor   | 135                   |
 
-We conducted comprehensive calculations of ADMET properties and assessed the performance metrics for both the Admetica and Novartis models, resulting in the following outcomes:
+We calculated CYP2C9-Inhibitor and assessed performance metrics for the Admetica and Novartis models, resulting in the following outcomes:
 
 | **Metric**                | **Admetica**    | **Novartis**   |
 |---------------------------|-----------------------|-----------------------|
@@ -196,7 +204,7 @@ After performing the pipeline for ChEMBL 2D6, we obtained a dataset structured a
 | Inhibitor   | 444                   |
 | Non-Inhibitor   | 195                   |
 
-We conducted comprehensive calculations of ADMET properties and assessed the performance metrics for both the Admetica and Novartis models, resulting in the following outcomes:
+We calculated CYP2D6-Inhibitor and assessed performance metrics for the Admetica and Novartis models, resulting in the following outcomes:
 
 | **Metric**                | **Admetica**   | **Novartis**   |
 |---------------------------|-----------------------|-----------------------|
@@ -228,7 +236,7 @@ We generated test datasets using data from the supplementary material of the pap
 
 After performing the preprocessing for Caco-2, we obtained a dataset that contains 34 structures.
 
-We conducted comprehensive calculations of ADMET properties and assessed the performance metrics for both the Admetica and Novartis models, resulting in the following outcomes:
+We calculated Caco-2 and assessed performance metrics for the Admetica and Novartis models, resulting in the following outcomes:
 
 | **Metric**   | **Admetica**   | **Novartis**   |
 |--------------|----------------|----------|
@@ -248,14 +256,20 @@ Both the original Caco-2 dataset and the processed data are available in the [co
 
 ### Results
 
-During our model comparison, we discovered that the Novartis model outperformed the Admetica model for the targets CYP3A4, CYP2C9, and Caco2. Consequently, we opted to continue training with the surrogate Novartis data used in our comparison. Given the significant class imbalance in the data for CYP3A4 and CYP2C9, we implemented under-sampling techniques to reduce the risk of overfitting during the training process.
+During our model comparison, we discovered that the Novartis model outperformed the Admetica model for the targets CYP3A4, CYP2C9, and Caco2.
+
+## Model enhancement
+
+After performing the comparison and seeing that in some cases the Novartis model is better, we consequently opted to continue training with the surrogate Novartis data used in our comparison.
+
+Given the significant class imbalance in the data for CYP3A4 and CYP2C9, we implemented under-sampling techniques to reduce the risk of overfitting during the training process.
 
 | **Property** | **Class distribution** | **Number of rows in final dataset** |
 |--------------|-----------------------|-------------------------------------|
-| **CYP3A4**   | 0: 22618, 1: 22618   | 57781                               |
-| **CYP2C9**   | 0: 3975, 1: 3975     | 20299                               |
+| **CYP3A4**   | 0: 22618, 1: 22618    | 57781                               |
+| **CYP2C9**   | 0: 3975, 1: 3975      | 20299                               |
 
-This table summarizes the class distributions and the row counts in the final dataset for each property. 
+This table summarizes the class distributions and the row counts in the final dataset for each property.
 
 For further details, the [comparison](./comparison/) folder contains a Jupyter notebook, [undersampling.ipynb](./comparison/undersampling.ipynb), that fully reproduces the process of obtaining the final datasets for training.
 
@@ -265,7 +279,7 @@ For our evaluation, we used 24 tyrosine kinase inhibitors (TKIs) and a compariso
 
 ### Plasma Protein Binding
 
-We conducted a comparative analysis of predictions from four tools: [ADMETLab](https://admetlab3.scbdd.com/), [admetSAR](https://lmmd.ecust.edu.cn/admetsar2/), [preADMET](https://preadmet.webservice.bmdrc.org/), and Admetica. The plot below summarizes the plasma protein binding (PPB) predictions for 24 selected tyrosine kinase inhibitors (TKIs).
+We compared plasma protein binding (PPB) predictions for 24 tyrosine kinase inhibitors (TKIs) using four tools: [ADMETLab](https://admetlab3.scbdd.com/), [admetSAR](https://lmmd.ecust.edu.cn/admetsar2/), [preADMET](https://preadmet.webservice.bmdrc.org/), and Admetica. The plot below shows the results.
 
 <img src="./images/ppbr_web_comparison.png" alt="PPB ADMET tools" style="width:70%;">
 
@@ -293,7 +307,7 @@ ADMETLab tends to underestimate Half-Life predictions compared to actual values,
 
 ### CYP3A4-Substrate
 
-We conducted a comparative analysis of predictions for CYP3A4 substrates using five services: [ADMETLab](https://admetlab3.scbdd.com/), [admetSAR](https://lmmd.ecust.edu.cn/admetsar2/), [pkCSM](http://pkcsmlab.com/), [preADMET](https://preadmet.webservice.bmdrc.org/), and Admetica.
+We compared CYP3A4 substrate predictions using five tools: [ADMETLab](https://admetlab3.scbdd.com/), [admetSAR](https://lmmd.ecust.edu.cn/admetsar2/), [pkCSM](http://pkcsmlab.com/), [preADMET](https://preadmet.webservice.bmdrc.org/), and Admetica.
 
 <img src="./images/cyp3a4_web_comparison.png" alt="CYP3A4 ADMET tools" style="width:100%;">
 
@@ -309,7 +323,7 @@ The results revealed that admetSAR was the best-performing model, demonstrating 
 
 ### HIA
 
-We conducted a comparative analysis of several models for predicting human intestinal absorption (HIA) using 6 free tools: [ADMETLab](https://admetlab3.scbdd.com/), [admetSAR](https://lmmd.ecust.edu.cn/admetsar2/), [FAF-Drug4](https://fafdrugs4.rpbs.univ-paris-diderot.fr/), [pkCSM](http://pkcsmlab.com/), [SwissADME](http://www.swissadme.ch/) and Admetica.
+We compared models for predicting human intestinal absorption (HIA) using six free tools: [ADMETLab](https://admetlab3.scbdd.com/), [admetSAR](https://lmmd.ecust.edu.cn/admetsar2/), [FAF-Drug4](https://fafdrugs4.rpbs.univ-paris-diderot.fr/), [pkCSM](http://pkcsmlab.com/), [SwissADME](http://www.swissadme.ch/), and Admetica.
 
 <img src="./images/hia_web_comparison.png" alt="HIA ADMET tools" style="width:100%;">
 
@@ -325,6 +339,20 @@ We conducted a comparative analysis of several models for predicting human intes
 ADMETLab and SwissADMET demonstrated the highest accuracy, effectively identifying absorbed compounds, while admetSAR, FAF-Drug4, pkCSM, and Admetica showed similar performance levels but lower precision. Overall, all models exhibited perfect recall, indicating their effectiveness in identifying absorbed compounds, though there is still room for improvement in minimizing false positives.
 
 You can find both the original dataset and the processed data in the [comparison](./comparison/predictors/) folder. This folder also includes a Jupyter notebook, [comparison_services.ipynb](./comparison/comparison_services.ipynb), that reproduces the steps taken to conduct the comparison.
+
+### Summary
+
+Below is a summary table of the most notable metrics from the evaluation of free online ADMET tools using predictions for 24 tyrosine kinase inhibitors (TKIs).
+
+| Model      | PPB (F1) | Half-Life (MAE) | CYP3A4 Substrate (F1) | HIA (Accuracy) |
+|------------|----------|------------------|------------------------|-----------------|
+| ADMETLab   | 0.91     | 32.86            | 0.83                   | 0.62            |
+| admetSAR   | 1.00     | N/A              | 1.00                   | 0.58            |
+| Admetica   | 0.98     | 29.21            | 0.98                   | 0.58            |
+| pkCSM      | N/A      | N/A              | 0.98                   | 0.58            |
+| preADMET   | N/A      | N/A              | 0.63                   | 0.58            |
+| FAF-Drug4  | N/A      | N/A              | N/A                    | 0.58            |
+| SwissADME  | N/A      | N/A              | N/A                    | 0.62            |
 
 ## Usage
 
