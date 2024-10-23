@@ -1,0 +1,1 @@
+ChEMBL_30_2D6.csv filter=lfs diff=lfs merge=lfs -text

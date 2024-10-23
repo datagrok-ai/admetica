@@ -1,0 +1,25 @@
+Entry,Water sol. (mg/L),logP,Caco2 (nm/sec),HIA (%),Pgp,BBB (c.brain/c.blood),PPB (%),2C19-inh,2C9-inh,2D6,3A4,Ames,hERG (risk)
+1,1.18,4.22,43.28,96.11,inhibitor,0.08,85.6,inhibitor,inhibitor,inh / sub,substrate,no,medium
+2,0.23,4.20,54.15,96.63,non-inhibitor,0.05,80.7,non-inhibitor,inhibitor,substrate,substrate,yes,medium
+3,1.14,4.31,54.88,96.29,inhibitor,0.04,93.2,non-inhibitor,inhibitor,non-inhibitor,substrate,yes,medium
+4,0.42,4.18,22.60,93.50,inhibitor,1.00,89.9,non-inhibitor,inhibitor,non-inhibitor,non-inhibitor,no,medium
+5,24.04,2.89,34.77,90.09,non-inhibitor,0.91,64.2,non-inhibitor,non-inhibitor,non-inhibitor,substrate,yes,medium
+6,1.70,3.44,32.01,93.61,non-inhibitor,0.04,70.3,inhibitor,inhibitor,substrate,inhibitor,yes,medium
+7,0.00,6.04,17.99,96.87,inhibitor,0.03,97.6,non-inhibitor,inhibitor,non-inhibitor,substrate,no,low
+8,0.10,5.08,23.07,95.97,inhibitor,0.04,92.6,non-inhibitor,inhibitor,non-inhibitor,substrate,yes,medium
+9,0.12,5.09,52.54,97.01,inhibitor,0.64,82.9,non-inhibitor,non-inhibitor,inh / sub,substrate,yes,medium
+10,0.29,4.28,21.48,94.01,inhibitor,1.01,93.1,non-inhibitor,non-inhibitor,non-inhibitor,non-inhibitor,yes,high
+11,0.04,4.34,23.62,95.84,inhibitor,0.04,89.3,non-inhibitor,inhibitor,non-inhibitor,non-inhibitor,no,medium
+12,0.21,4.38,22.44,93.52,inhibitor,1.32,91.1,non-inhibitor,inhibitor,non-inhibitor,non-inhibitor,yes,medium
+13,0.19,3.92,39.96,95.90,inhibitor,0.19,79.5,non-inhibitor,inhibitor,substrate,substrate,no,medium
+14,0.07,4.37,35.64,94.75,inhibitor,0.43,83.3,inhibitor,inhibitor,non-inhibitor,inhibitor,no,medium
+15,0.46,2.83,18.99,93.21,non-inhibitor,0.05,86.6,non-inhibitor,inhibitor,non-inhibitor,non-inhibitor,yes,medium
+16,0.94,4.67,51.15,96.35,inhibitor,0.18,85.2,inhibitor,inhibitor,non-inhibitor,inh / sub,no,medium
+17,0.63,4.18,31.04,96.25,inhibitor,0.08,80.9,non-inhibitor,inhibitor,non-inhibitor,inhibitor,yes,low
+18,0.03,4.88,32.91,96.43,inhibitor,0.04,87.3,non-inhibitor,inhibitor,non-inhibitor,inhibitor,no,medium
+19,0.05,5.06,39.53,96.06,inhibitor,1.76,83.2,non-inhibitor,inhibitor,substrate,substrate,no,medium
+20,26.29,3.94,54.83,96.71,inhibitor,0.12,81.1,non-inhibitor,inhibitor,substrate,non-inhibitor,no,medium
+21,1.25,2.38,34.18,97.87,inhibitor,0.14,61.0,non-inhibitor,inhibitor,inh / sub,non-inhibitor,yes,medium
+22,2.53,2.46,51.06,94.58,inhibitor,0.10,56.0,inhibitor,non-inhibitor,non-inhibitor,inh / sub,yes,medium
+23,0.03,4.13,24.28,95.01,inhibitor,1.24,99.5,inhibitor,inhibitor,non-inhibitor,substrate,no,high
+24,0.05,4.04,23.39,95.26,inhibitor,0.02,90.2,non-inhibitor,inhibitor,non-inhibitor,non-inhibitor,yes,medium

@@ -1,0 +1,25 @@
+Entry,Solubility (mg/L),Solubility,logSw,logP,logD,Oral bioavailability,Drug-like
+1,3613,Reduced,-4.92,3.52,3.45,Good,Accepted
+2,4560,Reduced,-4.58,3.63,3.64,Good,Accepted
+3,8316,Reduced,-3.86,3.19,3.2,Good,Accepted
+4,2649,Reduced,-5.17,4.07,4.34,Good,Accepted
+5,10349,Good,-3.65,2.63,1.28,Good,Accepted
+6,3760,Reduced,-4.87,3.59,2.45,Good,Accepted
+7,1127,Reduced,-6.24,5.12,4.43,Good,Accepted
+8,1188,Reduced,-6.10,4.9,4.38,Good,Accepted
+9,3461,Reduced,-4.92,3.67,2.81,Good,Accepted
+10,2962,Reduced,-4.87,4.17,4.15,Good,Accepted
+11,1143,Reduced,-6.08,5.39,4.65,Good,Accepted
+12,2311,Reduced,-5.34,4.17,3.84,Good,Accepted
+13,3925,Reduced,-4.82,3.64,2.34,Good,Accepted
+14,2037,Reduced,-5.58,4.3,3.82,Good,Accepted
+15,7329,Good,-4.06,2.75,1.87,Good,Accepted
+16,3938,Reduced,-4.84,3.72,3.01,Good,Accepted
+17,1403,Reduced,-6.03,4.65,2.11,Good,Accepted
+18,1570,Reduced,-5.87,4.87,3.05,Good,Accepted
+19,3217,Reduced,-4.98,3.95,3.53,Good,Accepted
+20,6317,Reduced,-4.26,3.17,1.25,Good,Accepted
+21,8484,Reduced,-4.07,1.86,1.92,Good,Accepted
+22,10992,Good,-3.79,1.82,1.79,Good,Accepted
+23,1942,Reduced,-5.57,4.12,3.73,Good,Accepted
+24,2752,Reduced,-5.11,4.03,3.56,Good,Accepted
