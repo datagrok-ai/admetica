@@ -24,7 +24,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | Pgp-Inhibitor | 1,275 | 0.916 | 0.863 |  0.888 | 0.889  |
 
-![Pgp-Inhibitor](../../images/pgp-inhibitor.png)
+![Pgp-Inhibitor](../../images/pgp-inhibitor_roc.png)
 
 ## Pgp-Substrate
 

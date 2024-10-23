@@ -25,7 +25,7 @@ Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
 |-|-|-|-|-|-|
 | CYP1A2-Inhibitor | 13,239 | 0.873 | 0.866 |  0.87 | 0.869 |
 
-![CYP1A2-Inhibitor](../../images/cyp1a2-inhibitor.png)
+![CYP1A2-Inhibitor](../../images/cyp1a2-inhibitor_roc.png)
 
 ## CYP3A4 Inhibitor
 
@@ -38,7 +38,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP3A4-Inhibitor | 12,997 | 0.815 | 0.842 |  0.826 | 0.829 |
 
-![CYP3A4-Inhibitor](../../images/cyp3a4-inhibitor.png)
+![CYP3A4-Inhibitor](../../images/cyp3a4-inhibitor_roc.png)
 
 ## CYP3A4 Substrate
 
@@ -52,7 +52,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP3A4-Substrate | 1,149 |  0.569 | 0.779 |  0.718 |  0.674 |
 
-![CYP3A4-Substrate](../../images/cyp3a4-substrate.png)
+![CYP3A4-Substrate](../../images/cyp3a4-substrate_roc.png)
 
 ## CYP2C19 Inhibitor
 
@@ -66,7 +66,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP2C19-Inhibitor | Chemprop | 13,427 | 0.819 | 0.830 |  0.824 | 0.825  |
 
-![CYP2C19-Inhibitor](../../images/cyp2c19-inhibitor.png)
+![CYP2C19-Inhibitor](../../images/cyp2c19-inhibitor_roc.png)
 
 ## CYP2C9 Inhibitor
 
@@ -79,7 +79,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP2C9-Inhibitor | 12,881 | 0.899 | 0.880 | 0.893 | 0.890 |
 
-![CYP2C9-Inhibitor](../../images/cyp2c9-inhibitor.png)
+![CYP2C9-Inhibitor](../../images/cyp2c9-inhibitor_roc.png)
 
 ## CYP2C9 Substrate
 
@@ -93,7 +93,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP2C9-Substrate | Chemprop | 899 | 0.728 | 0.757 |  0.738 | 0.742 |
 
-![CYP2C9-Substrate](../../images/cyp2c9-substrate.png)
+![CYP2C9-Substrate](../../images/cyp2c9-substrate_roc.png)
 
 ## CYP2D6 Inhibitor
 
@@ -107,7 +107,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP2D6-Inhibitor | 11,127 | 0.866 | 0.751 |  0.843 | 0.808 |
 
-![CYP2D6-Inhibitor](../../images/cyp2d6-inhibitor.png)
+![CYP2D6-Inhibitor](../../images/cyp2d6-inhibitor_roc.png)
 
 ## CYP2D6 Substrate
 
@@ -121,7 +121,7 @@ Results on dataset (higher is better).
 |-|-|-|-|-|-|
 | CYP2D6-Substrate | Chemprop | 941 | 0.749 | 0.769 |  0.753 | 0.759 |
 
-![CYP2D6-Substrate](../../images/cyp2d6-substrate.png)
+![CYP2D6-Substrate](../../images/cyp2d6-substrate_roc.png)
 
 ## Data comparison
 

@@ -52,7 +52,7 @@ Currently, we have a total of 32 predictive models developed for [Absorption](#a
 
 Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC |
 |-|-|-|-|-|-|-|-|
-| [Pgp-Inhibitor](./absorption/absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.916 | 0.863 |  0.888 | 0.889  | ![pgp_inhibitor_roc](./images/pgp-inhibitor.png) |
+| [Pgp-Inhibitor](./absorption/absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.916 | 0.863 |  0.888 | 0.889  | ![pgp_inhibitor_roc](./images/pgp-inhibitor_roc.png) |
 
 #### Regression models
 
@@ -76,14 +76,14 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 
 Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC
 |-|-|-|-|-|-|-|-|
-| [CYP1A2-Inhibitor](./absorption/absorption.md#cyp1a2-inhibitor) | Chemprop | 13,239 | 0.873 | 0.866 |  0.87 | 0.869 | ![cyp1a2_inhibitor_roc](./images/cyp1a2-inhibitor.png) |
-| [CYP3A4-Inhibitor](./absorption/absorption.md#cyp3a4-inhibitor) | Chemprop | 12,997 | 0.815 | 0.842 |  0.826 | 0.829 | ![cyp3a4_inhibitor_roc](./images/cyp3a4-inhibitor.png) |
-| [CYP3A4-Substrate](./absorption/absorption.md#cyp3a4-substrate) | Chemprop | 1,149 |  0.569 | 0.779 |  0.718 |  0.674 | ![cyp3a4_substrate_roc](./images/cyp3a4-substrate.png) |
-| [CYP2C19-Inhibitor](./absorption/absorption.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.819 | 0.830 |  0.824 | 0.825  | ![cyp2c19_inhibitor_roc](./images/cyp2c19-inhibitor.png) |
-| [CYP2C9-Inhibitor](./absorption/absorption.md#cyp2c9-inhibitor) | Chemprop | 12,881 | 0.830 | 0.819 |  0.826 | 0.824 | ![cyp2c9_inhibitor_roc](./images/cyp2c9-inhibitor.png) |
-| [CYP2C9-Substrate](./absorption/absorption.md#cyp2c9-substrate) | Chemprop | 899 | 0.728 | 0.757 |  0.738 | 0.742 | ![cyp2c9_substrate_roc](./images/cyp2c9-substrate.png) |
-| [CYP2D6-Inhibitor](./absorption/absorption.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.866 | 0.751 |  0.843 | 0.808 | ![cyp2d6_inhibitor_roc](./images/cyp2d6-inhibitor.png) |
-| [CYP2D6-Substrate](./absorption/absorption.md#cyp2d6-substrate) | Chemprop | 941 | 0.749 | 0.769 |  0.753 | 0.759 | ![cyp2d6_substrate_roc](./images/cyp2d6-substrate.png) |
+| [CYP1A2-Inhibitor](./absorption/absorption.md#cyp1a2-inhibitor) | Chemprop | 13,239 | 0.873 | 0.866 |  0.87 | 0.869 | ![cyp1a2_inhibitor_roc](./images/cyp1a2-inhibitor_roc.png) |
+| [CYP3A4-Inhibitor](./absorption/absorption.md#cyp3a4-inhibitor) | Chemprop | 12,997 | 0.815 | 0.842 |  0.826 | 0.829 | ![cyp3a4_inhibitor_roc](./images/cyp3a4-inhibitor_roc.png) |
+| [CYP3A4-Substrate](./absorption/absorption.md#cyp3a4-substrate) | Chemprop | 1,149 |  0.569 | 0.779 |  0.718 |  0.674 | ![cyp3a4_substrate_roc](./images/cyp3a4-substrate_roc.png) |
+| [CYP2C19-Inhibitor](./absorption/absorption.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.819 | 0.830 |  0.824 | 0.825  | ![cyp2c19_inhibitor_roc](./images/cyp2c19-inhibitor_roc.png) |
+| [CYP2C9-Inhibitor](./absorption/absorption.md#cyp2c9-inhibitor) | Chemprop | 12,881 | 0.830 | 0.819 |  0.826 | 0.824 | ![cyp2c9_inhibitor_roc](./images/cyp2c9-inhibitor_roc.png) |
+| [CYP2C9-Substrate](./absorption/absorption.md#cyp2c9-substrate) | Chemprop | 899 | 0.728 | 0.757 |  0.738 | 0.742 | ![cyp2c9_substrate_roc](./images/cyp2c9-substrate_roc.png) |
+| [CYP2D6-Inhibitor](./absorption/absorption.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.866 | 0.751 |  0.843 | 0.808 | ![cyp2d6_inhibitor_roc](./images/cyp2d6-inhibitor_roc.png) |
+| [CYP2D6-Substrate](./absorption/absorption.md#cyp2d6-substrate) | Chemprop | 941 | 0.749 | 0.769 |  0.753 | 0.759 | ![cyp2d6_substrate_roc](./images/cyp2d6-substrate_roc.png) |
 
 Here is a line chart illustrating various metrics for each of the corresponding models.
 
@@ -104,7 +104,7 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 
 Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC
 |-|-|-|-|-|-|-|-|
-| [hERG](./ADMET/toxicity/toxicity.md#herg) | Chemprop | 22,249 | 0.811 | 0.897 | 0.885 |  0.854  | ![herg_roc](./images/herg.PNG) |
+| [hERG](./ADMET/toxicity/toxicity.md#herg) | Chemprop | 22,249 | 0.811 | 0.897 | 0.885 |  0.854  | ![herg_roc](./images/herg_roc.png) |
 
 #### Regression models
 

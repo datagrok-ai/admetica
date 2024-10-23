@@ -27,7 +27,7 @@ Inhibition of the hERG (human Ether-à-go-go-Related Gene) current causes QT int
 |-|-|-|-|-|-|
 | hERG | 22,249 | 0.811 | 0.897 | 0.885 |  0.854  |
 
-![hERG](../../images/herg.png)
+![hERG](../../images/herg_roc.png)
 
 ## Data comparison
 
