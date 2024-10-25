@@ -290,15 +290,87 @@ This table summarizes the class distributions and the row counts in the final da
 
 For further details, the [comparison](./comparison/) folder contains a Jupyter notebook, [undersampling.ipynb](./comparison/undersampling.ipynb), that fully reproduces the process of obtaining the final datasets for training.
 
+Using the same [pipeline](#pipeline) from our comparison, we assessed the performance metrics of the newly trained models. The results are summarized in the tables below.
+
 ### CYP3A4-Inhibitor
 
-Using the same [pipeline](#pipeline) from our comparison, we assessed the performance metrics of the newly trained model on the prepared data. The results, showcasing both the old and new Admetica metrics, are summarized in the table below:
+| Metric                 | Admetica (Baseline) | Admetica (Enhanced) | Novartis   |
+|------------------------|---------------------|----------------------|------------|
+| True Positives (TP)    | 134.0               | 163.0                | 159.0      |
+| True Negatives (TN)    | 368.0               | 334.0                | 352.0      |
+| False Positives (FP)   | 181.0               | 215.0                | 197.0      |
+| False Negatives (FN)   | 105.0               | 76.0                 | 80.0       |
+| Sensitivity (Recall)    | 0.5607              | 0.6820               | 0.6653     |
+| Specificity            | 0.6703              | 0.6084               | 0.6412     |
+| Balanced Accuracy      | 0.6155              | 0.6452               | 0.6532     |
+| AUC                    | 0.6155              | 0.6452               | 0.6532     ||
 
-| **Metric**                | **Admetica (Old)** | **Admetica (New)** |
-|---------------------------|--------------------|---------------------|
-| Sensitivity (Recall)      | 0.5607             | 0.537          |
-| Specificity               | 0.6703             | 0.711              |
-| Balanced Accuracy         | 0.6155             | 0.6243               |
+<img src="./images/3a4_enhanced.png" alt="3A4 Admetica (Enhanced)" style="width:70%;">
+
+### CYP2C9-Inhibitor
+
+| Metric                 | Admetica (Baseline) | Admetica (Enhanced) | Novartis   |
+|------------------------|---------------------|----------------------|------------|
+| True Positives (TP)    | 102.0               | 71.0                 | 69.0       |
+| True Negatives (TN)    | 137.0               | 232.0                | 236.0      |
+| False Positives (FP)   | 192.0               | 97.0                 | 93.0       |
+| False Negatives (FN)   | 33.0                | 64.0                 | 66.0       |
+| Sensitivity (Recall)    | 0.7556              | 0.5259               | 0.5111     |
+| Specificity            | 0.4164              | 0.7052               | 0.7173     |
+| Balanced Accuracy      | 0.5860              | 0.6155               | 0.6142     |
+| AUC                    | 0.5860              | 0.6155               | 0.6142     ||
+
+<img src="./images/2c9_enhanced.png" alt="2C9 Admetica (Enhanced)" style="width:70%;">
+
+### Caco-2
+
+| Metric   | Admetica (Baseline) | Admetica (Enhanced) | Novartis   |
+|----------|---------------------|----------------------|------------|
+| MAE      | 0.411552            | 0.364398             | 0.351543   |
+| MSE      | 0.286792            | 0.195037             | 0.201841   |
+| RMSE     | 0.535530            | 0.441630             | 0.449267   |
+| R²       | 0.319010            | 0.536883             | 0.520728   |
+
+<table>
+  <tr>
+    <td><img src="./images/caco2_enhanced.png" alt="Admetica OvP"/></td>
+    <td><img src="./images/caco2_nx_obs.png" alt="Novartis OvP"/></td>
+  </tr>
+</table>
+
+### Summary
+
+| **Metric**             | **Δ (Enhanced - Baseline)** | **% Improvement**       |
+|------------------------|-----------------------------|-------------------------|
+| **CYP3A4-Inhibitor**   |                             |                         |
+| True Positives (TP)    | **+29.0** ↑                 | **+21.6%** ✅           |
+| True Negatives (TN)    | **-34.0** ↓                 | **-9.2%** ❌            |
+| False Positives (FP)   | **+34.0** ↑                 | **+18.8%** ❌           |
+| False Negatives (FN)   | **-29.0** ↓                 | **-27.6%** ✅           |
+| Sensitivity (Recall)    | **+0.1213** ↑               | **+21.6%** ✅           |
+| Specificity            | **-0.0619** ↓               | **-9.2%** ❌            |
+| Balanced Accuracy      | **+0.0297** ↑               | **+4.8%** ✅            |
+| AUC                    | **+0.0297** ↑               | **+4.8%** ✅            |
+| **CYP2C9-Inhibitor**   |                             |                         |
+| True Positives (TP)    | **-31.0** ↓                 | **-30.4%** ❌           |
+| True Negatives (TN)    | **+95.0** ↑                 | **+69.3%** ✅           |
+| False Positives (FP)   | **-95.0** ↓                 | **-49.5%** ✅           |
+| False Negatives (FN)   | **+31.0** ↑                 | **+94.0%** ❌           |
+| Sensitivity (Recall)    | **-0.2297** ↓               | **-30.4%** ❌           |
+| Specificity            | **+0.2888** ↑               | **+69.3%** ✅           |
+| Balanced Accuracy      | **+0.0295** ↑               | **+5.0%** ✅            |
+| AUC                    | **+0.0295** ↑               | **+5.0%** ✅            |
+| **Caco-2**             |                             |                         |
+| MAE                    | **-0.047154** ↓             | **-11.4%** ✅           |
+| MSE                    | **-0.091755** ↓             | **-31.9%** ✅           |
+| RMSE                   | **-0.093900** ↓             | **-17.6%** ✅           |
+| R²                     | **+0.217873** ↑             | **+68.2%** ✅           |
+
+Where:
+- **↑**: Improvement
+- **↓**: Decline
+- **✅**: Positive Improvement
+- **❌**: Negative Improvement
 
 ## Evaluation of free online ADMET tools
 
