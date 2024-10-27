@@ -1,107 +1,146 @@
 # Admetica
 
-It is an open-source global effort with collaborators from academia, biotech startups and big pharma.
+Predicting pharmacokinetic properties (ADMET: Absorption, Distribution, Metabolism, Excretion, and Toxicity) is 
+essential for drug design. The earlier these properties can be reliably predicted, the better. 
+While every company in the pharmaceutical industry requires this capability, there are currently no optimal solutions. 
+Commercial tools are expensive, publicly available calculators come with numerous limitations, and neither allows 
+for easy customization.
 
-Our goal is to improve ADMET (Absorption, Distribution, Metabolism, and Excretion) prediction tools.
+Admetica addresses these challenges by offering a comprehensive set of pre-built predictive models, publicly 
+available datasets, pipelines, and notebooks for training and evaluating models. It also provides tools for visual 
+exploration of results—all under the permissive MIT license. It's a "batteries included" solution that is:
 
-We welcome everyone with the expertise in the field. If you're interested in collaboration, contact us via [email](mailto:oserhiienko@datagrok.ai) or [LinkedIn](https://www.linkedin.com/in/oleksandra-serhiienko-674ab6239).
+- **Accurate**: Built-in comparison with existing solutions ensures reliability.
+- **Open-source**: The source code and data are freely available under the MIT license.
+- **Simple to use**: CLI and REST APIs enable easy integration into existing workflows.
+- **Configurable**: Customize settings or integrate your proprietary datasets into the pipeline.
+- **Reproducible**: All scripts, notebooks, and training pipelines are included.
+- **Fast**: Designed for high performance across datasets of all sizes.
+- **Interpretable**: Tools for intuitive visual exploration of results.
+
+Admetica is an open-source initiative with collaborators from academia, biotech startups, and big pharma.
+Interested in collaborating? Contact us via [email](mailto:oserhiienko@datagrok.ai).
 
 ## Table of Contents
 
-- [Goals](#goals)
-- [Integration with Datagrok](#integration-with-datagrok)
-- [Available predictive models](#available-predictive-models)
-  - [Absorption](#absorption)
-  - [Distribution](#distribution)
-  - [Metabolism](#metabolism)
-  - [Excretion](#excretion)
-  - [Toxicity](#toxicity)
-- [Comparison of Admetica and Novartis models](#comparison-of-admetica-and-novartis-models)
-  - [Cytochrome P450](#cytochrome-p450)
-    - [Pipeline](#pipeline)
-    - [3A4](#3a4)
-    - [2C9](#2c9)
-    - [2D6](#2d6)
-  - [Caco-2 permeability](#caco-2-permeability)
-  - [Results](#results)
-- [Model enhancement](#model-enhancement)
-  - [Data preparation](#data-preparation)
-  - [CYP3A4-Inhibitor](#cyp3a4-inhibitor)
-  - [CYP2C9-Inhibitor](#cyp2c9-inhibitor)
-  - [Caco-2](#caco-2)
-  - [Summary](#summary)
-- [Evaluation of free online ADMET tools](#evaluation-of-free-online-admet-tools)
-  - [Plasma Protein Binding](#plasma-protein-binding)
-  - [Half-Life](#half-life)
-  - [CYP3A4-Substrate](#cyp3a4-substrate)
-  - [HIA](#hia)
-  - [Summary](#summary-1)
 - [Usage](#usage)
-  - [Installation](#installation)
-  - [Data](#data)
-  - [Training](#training)
-  - [Predicting](#predicting)
+- [Integration with Datagrok](#integration-with-datagrok)
+- [Predictive models](#available-predictive-models): see [absorption](#absorption), [distribution](#distribution), [metabolism](#metabolism),
+  [excretion](#excretion), [toxicity](#toxicity)
+- [Novartis ADMET predictions](#novartis-admet-predictions)
+  - [Comparison](#comparison-of-admetica-and-novartis-models)
+  - [Enhancing Admetica with Novartis data](#model-enhancement)
+- [Evaluation of free online ADMET tools](#evaluation-of-free-online-admet-tools): see [PPB](#plasma-protein-binding), [Half-Life](#half-life), [CYP3A4-Substrate](#cyp3a4-substrate), [HIA](#hia), [Summary](#summary-1)
 - [References](#references)
 
-Our goal is to provide a tool that is:
 
-- **Accurate**: It has higher characteristics compared to other open-source tools such as ADMETLab, Chemprop, QikProp etc.
-- **Open-source**: The source code is freely available for anyone to view, use, modify and distribute.
-- **With simple API**: It has an easy-to-use interface and can be integrated into various applications and platforms.
-- **Reproducible**: You can access data sources, modeling workflow notebooks and models to easily reproduce and verify the entire modeling process.
-- **Easily deployable**: It is easy to set up and use.
-- **Performant**: It offers a reliable and high-performance solution for datasets of all sizes.
+## Usage
+
+### Installation
+
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/chemprop)](https://badge.fury.io/py/chemprop)
+[![Chemprop PyPI version](https://badge.fury.io/py/chemprop.svg)](https://badge.fury.io/py/chemprop)
+
+
+```bash
+pip install admetica==1.3
+```
+
+By default, the pip installation will include all necessary dependencies for making ADMET predictions.
+
+### Predicting
+
+Through the command-line interface:
+
+```bash
+admetica_predict \
+    --dataset-path data.csv \
+    --smiles-column smiles \
+    --properties Caco2,PPBR \
+    --save-path predictions.csv
+```
+
+This command assumes the presence of a file named `data.csv` with SMILES strings in the column `smiles`. In addition,
+you should specify the properties to be calculated (e.g. `Caco2`). The predictions will be saved to `predictions.csv`.
+
+All models available in the repository are included and can be used.
+
+### Data
+
+In order to train a model or obtain predictions, you must provide data containing molecules (as SMILES strings) and
+known target values.
+
+The data used in this research and [its overview](./docs/datasets.md) can be found in the `Datasets` folder.
+
+### Training
+
+You can create a model on your own using [chemprop](https://github.com/chemprop/chemprop/blob/master/README.md#training) module, or use publicly available models that are
+located in the `Models` folder.
 
 ## Integration with Datagrok
 
-Our tool easily works with many platforms and applications. With the [Admetica package](https://github.com/datagrok-ai/public/tree/master/packages/Admetica) developed at Datagrok, you can:
+Predicting properties is just the beginning of the journey. To make a system truly usable, we need 
+to expose it to chemists and medicinal chemists via the UI, without the need to run Docker containers
+or use CLI. Additionally, we want to easily interpret results in the context of the project
+(where you can specify desirable property ranges, etc).
 
-- **Mix your data:** Combine your data with Datagrok's collected experimental data for customized predictive models.
+To address that, we have developed an MIT-licensed [Datagrok Admetica Plugin](https://github.com/datagrok-ai/public/tree/master/packages/Admetica) that allows scientists to 
+calculate ADMET properties on demand. You can also visually assess results using a combination of
+color coding and a widget that fits in a grid cell and visualizes all properties at once. 
+Additionally, the plugin enhances some of the other Datagrok applications, such as
+[Hit Triage](https://github.com/datagrok-ai/public/blob/master/packages/HitTriage/README_HT.md) for
+triaging molecular campaigns, and
+[Hit Design](https://github.com/datagrok-ai/public/blob/master/packages/HitTriage/README_HT.md) for
+collaborative, computation-augmented drug design.
 
-- **Visualize results:** Use Datagrok tools for better predictions, data analysis and data visualization.
+Note that while both Admetica and Admetica Plugin are open-source, the Datagrok platform is proprietary.
+It is free for personal use, for academia, and non-profit research. Claim your license [here](https://datagrok.ai).
+
+![](images/admetica-column.gif)
 
 ## Available predictive models
 
-Currently, we have a total of 32 predictive models developed for [Absorption](#absorption), [Distribution](#distribution), [Metabolism](#metabolism), [Excretion](#excretion) and Toxicity.
+Currently, we have a total of 32 predictive models developed for [Absorption](#absorption), [Distribution](#distribution), 
+[Metabolism](#metabolism), [Excretion](#excretion) and Toxicity.
 
 ### Absorption
 
 #### Classification models
 
-Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC |
-|-|-|-|-|-|-|-|-|
-| [Pgp-Inhibitor](./absorption/absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.916 | 0.863 |  0.888 | 0.889  | ![pgp_inhibitor_roc](./images/pgp-inhibitor_roc.png) |
+| Name                                                      | Model    | Size  | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC                   |
+|-----------------------------------------------------------|----------|-------|-------------|-------------|----------|-------------------|---------------------------|
+| [Pgp-Inhibitor](ADMET/absorption/absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.916       | 0.863       | 0.888    | 0.889             | ![pgp_inhibitor_roc](./images/pgp-inhibitor_roc.png) |
 
 #### Regression models
 
-Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
-|-|-|-|-|-|-|-|-|
-| [Caco2](./absorption/absorption.md#caco-2) | Chemprop | 910 | 0.317 | 0.415 | 0.701 |  0.832 | ![Caco2 Observed vs. Predicted plot](./images/caco2_observed_vs_pred.png) |
-| [Lipophilicity](./absorption/absorption.md#lipophilicity) | Chemprop | 4200 | 0.399 | 0.596 | 0.748 | 0.881 | ![Lipophilicity Observed vs. Predicted plot](./images/lipophilicity_observed_vs_pred.png) |
-| [Solubility](./absorption/absorption.md#solubility) | Chemprop | 9982 | 0.714 | 1.089 | 0.788 | 0.897 | ![Solubility Observed vs. Predicted plot](./images/solubility_observed_vs_pred.png) |
+| Name                                                      | Model    | Size | MAE   | RMSE  | R2    | Spearman | Observed vs. Predicted                                                                    |
+|-----------------------------------------------------------|----------|------|-------|-------|-------|----------|-------------------------------------------------------------------------------------------|
+| [Caco2](ADMET/absorption/absorption.md#caco-2)       | Chemprop | 910  | 0.317 | 0.415 | 0.701 | 0.832    | ![Caco2 Observed vs. Predicted plot](./images/caco2_observed_vs_pred.png)                 |
+| [Lipophilicity](ADMET/absorption/absorption.md#lipophilicity) | Chemprop | 4200 | 0.399 | 0.596 | 0.748 | 0.881    | ![Lipophilicity Observed vs. Predicted plot](./images/lipophilicity_observed_vs_pred.png) |
+| [Solubility](ADMET/absorption/absorption.md#solubility)       | Chemprop | 9982 | 0.714 | 1.089 | 0.788 | 0.897    | ![Solubility Observed vs. Predicted plot](./images/solubility_observed_vs_pred.png)       |
 
 ### Distribution
 
 #### Regression models
 
-Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
-|-|-|-|-|-|-|-|-|
-| [PPBR](./distribution/distribution.md#ppbr) | Chemprop | 2790 | 6.919 | 11.294 | 0.609 | 0.762 | ![PPBR Observed vs. Predicted plot](./images/ppbr_observed_vs_pred.png) |
+| Name                                        | Model    | Size | MAE   | RMSE   | R2    | Spearman | Observed vs. Predicted                                                  |
+|---------------------------------------------|----------|------|-------|--------|-------|----------|-------------------------------------------------------------------------|
+| [PPBR](./distribution/distribution.md#ppbr) | Chemprop | 2790 | 6.919 | 11.294 | 0.609 | 0.762    | ![PPBR Observed vs. Predicted plot](./images/ppbr_observed_vs_pred.png) |
 
 ### Metabolism
 
 #### Classification models
 
-Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC
-|-|-|-|-|-|-|-|-|
-| [CYP1A2-Inhibitor](./absorption/absorption.md#cyp1a2-inhibitor) | Chemprop | 13,239 | 0.873 | 0.866 |  0.87 | 0.869 | ![cyp1a2_inhibitor_roc](./images/cyp1a2-inhibitor_roc.png) |
-| [CYP3A4-Inhibitor](./absorption/absorption.md#cyp3a4-inhibitor) | Chemprop | 12,997 | 0.815 | 0.842 |  0.826 | 0.829 | ![cyp3a4_inhibitor_roc](./images/cyp3a4-inhibitor_roc.png) |
-| [CYP3A4-Substrate](./absorption/absorption.md#cyp3a4-substrate) | Chemprop | 1,149 |  0.569 | 0.779 |  0.718 |  0.674 | ![cyp3a4_substrate_roc](./images/cyp3a4-substrate_roc.png) |
-| [CYP2C19-Inhibitor](./absorption/absorption.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.819 | 0.830 |  0.824 | 0.825  | ![cyp2c19_inhibitor_roc](./images/cyp2c19-inhibitor_roc.png) |
-| [CYP2C9-Inhibitor](./absorption/absorption.md#cyp2c9-inhibitor) | Chemprop | 12,881 | 0.830 | 0.819 |  0.826 | 0.824 | ![cyp2c9_inhibitor_roc](./images/cyp2c9-inhibitor_roc.png) |
-| [CYP2C9-Substrate](./absorption/absorption.md#cyp2c9-substrate) | Chemprop | 899 | 0.728 | 0.757 |  0.738 | 0.742 | ![cyp2c9_substrate_roc](./images/cyp2c9-substrate_roc.png) |
-| [CYP2D6-Inhibitor](./absorption/absorption.md#cyp2d6-inhibitor) | Chemprop | 11,127 | 0.866 | 0.751 |  0.843 | 0.808 | ![cyp2d6_inhibitor_roc](./images/cyp2d6-inhibitor_roc.png) |
-| [CYP2D6-Substrate](./absorption/absorption.md#cyp2d6-substrate) | Chemprop | 941 | 0.749 | 0.769 |  0.753 | 0.759 | ![cyp2d6_substrate_roc](./images/cyp2d6-substrate_roc.png) |
+| Name                                                              | Model    | Size   | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC                                                      |
+|-------------------------------------------------------------------|----------|--------|-------------|-------------|----------|-------------------|--------------------------------------------------------------|
+| [CYP1A2-Inhibitor](ADMET/absorption/absorption.md#cyp1a2-inhibitor)   | Chemprop | 13,239 | 0.873       | 0.866       | 0.87     | 0.869             | ![cyp1a2_inhibitor_roc](./images/cyp1a2-inhibitor_roc.png)   |
+| [CYP3A4-Inhibitor](ADMET/absorption/absorption.md#cyp3a4-inhibitor)   | Chemprop | 12,997 | 0.815       | 0.842       | 0.826    | 0.829             | ![cyp3a4_inhibitor_roc](./images/cyp3a4-inhibitor_roc.png)   |
+| [CYP3A4-Substrate](ADMET/absorption/absorption.md#cyp3a4-substrate)   | Chemprop | 1,149  | 0.569       | 0.779       | 0.718    | 0.674             | ![cyp3a4_substrate_roc](./images/cyp3a4-substrate_roc.png)   |
+| [CYP2C19-Inhibitor](ADMET/absorption/absorption.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.819       | 0.830       | 0.824    | 0.825             | ![cyp2c19_inhibitor_roc](./images/cyp2c19-inhibitor_roc.png) |
+| [CYP2C9-Inhibitor](ADMET/absorption/absorption.md#cyp2c9-inhibitor)   | Chemprop | 12,881 | 0.830       | 0.819       | 0.826    | 0.824             | ![cyp2c9_inhibitor_roc](./images/cyp2c9-inhibitor_roc.png)   |
+| [CYP2C9-Substrate](ADMET/absorption/absorption.md#cyp2c9-substrate)   | Chemprop | 899    | 0.728       | 0.757       | 0.738    | 0.742             | ![cyp2c9_substrate_roc](./images/cyp2c9-substrate_roc.png)   |
+| [CYP2D6-Inhibitor](ADMET/absorption/absorption.md#cyp2d6-inhibitor)   | Chemprop | 11,127 | 0.866       | 0.751       | 0.843    | 0.808             | ![cyp2d6_inhibitor_roc](./images/cyp2d6-inhibitor_roc.png)   |
+| [CYP2D6-Substrate](ADMET/absorption/absorption.md#cyp2d6-substrate)   | Chemprop | 941    | 0.749       | 0.769       | 0.753    | 0.759             | ![cyp2d6_substrate_roc](./images/cyp2d6-substrate_roc.png)   |
 
 Here is a line chart illustrating various metrics for each of the corresponding models.
 
@@ -130,30 +169,38 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 |-|-|-|-|-|-|-|-|
 | [LD50](./toxicity/toxicity.md#) | Chemprop | 7282 |  0.437 | 0.609 | 0.596 | 0.745 | ![LD50 Observed vs. Predicted plot](./images/ld50_observed_vs_pred.png) |
 
+# Novartis ADMET predictions
+
+Novartis has recently published a paper 
+"[Application of machine learning models for property prediction to targeted protein degraders](https://www.nature.com/articles/s41467-024-49979-3)"
+that contains a dataset with Novartis' ADMET predictions for all molecules in Chembl. 
+Naturally, we were curious how their results compare to Admetica ones. Also, if the Novartis predictions are
+better (very likely since they have massive proprietary datasets), can we improve Admetica models
+by training them on the publicly available Novartis predictions?
+
+TL/DR: Novartis models performed better on some properties, and worse on others. By incorporating
+some predictions to the Admetica training dataset, we have improved some of the Admetica models.
+See details below, or jump to the [summary](#summary).
+
 ## Comparison of Admetica and Novartis models
-
-We conducted the comparison for two main reasons:
-
-- To explore the potential of using the surrogate dataset to enrich our predictions.
-- To benchmark the performance of the Novartis machine learning model against our own results.
-
-For this, we utilized the surrogate dataset from the paper [Application of machine learning models for property prediction to targeted protein degraders](https://www.nature.com/articles/s41467-024-49979-3), which includes publicly available structures and their predicted properties generated by the Novartis model.
 
 ### Cytochrome P450
 
 ### Pipeline
 
-We generated test datasets using data from the ChEMBL database. To ensure the test set was representative and produced accurate results, the data was preprocessed using the following steps:
+We generated test datasets using data from the ChEMBL database. To ensure the test set was representative and produced 
+accurate results, the data was preprocessed using the following steps:
 
 * **Extracting common structures**:  
-  
-  We compared the Novartis and ChEMBL datasets to identify shared molecular structures. Additionally, we filtered out values that overlapped with the Admetica training set to prevent redundancy.
+  We compared the Novartis and ChEMBL datasets to identify shared molecular structures. Additionally, we filtered out 
+  values that overlapped with the Admetica training set to prevent redundancy.
 
 * **Filtering the ChEMBL dataset**:  
-  We removed duplicate entries, prioritizing those labeled as IC50. We also excluded rows with undesired types such as Drug metabolism, FC, Retention_time, T1/2, mechanism based inhibition, Stability etc.
+  We removed duplicate entries, prioritizing those labeled as IC50. We also excluded rows with undesired types such as 
+  Drug metabolism, FC, Retention_time, T1/2, mechanism based inhibition, Stability etc.
 
 * **Processing values**:  
-  We standardized key values for consistency.
+We standardized key values for consistency.
 
   | **Type**                | **Action**                                      |
   |-------------------------|-------------------------------------------------|
@@ -163,7 +210,9 @@ We generated test datasets using data from the ChEMBL database. To ensure the te
   | | Less than 50%: `0`    |
   | Other values | Left unchanged (already in µM) |
 
-Both the original ChEMBL dataset and the processed data are available in the [comparison](./comparison/novartis/cyp/) folder. Additionally, the folder contains a Jupyter notebook, [preprocessing_pipeline.ipynb](./comparison/preprocessing_pipeline.ipynb), which fully reproduces the preprocessing steps and obtained datasets.
+Both the original ChEMBL dataset and the processed data are available in the [comparison](./comparison/novartis/cyp/) folder.
+Additionally, the folder contains a Jupyter notebook, [preprocessing_pipeline.ipynb](./comparison/preprocessing_pipeline.ipynb), which fully 
+reproduces the preprocessing steps and obtained datasets.
 
 ### 3A4
 
@@ -174,7 +223,8 @@ After performing the pipeline for ChEMBL 3A4, we obtained a dataset structured a
 | Inhibitor   | 549                   |
 | Non-Inhibitor   | 239                   |
 
-We calculated CYP3A4-Inhibitor and assessed performance metrics for the Admetica and Novartis models, resulting in the following outcomes:
+We calculated CYP3A4-Inhibitor and assessed performance metrics for the Admetica and Novartis models, resulting
+in the following outcomes:
 
 | **Metric**                | **Admetica**   | **Novartis**   |
 |---------------------------|-----------------------|-----------------------|
@@ -198,7 +248,8 @@ After performing the pipeline for ChEMBL 2C9, we obtained a dataset structured a
 | Inhibitor   | 329                   |
 | Non-Inhibitor   | 135                   |
 
-We calculated CYP2C9-Inhibitor and assessed performance metrics for the Admetica and Novartis models, resulting in the following outcomes:
+We calculated CYP2C9-Inhibitor and assessed performance metrics for the Admetica and Novartis models, 
+resulting in the following outcomes:
 
 | **Metric**                | **Admetica**    | **Novartis**   |
 |---------------------------|-----------------------|-----------------------|
@@ -222,7 +273,8 @@ After performing the pipeline for ChEMBL 2D6, we obtained a dataset structured a
 | Inhibitor   | 444                   |
 | Non-Inhibitor   | 195                   |
 
-We calculated CYP2D6-Inhibitor and assessed performance metrics for the Admetica and Novartis models, resulting in the following outcomes:
+We calculated CYP2D6-Inhibitor and assessed performance metrics for the Admetica and Novartis models, 
+resulting in the following outcomes:
 
 | **Metric**                | **Admetica**   | **Novartis**   |
 |---------------------------|-----------------------|-----------------------|
@@ -237,24 +289,30 @@ We calculated CYP2D6-Inhibitor and assessed performance metrics for the Admetica
 
 <img src="./images/2d6_nx_admetica.png" alt="2D6 Admetica vs. Novartis" style="width:70%;">
 
-The comparison is fully reproducible, and you can find the Jupyter notebook, [comparison_cyp.ipynb](./comparison/comparison_cyp.ipynb), in the folder.
+The comparison is fully reproducible, and you can find the Jupyter notebook, [comparison_cyp.ipynb](./comparison/comparison_cyp.ipynb), 
+in the folder.
 
 
 ### Caco-2 permeability
 
-We generated test datasets using data from the supplementary material of the paper [In Silico Prediction of Caco-2 Cell Permeability by a Classification QSAR Approach](https://pubmed.ncbi.nlm.nih.gov/27466954/). The following preprocessing steps were applied:
+We generated test datasets using data from the supplementary material of the paper 
+[In Silico Prediction of Caco-2 Cell Permeability by a Classification QSAR Approach](https://pubmed.ncbi.nlm.nih.gov/27466954/). The following preprocessing 
+steps were applied:
 
 *  **Identifying common structures**:
 
-   We compared the Novartis and Caco-2 dataset to identify shared molecular structures. Additionally, we filtered out values that overlapped with the Admetica training set to prevent redundancy.
+   We compared the Novartis and Caco-2 dataset to identify shared molecular structures. Additionally, we filtered out
+* values that overlapped with the Admetica training set to prevent redundancy.
    
 * **Unit normalization**:  
    
-   To ensure consistent units across all datasets predicting Caco-2 permeability (including Novartis and Admetica), we applied a log10 transformation to the values.
+   To ensure consistent units across all datasets predicting Caco-2 permeability (including Novartis and Admetica), we 
+* applied a log10 transformation to the values.
 
 After performing the preprocessing for Caco-2, we obtained a dataset that contains 34 structures.
 
-We calculated Caco-2 and assessed performance metrics for the Admetica and Novartis models, resulting in the following outcomes:
+We calculated Caco-2 and assessed performance metrics for the Admetica and Novartis models, resulting in the following 
+outcomes:
 
 | **Metric**   | **Admetica**   | **Novartis**   |
 |--------------|----------------|----------|
@@ -270,19 +328,24 @@ We calculated Caco-2 and assessed performance metrics for the Admetica and Novar
   </tr>
 </table>
 
-Both the original Caco-2 dataset and the processed data are available in the [comparison](./comparison/novartis/caco2/) folder. Additionally, the folder contains a Jupyter notebook, [comparison_caco2.ipynb](./comparison/comparison_caco2.ipynb), which fully reproduces the preprocessing steps, obtained datasets and metrics.
+Both the original Caco-2 dataset and the processed data are available in the [comparison](./comparison/novartis/caco2/) folder. Additionally, 
+the folder contains a Jupyter notebook, [comparison_caco2.ipynb](./comparison/comparison_caco2.ipynb), which fully reproduces the preprocessing steps, 
+obtained datasets and metrics.
 
 ### Results
 
-During our model comparison, we discovered that the Novartis model outperformed the Admetica model for the targets CYP3A4, CYP2C9, and Caco2.
+During our model comparison, we discovered that the Novartis model outperformed the Admetica model for the targets 
+CYP3A4, CYP2C9, and Caco2.
 
 ## Model enhancement
 
-After performing the comparison and seeing that in some cases the Novartis model is better, we consequently opted to continue training with the surrogate Novartis data used in our comparison.
+After performing the comparison and seeing that in some cases the Novartis model is better, we consequently opted to 
+continue training with the surrogate Novartis data used in our comparison.
 
 ### Data preparation
 
-Given the significant class imbalance in the data for CYP3A4 and CYP2C9, we implemented under-sampling techniques to reduce the risk of overfitting during the training process.
+Given the significant class imbalance in the data for CYP3A4 and CYP2C9, we implemented under-sampling techniques to 
+reduce the risk of overfitting during the training process.
 
 | **Property** | **Class distribution** | **Number of rows in final dataset** |
 |--------------|-----------------------|-------------------------------------|
@@ -456,67 +519,11 @@ Below is a summary table of the most notable metrics from the evaluation of free
 | FAF-Drug4  | N/A      | N/A              | N/A                    | 0.58            |
 | SwissADME  | N/A      | N/A              | N/A                    | 0.62            |
 
-## Usage
-
-### Installation
-
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/chemprop)](https://badge.fury.io/py/chemprop)
-[![Chemprop PyPI version](https://badge.fury.io/py/chemprop.svg)](https://badge.fury.io/py/chemprop)
-
-Admetica is a powerful tool for making ADMET predictions and can be easily installed on any operating system. You can install it using pip, and optionally, you can set up a conda environment for better package management.
-
-#### Creating a Conda Environment (Optional)
-
-To create a new conda environment and install Admetica, use the following commands:
-
-```bash
-conda create --name admetica-env python=3.11
-conda activate admetica-env
-```
-
-#### Installing Admetica
-
-To install Admetica, run:
-
-```bash
-pip install admetica==1.3
-```
-
-By default, the pip installation will include all necessary dependencies for making ADMET predictions.
-
-### Making Predictions
-
-Admetica provides a command-line interface to make predictions. To use it, run:
-
-```bash
-admetica_predict \
-    --dataset-path data.csv \
-    --smiles-column smiles \
-    --properties Caco2,PPBR \
-    --save-path predictions.csv
-```
-
-This command assumes the presence of a file named `data.csv` with SMILES strings in the column `smiles`. In addition, you should specify the properties to be calculated (e.g. `Caco2`). The predictions will be saved to `predictions.csv`.
-
-All models available in the repository are included and can be used.
-
-### Data
-
-In order to train a model or obtain predictions, you must provide data containing molecules (as SMILES strings) and known target values.
-
-The data used in this research and [its overview](./docs/datasets.md) can be found in the `Datasets` folder.
-
-### Training
-
-You can create a model on your own using [chemprop](https://github.com/chemprop/chemprop/blob/master/README.md#training) module or use publicly available models that are licalted in the `Models` folder.
-
-### Predicting
-
-To load a trained model and make predictions, run all the commands specified in the `Chemical Property Prediction and Evaluation.ipynb` file.
 
 ## References
 
-Our project is about improving and combining existing solutions, not reinventing the wheel. Here is the list of resources we've investigated:
+Our project is about improving and combining existing solutions, not reinventing the wheel. 
+Here are some of the resources is the list of resources we've investigated:
 
 1. ADMETlab: a platform for systematic ADMET evaluation based on a comprehensively collected ADMET database / Jie Dong, Ning-Ning Wang, Zhi-Jiang Yao та ін. // J Cheminform. – 2018. – <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6020094/>.
 2. Evaluation of Free Online ADMET Tools for Academic or Small Biotech Environments / Júlia Dulsat, Blanca López-Nieto, Roger Estrada-Tejedor, José I. Borrell // Molecules. – 2023. – <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9864198/>.
@@ -526,3 +533,4 @@ Our project is about improving and combining existing solutions, not reinventing
 6. In silico Prediction of Chemical Ames Mutagenicity / Congying Xu, Feixiong Cheng, Lei Chen та ін. // J Cheminform. – 2012. – <https://pubs.acs.org/doi/abs/10.1021/ci300400a>.
 7. Computational Models for Human and Animal Hepatotoxicity with a Global Application Scope / Denis Mulliner, Friedemann Schmidt, Manuela Stolte та ін. // Chem. Res. Toxicol.. – 2016. – <https://pubs.acs.org/doi/10.1021/acs.chemrestox.5b00465>.
 8. ADMET Evaluation in Drug Discovery. 16. Predicting hERG Blockers by Combining Multiple Pharmacophores and Machine Learning Approaches / Shuangquan Wang, Huiyong Sun, Hui Liu та ін. // Mol. Pharmaceutics. – 2016. – <https://pubs.acs.org/doi/10.1021/acs.molpharmaceut.6b00471>.
+9. [Application of machine learning models for property prediction to targeted protein degraders](https://www.nature.com/articles/s41467-024-49979-3)
