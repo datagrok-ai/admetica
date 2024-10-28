@@ -171,8 +171,7 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 
 # Novartis ADMET predictions
 
-Novartis has recently published a paper 
-"[Application of machine learning models for property prediction to targeted protein degraders](https://www.nature.com/articles/s41467-024-49979-3)"
+Scientists from Novartis have recently published a [paper in Nature](https://www.nature.com/articles/s41467-024-49979-3) 
 that contains a dataset with Novartis' ADMET predictions for all molecules in Chembl. 
 Naturally, we were curious how their results compare to Admetica ones. Also, if the Novartis predictions are
 better (very likely since they have massive proprietary datasets), can we improve Admetica models
