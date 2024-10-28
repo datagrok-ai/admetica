@@ -3,8 +3,7 @@
 Predicting pharmacokinetic properties (ADMET: Absorption, Distribution, Metabolism, Excretion, and Toxicity) is 
 essential for drug design. The earlier these properties can be reliably predicted, the better. 
 While every company in the pharmaceutical industry requires this capability, there are currently no optimal solutions. 
-Commercial tools are expensive, publicly available calculators come with numerous limitations, and neither allows 
-for easy customization.
+Commercial tools are pricey, and public calculators have many limitations. Neither allows for easy customization.
 
 Admetica addresses these challenges by offering a comprehensive set of pre-built predictive models, publicly 
 available datasets, pipelines, and notebooks for training and evaluating models. It also provides tools for visual 
@@ -85,13 +84,7 @@ or use CLI. Additionally, we want to easily interpret results in the context of 
 (where you can specify desirable property ranges, etc).
 
 To address that, we have developed an MIT-licensed [Datagrok Admetica Plugin](https://github.com/datagrok-ai/public/tree/master/packages/Admetica) that allows scientists to 
-calculate ADMET properties on demand. You can also visually assess results using a combination of
-color coding and a widget that fits in a grid cell and visualizes all properties at once. 
-Additionally, the plugin enhances some of the other Datagrok applications, such as
-[Hit Triage](https://github.com/datagrok-ai/public/blob/master/packages/HitTriage/README_HT.md) for
-triaging molecular campaigns, and
-[Hit Design](https://github.com/datagrok-ai/public/blob/master/packages/HitTriage/README_HT.md) for
-collaborative, computation-augmented drug design.
+calculate ADMET properties on demand. You can also visually assess results using a combination of color coding and a widget that fits in a grid cell and visualizes all properties at once. Additionally, the plugin enhances other Datagrok applications. For instance, [Hit Triage](https://github.com/datagrok-ai/public/blob/master/packages/HitTriage/README_HT.md) for triaging molecular campaigns and [Hit Design](https://github.com/datagrok-ai/public/blob/master/packages/HitTriage/README_HT.md) for collaborative, computation-augmented drug design.
 
 Note that while both Admetica and Admetica Plugin are open-source, the Datagrok platform is proprietary.
 It is free for personal use, for academia, and non-profit research. Claim your license [here](https://datagrok.ai).
@@ -100,8 +93,8 @@ It is free for personal use, for academia, and non-profit research. Claim your l
 
 ## Available predictive models
 
-Currently, we have a total of 32 predictive models developed for [Absorption](#absorption), [Distribution](#distribution), 
-[Metabolism](#metabolism), [Excretion](#excretion) and Toxicity.
+Currently, we have a total of 23 predictive models developed for [Absorption](#absorption), [Distribution](#distribution), 
+[Metabolism](#metabolism), [Excretion](#excretion) and [Toxicity](#toxicity).
 
 ### Absorption
 
@@ -171,14 +164,12 @@ Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
 
 # Novartis ADMET predictions
 
-Scientists from Novartis have recently published a [paper in Nature](https://www.nature.com/articles/s41467-024-49979-3) 
-that contains a dataset with Novartis' ADMET predictions for 273,706 molecules from Chembl, 199,972
-from ZINC and 3,269 from PROTAC-DB. 
+Scientists from Novartis recently published a [paper in Nature](https://www.nature.com/articles/s41467-024-49979-3). The dataset comprises a total of 273,706 molecules, which includes 70,465 from ChEMBL, 199,972 from ZINC, and 3,269 from PROTAC-DB.
 Naturally, we were curious how their results compare to Admetica ones. Also, if the Novartis predictions are
 better (very likely since they have massive proprietary datasets), can we improve Admetica models
 by training them on the publicly available Novartis predictions?
 
-TL/DR: Novartis models performed better on some properties, and worse on others. By incorporating
+TL/DR: The Novartis models performed well on certain properties, such as CYP2C9-inhibitor, CYP3A4-inhibitor, and Caco-2, but were less effective on the CYP2D6-inhibitor. By incorporating
 some predictions to the Admetica training dataset, we have improved some of the Admetica models.
 See details below, or jump to the [summary](#summary).
 
