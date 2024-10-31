@@ -1,0 +1,84 @@
+description: "API for predicting ADMET properties from SMILES strings in CSV format. Upload a CSV file with a column containing SMILES, and specify the models and options."
+tags:
+  - name: Predict ADMET properties
+consumes:
+  - text/csv
+produces:
+  - text/csv
+parameters:
+  - name: "body"
+    in: "body"
+    description: "CSV file with a column containing SMILES for prediction."
+    required: true
+    schema:
+      type: string
+      format: binary
+      example: |
+        smiles
+        O=C1CN=C(c2ccccc2N1)C3CCCCC3
+        CN1C(=O)CN=C(c2ccccc12)C3CCCCC3
+        CCCCNN1C(=O)CN=C(c2ccccc12)C3CCCCC3
+  - name: "models"
+    in: "query"
+    description: "Comma-separated model names for prediction (e.g., 'Caco2,Solubility')."
+    required: false
+    schema:
+      type: string
+      example: "Caco2,Solubility"
+  - name: "smiles_column"
+    in: "query"
+    description: "Name of the column containing SMILES strings in the uploaded CSV."
+    required: false
+    schema:
+      type: string
+      default: "smiles"
+      example: "smiles"
+  - name: "probability"
+    in: "query"
+    description: "Select whether to include prediction probability in results."
+    required: false
+    schema:
+      type: string
+      enum: 
+        - "true"
+        - "false"
+      default: "false"
+      example: "false"
+      dropdown: 
+        - "true"
+        - "false"
+responses:
+  "200":
+    description: "Successful prediction response with results for each SMILES string and model."
+    schema:
+      title: Prediction Results
+      type: string
+      example: |
+        caco2,solubility
+        -4.265671253204346,-3.0175890922546387
+        -4.344581127166748,-2.321000337600708
+        -4.3859357833862305,-3.0445454120635986
+  "400":
+    description: "Invalid input format or missing parameters."
+    schema:
+      title: Invalid Input
+      type: object
+      properties:
+        responseCode:
+          type: integer
+          example: 2
+        responseDesc:
+          type: string
+          example: "Invalid input format. Please check your CSV structure and parameters."
+  "405":
+    description: "Method not allowed for this endpoint."
+    schema:
+      title: Method Not Allowed
+      type: object
+      properties:
+        responseCode:
+          type: integer
+          example: 1
+        responseDesc:
+          type: string
+          example: "Method Not Allowed"
