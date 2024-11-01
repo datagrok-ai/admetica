@@ -25,6 +25,6 @@ COPY . /app
 
 SHELL ["micromamba","run","-n","myenv", "/bin/bash","-c"]
 
-EXPOSE 1112
+EXPOSE 8080
 
-ENTRYPOINT ["micromamba", "run", "-n", "myenv", "gunicorn", "-w", "1", "-b", "0.0.0.0:1112", "--timeout", "3000", "admetica:app"]
+ENTRYPOINT ["micromamba", "run", "-n", "myenv", "gunicorn", "-w", "1", "-b", "0.0.0.0:8080", "--timeout", "3000", "admetica:app"]

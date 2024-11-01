@@ -31,7 +31,7 @@ swagger_template = {
     "title": "Admetica API",
     "description": "Admetica API",
     "contact": {
-      "name": "Oleksandra Serhiinko",
+      "name": "Oleksandra Serhiienko",
       "email": "oserhiienko@datagrok.ai"
     },
   },
@@ -215,4 +215,4 @@ def method_not_allowed(error):
 if __name__ == "__main__":
   print(("* Loading model and Flask starting server..."
     " please wait until server has fully started"))
-  app.run(debug=True, host='0.0.0.0', port=1112)
+  app.run(debug=True, host='0.0.0.0', port=8080)
