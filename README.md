@@ -32,22 +32,23 @@ Interested in collaborating? Contact us via [email](mailto:oserhiienko@datagrok.
 - [Evaluation of free online ADMET tools](#evaluation-of-free-online-admet-tools): see [PPB](#plasma-protein-binding), [Half-Life](#half-life), [CYP3A4-Substrate](#cyp3a4-substrate), [HIA](#hia), [Summary](#summary-1)
 - [References](#references)
 
-
 ## Usage
 
-### Installation
+### CLI tool
+
+#### Installation
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/chemprop)](https://badge.fury.io/py/chemprop)
 [![Chemprop PyPI version](https://badge.fury.io/py/chemprop.svg)](https://badge.fury.io/py/chemprop)
 
 
 ```bash
-pip install admetica==1.3
+pip install admetica==1.4.1
 ```
 
 By default, the pip installation will include all necessary dependencies for making ADMET predictions.
 
-### Predicting
+#### Predicting
 
 Through the command-line interface:
 
@@ -63,6 +64,27 @@ This command assumes the presence of a file named `data.csv` with SMILES strings
 you should specify the properties to be calculated (e.g. `Caco2`). The predictions will be saved to `predictions.csv`.
 
 All models available in the repository are included and can be used.
+
+### Web server
+
+To simplify running Admetica locally as a web server, you can use the provided `setup.sh` script. This script automates the setup by building the Docker image, running the container, and launching the Swagger UI documentation page in your browser.
+
+**Steps:**
+
+1. Ensure Docker is installed and running on your system.
+2. Run the `setup.sh` script from the `admetica_web` folder:
+
+   ```bash
+   ./setup.sh
+   ```
+
+This script will:
+- Build a Docker image named `admetica`.
+- Stop and remove any existing container named `admetica_container`.
+- Run a new container, exposing Admetica’s API on port `8080`.
+- Open the API documentation at [http://localhost:8080/apidocs](http://localhost:8080/apidocs) in your default browser.
+
+The setup process should take about 2-3 minutes. If automatic URL opening is unsupported, manually open [http://localhost:8080/apidocs](http://localhost:8080/apidocs).
 
 ### Data
 
