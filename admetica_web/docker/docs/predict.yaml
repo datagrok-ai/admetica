@@ -24,7 +24,7 @@ parameters:
     required: false
     schema:
       type: string
-      example: "Caco2,Solubility"
+      example: "caco2,solubility"
   - name: "smiles_column"
     in: "query"
     description: "Name of the column containing SMILES strings in the uploaded CSV."

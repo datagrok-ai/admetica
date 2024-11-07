@@ -64,18 +64,18 @@ swagger = Swagger(app, template=swagger_template, config=swagger_config)
 logging.basicConfig(level=logging.DEBUG)
 
 MODEL_EXTENSIONS = [
-  "Caco2.ckpt", "Lipophilicity.ckpt", "Solubility.ckpt", "PPBR.ckpt", "VDss.ckpt", "CYP1A2-Inhibitor.ckpt",
-  "CYP1A2-Substrate.ckpt", "CYP2C19-Inhibitor.ckpt", "CYP2C19-Substrate.ckpt", "CYP2C9-Inhibitor.ckpt",
-  "CYP2C9-Substrate.ckpt", "CYP2D6-Substrate.ckpt", "CYP2D6-Inhibitor.ckpt", "CYP3A4-Inhibitor.ckpt", 
-  "CYP3A4-Substrate.ckpt", "CL-Hepa.ckpt", "CL-Micro.ckpt", "Half-Life.ckpt", "hERG.ckpt", "LD50.ckpt",
-  "Pgp-Inhibitor.ckpt", "Pgp-Substrate.ckpt"
+  "caco2.ckpt", "lipophilicity.ckpt", "solubility.ckpt", "ppbr.ckpt", "vdss.ckpt", "cyp1a2-inhibitor.ckpt",
+  "cyp1a2-substrate.ckpt", "cyp2c19-inhibitor.ckpt", "cyp2c19-substrate.ckpt", "cyp2c9-inhibitor.ckpt",
+  "cyp2c9-substrate.ckpt", "cyp2d6-substrate.ckpt", "cyp2d6-inhibitor.ckpt", "cyp3a4-inhibitor.ckpt", 
+  "cyp3a4-substrate.ckpt", "cl-hepa.ckpt", "cl-micro.ckpt", "half-life.ckpt", "herg.ckpt", "ld50.ckpt",
+  "pgp-inhibitor.ckpt", "pgp-substrate.ckpt"
 ]
 
 def get_model_path(model_name):
   """Get the full path for the given model name."""
   script_path = os.path.abspath(__file__)
   script_directory = os.path.dirname(script_path)
-  model_file = next((file for file in MODEL_EXTENSIONS if model_name in file), None)
+  model_file = next((file for file in MODEL_EXTENSIONS if model_name.lower() in file.lower()), None)
   if model_file:
     return os.path.join(script_directory, model_file)
   raise ValueError(f"No matching model file found for model '{model_name}'")
