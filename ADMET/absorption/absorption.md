@@ -20,31 +20,31 @@ The Pgp-Inhibitor dataset combines data from two sources, comprising 1,275 compo
 
 Results on dataset (higher is better).
 
-| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-|-|-|-|-|-|-|
-| Pgp-Inhibitor | 1,275 | 0.916 | 0.863 |  0.888 | 0.889  |
+| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | Link |
+|------|------|-------------|-------------|----------|-------------------|------|
+| Pgp-Inhibitor | 1,275 | 0.916 | 0.863 | 0.888 | 0.889 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/absorption/pgp-inhibitor.zip) |
 
 ![Pgp-Inhibitor](../../images/pgp-inhibitor_roc.png)
 
 ## Pgp-Substrate
 
-It is a probability of being a substrate of P-glycoprotein which is responsible for cell membrane permeability. Compounds with high molecular mass and a large number of polar atoms are the most probable substrates. Binding the substrate leads to low cell permeability of substance.
+It is a probability of being a substrate of P-glycoprotein which is responsible for cell membrane permeability. Compounds with high molecular mass and a large number of polar atoms are the most probable substrates. Binding the substrate leads to low cell permeability of the substance.
 
-The Pgp-Substrate dataset is derived from a single source, encompassing 332 compounds, of which 126 are substrates, and 206 are non-substrates.
+The [Pgp-Substrate dataset](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/absorption/pgp-substrate.zip) is derived from a single source, encompassing 332 compounds, of which 126 are substrates, and 206 are non-substrates.
 
 ## Bioavailability
 
-The range of bioavailability value is 0-100. One threshold (30%) was applied in order to split compounds into posititve and negative. A probability that less than 30% of substance reaches systemic circulation.
+The range of bioavailability value is 0-100. One threshold (30%) was applied in order to split compounds into positive and negative. A probability that less than 30% of substance reaches systemic circulation.
 
-Overall, the dataset contains 986 compounds, where positive category contains 660 compounds and negative 326.
+Overall, the [bioavailability dataset](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/absorption/bioavailability.zip) contains 986 compounds, where the positive category contains 660 compounds and negative 326.
 
 ## Caco-2
 
 The human colon epithelial cancer cell line, Caco-2, is used as an in vitro model to simulate the human intestinal tissue. The experimental result on the rate of drug passing through the Caco-2 cells can approximate the rate at which the drug permeates through the human intestinal tissue.
 
-| Name | Size | MAE | RMSE | R2 | Spearman |
-|-|-|-|-|-|-|
-| Caco2 | 910 | 0.317 | 0.415 | 0.701 |  0.832 |
+| Name                                      | Size | MAE   | RMSE  | R2    | Spearman | Link                                                       |
+|-------------------------------------------|------|-------|-------|-------|----------|------------------------------------------------------------|
+| Caco2 | 910  | 0.317 | 0.415 | 0.701 | 0.832    | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/absorption/caco2.zip) |
 
 ### Observed vs. Predicted plot
 
@@ -54,9 +54,9 @@ The human colon epithelial cancer cell line, Caco-2, is used as an in vitro mode
 
 Lipophilicity measures the ability of a drug to dissolve in a lipid (e.g. fats, oils) environment. High lipophilicity often leads to high rate of metabolism, poor solubility, high turn-over, and low absorption. From MoleculeNet.
 
-| Name | Size | MAE | RMSE | R2 | Spearman |
-|-|-|-|-|-|-|
-| Lipophilicity | 4200 | 0.399 | 0.596 | 0.748 | 0.881 |
+| Name           | Size | MAE   | RMSE  | R2    | Spearman | Link                                                   |
+|----------------|------|-------|-------|-------|----------|--------------------------------------------------------|
+| Lipophilicity  | 4200 | 0.399 | 0.596 | 0.748 | 0.881    | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/absorption/lipophilicity.zip) |
 
 ### Observed vs. Predicted plot
 
@@ -66,9 +66,9 @@ Lipophilicity measures the ability of a drug to dissolve in a lipid (e.g. fats, 
 
 Aqeuous solubility measures a drug's ability to dissolve in water. Poor water solubility could lead to slow drug absorptions, inadequate bioavailablity and even induce toxicity. More than 40% of new chemical entities are not soluble.
 
-| Name | Size | MAE | RMSE | R2 | Spearman |
-|-|-|-|-|-|-|
-| Solubility | 9982 | 0.714 | 1.089 | 0.788 | 0.897 |
+| Name         | Size | MAE   | RMSE  | R2    | Spearman | Link                                                   |
+|--------------|------|-------|-------|-------|----------|--------------------------------------------------------|
+| Solubility   | 9982 | 0.714 | 1.089 | 0.788 | 0.897    | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/absorption/solubility.zip) |
 
 ### Observed vs. Predicted plot
 

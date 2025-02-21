@@ -122,40 +122,40 @@ Currently, we have a total of 23 predictive models developed for [Absorption](#a
 
 #### Classification models
 
-| Name                                                      | Model    | Size  | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC                   |
-|-----------------------------------------------------------|----------|-------|-------------|-------------|----------|-------------------|---------------------------|
-| [Pgp-Inhibitor](ADMET/absorption/absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.916       | 0.863       | 0.888    | 0.889             | ![pgp_inhibitor_roc](./images/pgp-inhibitor_roc.png) |
+| Name                                                      | Model    | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC                   | Link |
+|-----------------------------------------------------------|----------|-------|-------------|-------------|----------|-------------------|---------------------------|------|
+| [Pgp-Inhibitor](ADMET/absorption/absorption.md#pgp-inhibitor) | Chemprop | 1,275 | 0.916       | 0.863       | 0.888    | 0.889             | ![pgp_inhibitor_roc](./images/pgp-inhibitor_roc.png) | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/absorption/pgp-inhibitor.zip) |
 
 #### Regression models
 
-| Name                                                      | Model    | Size | MAE   | RMSE  | R2    | Spearman | Observed vs. Predicted                                                                    |
-|-----------------------------------------------------------|----------|------|-------|-------|-------|----------|-------------------------------------------------------------------------------------------|
-| [Caco2](ADMET/absorption/absorption.md#caco-2)       | Chemprop | 910  | 0.317 | 0.415 | 0.701 | 0.832    | ![Caco2 Observed vs. Predicted plot](./images/caco2_observed_vs_pred.png)                 |
-| [Lipophilicity](ADMET/absorption/absorption.md#lipophilicity) | Chemprop | 4200 | 0.399 | 0.596 | 0.748 | 0.881    | ![Lipophilicity Observed vs. Predicted plot](./images/lipophilicity_observed_vs_pred.png) |
-| [Solubility](ADMET/absorption/absorption.md#solubility)       | Chemprop | 9982 | 0.714 | 1.089 | 0.788 | 0.897    | ![Solubility Observed vs. Predicted plot](./images/solubility_observed_vs_pred.png)       |
+| Name                                                      | Model    | Size | MAE   | RMSE  | R2    | Spearman | Observed vs. Predicted                                                                    | Link                                                                                       |
+|-----------------------------------------------------------|----------|------|-------|-------|-------|----------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| [Caco2](ADMET/absorption/absorption.md#caco-2)       | Chemprop | 910  | 0.317 | 0.415 | 0.701 | 0.832    | ![Caco2 Observed vs. Predicted plot](./images/caco2_observed_vs_pred.png)                 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/absorption/caco2.zip) |
+| [Lipophilicity](ADMET/absorption/absorption.md#lipophilicity) | Chemprop | 4200 | 0.399 | 0.596 | 0.748 | 0.881    | ![Lipophilicity Observed vs. Predicted plot](./images/lipophilicity_observed_vs_pred.png) | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/absorption/lipophilicity.zip) |
+| [Solubility](ADMET/absorption/absorption.md#solubility)       | Chemprop | 9982 | 0.714 | 1.089 | 0.788 | 0.897    | ![Solubility Observed vs. Predicted plot](./images/solubility_observed_vs_pred.png)       | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/absorption/solubility.zip) |
 
 ### Distribution
 
 #### Regression models
 
-| Name                                        | Model    | Size | MAE   | RMSE   | R2    | Spearman | Observed vs. Predicted                                                  |
-|---------------------------------------------|----------|------|-------|--------|-------|----------|-------------------------------------------------------------------------|
-| [PPBR](./distribution/distribution.md#ppbr) | Chemprop | 2790 | 6.919 | 11.294 | 0.609 | 0.762    | ![PPBR Observed vs. Predicted plot](./images/ppbr_observed_vs_pred.png) |
+| Name                                        | Model    | Size | MAE   | RMSE   | R2    | Spearman | Observed vs. Predicted                                                  | Link                                                                                       |
+|---------------------------------------------|----------|------|-------|--------|-------|----------|-------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| [PPBR](./distribution/distribution.md#ppbr) | Chemprop | 2790 | 6.919 | 11.294 | 0.609 | 0.762    | ![PPBR Observed vs. Predicted plot](./images/ppbr_observed_vs_pred.png) | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/distribution/ppbr.zip) |
 
 ### Metabolism
 
 #### Classification models
 
-| Name                                                              | Model    | Size   | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC                                                      |
-|-------------------------------------------------------------------|----------|--------|-------------|-------------|----------|-------------------|--------------------------------------------------------------|
-| [CYP1A2-Inhibitor](ADMET/absorption/absorption.md#cyp1a2-inhibitor)   | Chemprop | 13,239 | 0.873       | 0.866       | 0.87     | 0.869             | ![cyp1a2_inhibitor_roc](./images/cyp1a2-inhibitor_roc.png)   |
-| [CYP3A4-Inhibitor](ADMET/absorption/absorption.md#cyp3a4-inhibitor)   | Chemprop | 12,997 | 0.815       | 0.842       | 0.826    | 0.829             | ![cyp3a4_inhibitor_roc](./images/cyp3a4-inhibitor_roc.png)   |
-| [CYP3A4-Substrate](ADMET/absorption/absorption.md#cyp3a4-substrate)   | Chemprop | 1,149  | 0.569       | 0.779       | 0.718    | 0.674             | ![cyp3a4_substrate_roc](./images/cyp3a4-substrate_roc.png)   |
-| [CYP2C19-Inhibitor](ADMET/absorption/absorption.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.819       | 0.830       | 0.824    | 0.825             | ![cyp2c19_inhibitor_roc](./images/cyp2c19-inhibitor_roc.png) |
-| [CYP2C9-Inhibitor](ADMET/absorption/absorption.md#cyp2c9-inhibitor)   | Chemprop | 12,881 | 0.830       | 0.819       | 0.826    | 0.824             | ![cyp2c9_inhibitor_roc](./images/cyp2c9-inhibitor_roc.png)   |
-| [CYP2C9-Substrate](ADMET/absorption/absorption.md#cyp2c9-substrate)   | Chemprop | 899    | 0.728       | 0.757       | 0.738    | 0.742             | ![cyp2c9_substrate_roc](./images/cyp2c9-substrate_roc.png)   |
-| [CYP2D6-Inhibitor](ADMET/absorption/absorption.md#cyp2d6-inhibitor)   | Chemprop | 11,127 | 0.866       | 0.751       | 0.843    | 0.808             | ![cyp2d6_inhibitor_roc](./images/cyp2d6-inhibitor_roc.png)   |
-| [CYP2D6-Substrate](ADMET/absorption/absorption.md#cyp2d6-substrate)   | Chemprop | 941    | 0.749       | 0.769       | 0.753    | 0.759             | ![cyp2d6_substrate_roc](./images/cyp2d6-substrate_roc.png)   |
+| Name                                                              | Model    | Size   | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC                                                      | Link                                                                                       |
+|-------------------------------------------------------------------|----------|--------|-------------|-------------|----------|-------------------|--------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| [CYP1A2-Inhibitor](ADMET/absorption/absorption.md#cyp1a2-inhibitor)   | Chemprop | 13,239 | 0.873       | 0.866       | 0.87     | 0.869             | ![cyp1a2_inhibitor_roc](./images/cyp1a2-inhibitor_roc.png)   | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp1a2-inhibitor.zip) |
+| [CYP3A4-Inhibitor](ADMET/absorption/absorption.md#cyp3a4-inhibitor)   | Chemprop | 12,997 | 0.815       | 0.842       | 0.826    | 0.829             | ![cyp3a4_inhibitor_roc](./images/cyp3a4-inhibitor_roc.png)   | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp3a4-inhibitor.zip) |
+| [CYP3A4-Substrate](ADMET/absorption/absorption.md#cyp3a4-substrate)   | Chemprop | 1,149  | 0.569       | 0.779       | 0.718    | 0.674             | ![cyp3a4_substrate_roc](./images/cyp3a4-substrate_roc.png)   | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp3a4-substrate.zip) |
+| [CYP2C19-Inhibitor](ADMET/absorption/absorption.md#cyp2c19-inhibitor) | Chemprop | 13,427 | 0.819       | 0.830       | 0.824    | 0.825             | ![cyp2c19_inhibitor_roc](./images/cyp2c19-inhibitor_roc.png) | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp2c19-inhibitor.zip) |
+| [CYP2C9-Inhibitor](ADMET/absorption/absorption.md#cyp2c9-inhibitor)   | Chemprop | 12,881 | 0.830       | 0.819       | 0.826    | 0.824             | ![cyp2c9_inhibitor_roc](./images/cyp2c9-inhibitor_roc.png)   | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp2c9-inhibitor.zip) |
+| [CYP2C9-Substrate](ADMET/absorption/absorption.md#cyp2c9-substrate)   | Chemprop | 899    | 0.728       | 0.757       | 0.738    | 0.742             | ![cyp2c9_substrate_roc](./images/cyp2c9-substrate_roc.png)   | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp2c9-substrate.zip) |
+| [CYP2D6-Inhibitor](ADMET/absorption/absorption.md#cyp2d6-inhibitor)   | Chemprop | 11,127 | 0.866       | 0.751       | 0.843    | 0.808             | ![cyp2d6_inhibitor_roc](./images/cyp2d6-inhibitor_roc.png)   | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp2d6-inhibitor.zip) |
+| [CYP2D6-Substrate](ADMET/absorption/absorption.md#cyp2d6-substrate)   | Chemprop | 941    | 0.749       | 0.769       | 0.753    | 0.759             | ![cyp2d6_substrate_roc](./images/cyp2d6-substrate_roc.png)   | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp2d6-substrate.zip) |
 
 Here is a line chart illustrating various metrics for each of the corresponding models.
 
@@ -165,24 +165,24 @@ Here is a line chart illustrating various metrics for each of the corresponding 
 
 #### Regression models
 
-Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
-|-|-|-|-|-|-|-|-|
-| [Clearance Hepatocyte](./excretion/excretion.md#hepatocyte) | Chemprop | 1213 | 34.103 | 47.144 | 0.086 | 0.485 | ![Clearance Hepatocyte Observed vs. Predicted plot](./images/clearance_hepatocyte_observed_vs_pred.png) |
-| [Clearance Microsome](./excretion/excretion.md#microsome) | Chemprop | 1102 |  26.715 | 39.201 | 0.216 | 0.576 | ![Clearance Microsome Observed vs. Predicted plot](./images/clearance_microsome_observed_vs_pred.png) |
+| Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
+|------|-------|------|-----|------|----|----------|------------------------|
+| [Clearance Hepatocyte](./excretion/excretion.md#hepatocyte) | Chemprop | 1213 | 34.103 | 47.144 | 0.086 | 0.485 | ![Clearance Hepatocyte Observed vs. Predicted plot](./images/clearance_hepatocyte_observed_vs_pred.png) | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/excretion/clearance-hepatocyte.zip) |
+| [Clearance Microsome](./excretion/excretion.md#microsome) | Chemprop | 1102 | 26.715 | 39.201 | 0.216 | 0.576 | ![Clearance Microsome Observed vs. Predicted plot](./images/clearance_microsome_observed_vs_pred.png) | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/excretion/clearance-microsome.zip) |
 
 ### Toxicity
 
 ### Classification models
 
-Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC
-|-|-|-|-|-|-|-|-|
-| [hERG](./ADMET/toxicity/toxicity.md#herg) | Chemprop | 22,249 | 0.811 | 0.897 | 0.885 |  0.854  | ![herg_roc](./images/herg_roc.png) |
+| Name | Model | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | ROC AUC | Link |
+|------|-------|------|-------------|-------------|----------|-------------------|---------|------|
+| [hERG](./ADMET/toxicity/toxicity.md#herg) | Chemprop | 22,249 | 0.811 | 0.897 | 0.885 | 0.854 | ![herg_roc](./images/herg_roc.png) | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/toxicity/herg.zip) |
 
 #### Regression models
 
-Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted |
-|-|-|-|-|-|-|-|-|
-| [LD50](./toxicity/toxicity.md#) | Chemprop | 7282 |  0.437 | 0.609 | 0.596 | 0.745 | ![LD50 Observed vs. Predicted plot](./images/ld50_observed_vs_pred.png) |
+| Name | Model | Size | MAE | RMSE | R2 | Spearman | Observed vs. Predicted | Link |
+|------|-------|------|-----|------|----|----------|-----------------------|------|
+| [LD50](./toxicity/toxicity.md#) | Chemprop | 7282 | 0.437 | 0.609 | 0.596 | 0.745 | ![LD50 Observed vs. Predicted plot](./images/ld50_observed_vs_pred.png) | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/toxicity/ld50.zip) |
 
 # Novartis ADMET predictions
 

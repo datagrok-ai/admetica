@@ -13,15 +13,15 @@ Distribution refers to the process of transporting a drug from its point of entr
 
 It is a probability of expected blood to brain ratio of compound to be less than 0.1. The low ratio represents not efficient distribution which is frequently happens to massive structures.
 
-The BBB dataset combines data from three sources, totaling 27,796 compounds, with 8,508 classified as BBB+ and 19,288 as BBB-. This dataset provides valuable insights into blood-brain barrier penetration.
+The [BBB dataset](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/distribution/bbb.zip) combines data from three sources, totaling 27,796 compounds, with 8,508 classified as BBB+ and 19,288 as BBB-. This dataset provides valuable insights into blood-brain barrier penetration.
 
 ## PPBR
 
 The human plasma protein binding rate (PPBR) is expressed as the percentage of a drug bound to plasma proteins in the blood. This rate strongly affect a drug's efficiency of delivery. The less bound a drug is, the more efficiently it can traverse and diffuse to the site of actions.
 
-| Name | Size | MAE | RMSE | R2 | Spearman |
-|-|-|-|-|-|-|
-| PPBR | 2790 | 6.919 | 11.294 | 0.609 | 0.762 |
+| Name | Size | MAE | RMSE | R2 | Spearman | Link |  
+|------|------|-----|------|----|----------|------|  
+| PPBR | 2790 | 6.919 | 11.294 | 0.609 | 0.762 | [Download](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/distribution/ppbr.zip) |
 
 ### Observed vs. Predicted plot
 

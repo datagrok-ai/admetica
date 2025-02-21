@@ -16,10 +16,11 @@ Half life of a drug is the duration for the concentration of the drug in the bod
 
 Drug clearance is defined as the volume of plasma cleared of a drug over a specified time period and it measures the rate at which the active drug is removed from the body.
 
-| Name | Size | MAE | RMSE | R2 | Spearman |
-|-|-|-|-|-|-|
-| Clearance Hepatocyte | 1213 | 34.103 | 47.144 | 0.086 | 0.485 |
-| Clearance Microsome | 1102 |  26.715 | 39.201 | 0.216 | 0.576 |
+| Name | Size | MAE | RMSE | R2 | Spearman | Link |  
+|------|------|-----|------|----|----------|------|  
+| Clearance Hepatocyte | 1213 | 34.103 | 47.144 | 0.086 | 0.485 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/excretion/cl-hepa.zip) |  
+| Clearance Microsome | 1102 | 26.715 | 39.201 | 0.216 | 0.576 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/excretion/cl-micro.zip) |  
+
 ### Hepatocyte
 
 #### Observed vs. Predicted plot

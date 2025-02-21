@@ -21,9 +21,9 @@ It is a probability of being an inhibitor of cytochrome CYP1A2 which catalyzes d
 The CYP1A2 Inhibitor dataset comprises 13,239 compounds, with 5,997 being inhibitors and 7,242 non-inhibitors, sourced from PubChem AID 1851.
 Results on dataset (higher is better).
 
-Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-|-|-|-|-|-|-|
-| CYP1A2-Inhibitor | 13,239 | 0.873 | 0.866 |  0.87 | 0.869 |
+| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | Link |  
+|------|------|-------------|-------------|----------|-------------------|------|  
+| CYP1A2-Inhibitor | 13,239 | 0.873 | 0.866 |  0.87 | 0.869 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp1a2-inhibitor.zip) |  
 
 ![CYP1A2-Inhibitor](../../images/cyp1a2-inhibitor_roc.png)
 
@@ -34,9 +34,9 @@ It is a probability of being an inhibitor of cytochrome CYP3A4 which catalyzes d
 The CYP3A4 Inhibitor dataset consists of 12,997 compounds, including 5,265 inhibitors and 7,732 non-inhibitors, obtained from PubChem AID 1851.
 Results on dataset (higher is better).
 
-| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-|-|-|-|-|-|-|
-| CYP3A4-Inhibitor | 12,997 | 0.815 | 0.842 |  0.826 | 0.829 |
+| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | Link |  
+|------|------|-------------|-------------|----------|-------------------|------|  
+| CYP3A4-Inhibitor | 12,997 | 0.815 | 0.842 |  0.826 | 0.829 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp3a4-inhibitor.zip) |  
 
 ![CYP3A4-Inhibitor](../../images/cyp3a4-inhibitor_roc.png)
 
@@ -48,9 +48,9 @@ The CYP3A4 Substrate dataset encompasses 1,149 compounds, with 832 being substra
 
 Results on dataset (higher is better).
 
-| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-|-|-|-|-|-|-|
-| CYP3A4-Substrate | 1,149 |  0.569 | 0.779 |  0.718 |  0.674 |
+| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | Link |  
+|------|------|-------------|-------------|----------|-------------------|------|  
+| CYP3A4-Substrate | 1,149 |  0.569 | 0.779 |  0.718 |  0.674 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp3a4-substrate.zip) |
 
 ![CYP3A4-Substrate](../../images/cyp3a4-substrate_roc.png)
 
@@ -62,9 +62,9 @@ The CYP2C19 Inhibitor dataset contains 13,427 compounds, featuring 5,905 inhibit
 
 Results on dataset (higher is better).
 
-| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-|-|-|-|-|-|-|
-| CYP2C19-Inhibitor | Chemprop | 13,427 | 0.819 | 0.830 |  0.824 | 0.825  |
+| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | Link |  
+|------|------|-------------|-------------|----------|-------------------|------|  
+| CYP2C19-Inhibitor | 13,427 | 0.819 | 0.830 |  0.824 | 0.825 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp2c19-inhibitor.zip) |  
 
 ![CYP2C19-Inhibitor](../../images/cyp2c19-inhibitor_roc.png)
 
@@ -75,9 +75,9 @@ It is a probability of being an inhibitor of cytochrome CYP2C9 which catalyzes d
 The CYP2C9 Inhibitor dataset comprises 12,881 compounds, including 4,109 inhibitors and 8,772 non-inhibitors, sourced from PubChem AID 1851.
 Results on dataset (higher is better).
 
-| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-|-|-|-|-|-|-|
-| CYP2C9-Inhibitor | 12,881 | 0.899 | 0.880 | 0.893 | 0.890 |
+| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | Link |  
+|------|------|-------------|-------------|----------|-------------------|------|  
+| CYP2C9-Inhibitor | 12,881 | 0.899 | 0.880 | 0.893 | 0.890 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp2c9-inhibitor.zip) |  
 
 ![CYP2C9-Inhibitor](../../images/cyp2c9-inhibitor_roc.png)
 
@@ -89,9 +89,9 @@ The CYP2C9 Substrate dataset contains 899 compounds, with 368 being substrates a
 
 Results on dataset (higher is better).
 
-| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-|-|-|-|-|-|-|
-| CYP2C9-Substrate | Chemprop | 899 | 0.728 | 0.757 |  0.738 | 0.742 |
+| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | Link |  
+|------|------|-------------|-------------|----------|-------------------|------|  
+| CYP2C9-Substrate | 899 | 0.728 | 0.757 | 0.738 | 0.742 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp2c9-substrate.zip) |  
 
 ![CYP2C9-Substrate](../../images/cyp2c9-substrate_roc.png)
 
@@ -103,9 +103,9 @@ The CYP2D6 Inhibitor dataset comprises 13,896 compounds, featuring 2,769 inhibit
 
 Results on dataset (higher is better).
 
-| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-|-|-|-|-|-|-|
-| CYP2D6-Inhibitor | 11,127 | 0.866 | 0.751 |  0.843 | 0.808 |
+| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | Link |  
+|------|------|-------------|-------------|----------|-------------------|------|  
+| CYP2D6-Inhibitor | 11,127 | 0.866 | 0.751 | 0.843 | 0.808 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp2d6-inhibitor.zip) |
 
 ![CYP2D6-Inhibitor](../../images/cyp2d6-inhibitor_roc.png)
 
@@ -117,9 +117,9 @@ The CYP2D6 Substrate dataset contains 941 compounds, with 461 being substrates a
 
 Results on dataset (higher is better).
 
-| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy |
-|-|-|-|-|-|-|
-| CYP2D6-Substrate | Chemprop | 941 | 0.749 | 0.769 |  0.753 | 0.759 |
+| Name | Size | Specificity | Sensitivity | Accuracy | Balanced Accuracy | Link |  
+|------|------|-------------|-------------|----------|-------------------|------|  
+| CYP2D6-Substrate | 941 | 0.749 | 0.769 | 0.753 | 0.759 | [Download ZIP](https://datagrok-github-lfs.s3.us-east-2.amazonaws.com/metabolism/cyp2d6-substrate.zip) |
 
 ![CYP2D6-Substrate](../../images/cyp2d6-substrate_roc.png)
 
