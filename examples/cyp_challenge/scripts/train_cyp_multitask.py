@@ -22,7 +22,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from scipy.stats import spearmanr
 from lightning import pytorch as pl
-from lightning.pytorch.callbacks import Callback, EarlyStopping
+from lightning.pytorch.callbacks import Callback, EarlyStopping, ModelCheckpoint
 from chemprop import data, featurizers, models, nn
 from rdkit import RDLogger
 
@@ -86,8 +86,8 @@ def build_model(scaler, n_tasks, pretrained=None):
                        metrics=[nn.metrics.RMSEMetric(), nn.metrics.MAEMetric()])
 
 
-def make_trainer(max_epochs=MAX_EPOCHS, callbacks=None, accelerator="cpu"):
-    return pl.Trainer(logger=False, enable_checkpointing=False, enable_progress_bar=False,
+def make_trainer(max_epochs=MAX_EPOCHS, callbacks=None, accelerator="cpu", checkpointing=False):
+    return pl.Trainer(logger=False, enable_checkpointing=checkpointing, enable_progress_bar=False,
                       accelerator=accelerator, devices=1, max_epochs=max_epochs,
                       callbacks=callbacks or [])
 
@@ -116,30 +116,57 @@ def assign_folds(smiles):
                      for s in smiles])
 
 
-def run_fold(df, targets, columns, lt, fold, work_dir, pretrained, accelerator="cpu"):
+def run_fold(df, targets, columns, lt, fold, work_dir, pretrained, accelerator="cpu",
+             monitor_scored=False):
     assignment = assign_folds(df.SMILES.values)
     test_index = np.where(assignment == fold - 1)[0]
     train_index = np.where(assignment != fold - 1)[0]
     fit_index, val_index = train_test_split(train_index, test_size=VAL_FRACTION,
                                             random_state=RANDOM_STATE)
 
+    val_targets = targets[val_index]
+    if monitor_scored:
+        # Early stopping listens to the scored heads only: the validation split keeps just the
+        # rows with a challenge measurement, and their auxiliary targets are blanked, so val_loss
+        # cannot be driven by the (much larger) auxiliary sources.
+        scored_cols = [columns.index(c) for c in SCORED]
+        keep = ~np.isnan(targets[val_index][:, scored_cols]).all(axis=1)
+        val_index = val_index[keep]
+        val_targets = targets[val_index].copy()
+        aux_cols = [i for i in range(len(columns)) if i not in scored_cols]
+        val_targets[:, aux_cols] = np.nan
+
     train_loader, scaler = build_loader(
         datapoints_from(df.iloc[fit_index], targets[fit_index], lt[fit_index]), shuffle=True)
     val_loader, _ = build_loader(
-        datapoints_from(df.iloc[val_index], targets[val_index], lt[val_index]),
+        datapoints_from(df.iloc[val_index], val_targets, lt[val_index]),
         scaler=scaler, shuffle=False)
     test_loader, _ = build_loader(
         datapoints_from(df.iloc[test_index], targets[test_index], lt[test_index]),
         scaler=scaler, shuffle=False)
 
     model = build_model(scaler, len(columns), pretrained)
-    trainer = make_trainer(callbacks=[EpochLogger(),
-                                      EarlyStopping(monitor="val_loss", mode="min",
-                                                    patience=PATIENCE)],
-                           accelerator=accelerator)
+    callbacks = [EpochLogger(),
+                 EarlyStopping(monitor="val_loss", mode="min", patience=PATIENCE)]
+    checkpoint_cb = None
+    if monitor_scored:
+        # Keep the best-epoch weights rather than the last ones early stopping ran past.
+        checkpoint_cb = ModelCheckpoint(dirpath=os.path.join(work_dir, f"ckpt_fold{fold}"),
+                                        monitor="val_loss", mode="min", save_top_k=1)
+        callbacks.append(checkpoint_cb)
+    trainer = make_trainer(callbacks=callbacks, accelerator=accelerator,
+                           checkpointing=monitor_scored)
     started = time.time()
     trainer.fit(model, train_loader, val_loader)
-    predicted = np.concatenate(trainer.predict(model, test_loader))
+    best_path = checkpoint_cb.best_model_path if checkpoint_cb else None
+    predicted = np.concatenate(trainer.predict(model, test_loader, ckpt_path=best_path))
+
+    best_epoch = trainer.current_epoch
+    if best_path:
+        import re
+        found = re.search(r"epoch=(\d+)", os.path.basename(best_path))
+        if found:
+            best_epoch = int(found.group(1)) + 1
 
     test = df.iloc[test_index]
     rows, oof = [], []
@@ -156,7 +183,7 @@ def run_fold(df, targets, columns, lt, fold, work_dir, pretrained, accelerator="
         in_domain = np.ones(int(measured.sum()), dtype=bool)
 
         row = score(endpoint_obs, endpoint_pred)
-        row.update(endpoint=endpoint, fold=fold, epochs=trainer.current_epoch,
+        row.update(endpoint=endpoint, fold=fold, epochs=best_epoch,
                    n_test=int(measured.sum()), n_challenge=int(measured.sum()))
         row.update({f"challenge_{k}": v for k, v in row.items()
                     if k in ("MAE", "RMSE", "R2", "Spearman")})
@@ -174,7 +201,7 @@ def run_fold(df, targets, columns, lt, fold, work_dir, pretrained, accelerator="
 
     summary = " ".join(
         f"{r['endpoint'][3:]}={r.get('challenge_Spearman', float('nan')):.3f}" for r in rows)
-    log(f"fold {fold}: epochs={trainer.current_epoch} in-domain rho — {summary} "
+    log(f"fold {fold}: epochs={trainer.current_epoch} best={best_epoch} in-domain rho — {summary} "
         f"({time.time() - started:.0f}s)")
 
 
@@ -208,6 +235,9 @@ def main():
                         help="path to pretrained message-passing weights, e.g. chemeleon_mp.pt")
     parser.add_argument("--accelerator", default="cpu", choices=["cpu", "mps"],
                         help="mps needs PYTORCH_ENABLE_MPS_FALLBACK=1 for the scatter ops")
+    parser.add_argument("--monitor-scored", action="store_true",
+                        help="early-stop on the challenge heads' validation loss only, "
+                             "and predict with the best epoch's weights")
     args = parser.parse_args()
 
     os.makedirs(args.work_dir, exist_ok=True)
@@ -229,7 +259,7 @@ def main():
                        args.accelerator)
     elif args.fold:
         run_fold(df, targets, columns, lt, args.fold, args.work_dir, args.pretrained,
-                 args.accelerator)
+                 args.accelerator, args.monitor_scored)
     else:
         raise SystemExit("pass --fold N or --production")
 
