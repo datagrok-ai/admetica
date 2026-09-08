@@ -1,0 +1,10 @@
+Per-isoform additive bias correction, fitted on champion out-of-fold predictions
+(soft-RAE-optimal constant; grid -0.30..+0.60 step 0.02).
+
+endpoint  per-fold optima                 all-folds  OOF RAE before -> after
+cyp1a2    [0.30 0.28 0.16 0.18 0.28]     +0.24      0.8829 -> 0.8139
+cyp2c9    [0.16 0.14 0.20 0.10 0.20]     +0.16      0.8308 -> 0.7763
+cyp2d6    [0.02 0.00 0.10 0.06 0.04]     +0.04      0.8969 -> 0.8941
+cyp3a4    [0.16 0.14 0.20 0.18 0.14]     +0.16      0.6017 -> 0.5698
+
+macro OOF RAE 0.803 -> 0.764. All folds agree in sign per endpoint.
