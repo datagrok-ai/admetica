@@ -22,7 +22,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from scipy.stats import spearmanr
 from lightning import pytorch as pl
-from lightning.pytorch.callbacks import EarlyStopping
+from lightning.pytorch.callbacks import Callback, EarlyStopping
 from chemprop import data, featurizers, models, nn
 from rdkit import RDLogger
 
@@ -50,6 +50,15 @@ featurizer = featurizers.SimpleMoleculeMolGraphFeaturizer()
 
 def log(message):
     print(f"[{time.strftime('%H:%M:%S')}] {message}", flush=True)
+
+
+class EpochLogger(Callback):
+    """One line per epoch, so long runs report progress in their log file."""
+
+    def on_validation_epoch_end(self, trainer, module):
+        val = trainer.callback_metrics.get("val_loss")
+        log(f"epoch {trainer.current_epoch + 1}/{trainer.max_epochs}"
+            + (f" val_loss={float(val):.4f}" if val is not None else ""))
 
 
 def build_loader(datapoints, scaler=None, shuffle=True):
@@ -124,7 +133,8 @@ def run_fold(df, targets, columns, lt, fold, work_dir, pretrained, accelerator="
         scaler=scaler, shuffle=False)
 
     model = build_model(scaler, len(columns), pretrained)
-    trainer = make_trainer(callbacks=[EarlyStopping(monitor="val_loss", mode="min",
+    trainer = make_trainer(callbacks=[EpochLogger(),
+                                      EarlyStopping(monitor="val_loss", mode="min",
                                                     patience=PATIENCE)],
                            accelerator=accelerator)
     started = time.time()
