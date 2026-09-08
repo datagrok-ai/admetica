@@ -33,6 +33,16 @@ PUBLIC_SOURCES = {
     "tox21": ["tox21_luciferase_kept.csv"],
 }
 
+# OpenADMET's curated ChEMBL-37 panel, one parquet per isoform, pchembl_value_mean as the label
+CHEMBL_FILES = {
+    "cyp1a2": "chembl_CYP1A2_CHEMBL3356.parquet",
+    "cyp2c9": "chembl_CYP2C9_CHEMBL3397.parquet",
+    "cyp2d6": "chembl_CYP2D6_CHEMBL289.parquet",
+    "cyp3a4": "chembl_CYP3A4_CHEMBL340.parquet",
+}
+# Octant's own CYP3A4 release: the challenge assay, run by the challenge lab
+OCTANT_FILE = "octant_cyp3a4.tsv"
+
 
 def canonical(smiles):
     mol = Chem.MolFromSmiles(smiles)
@@ -99,12 +109,48 @@ def build_qhts(raw_dir):
     return out.reset_index()
 
 
+def read_chembl(raw_dir):
+    """One column per isoform from OpenADMET's ChEMBL-37 aggregation."""
+    frames = []
+    for endpoint, name in CHEMBL_FILES.items():
+        path = os.path.join(raw_dir, "chembl", name)
+        if not os.path.exists(path):
+            continue
+        frame = pd.read_parquet(path)
+        keep = pd.DataFrame({
+            "SMILES": [canonical(s) for s in frame.OPENADMET_CANONICAL_SMILES],
+            endpoint: pd.to_numeric(frame.pchembl_value_mean, errors="coerce"),
+        }).dropna(subset=["SMILES"])
+        frames.append(keep.groupby("SMILES", as_index=False).mean())
+
+    merged = None
+    for frame in frames:
+        merged = frame if merged is None else merged.merge(frame, on="SMILES", how="outer")
+    return merged if merged is not None else pd.DataFrame({"SMILES": []})
+
+
+def read_octant(raw_dir):
+    """Octant's CYP3A4 release, restricted to curves that passed their own QC."""
+    path = os.path.join(raw_dir, OCTANT_FILE)
+    if not os.path.exists(path):
+        return pd.DataFrame({"SMILES": []})
+    frame = pd.read_csv(path, sep="\t")
+    frame = frame[frame.drc_qc_status.eq("PASS")]
+    keep = pd.DataFrame({
+        "SMILES": [canonical(s) for s in frame.standardized_smiles],
+        "cyp3a4": pd.to_numeric(frame.CYP3A4_pIC50, errors="coerce"),
+    }).dropna(subset=["SMILES"])
+    return keep.groupby("SMILES", as_index=False).mean()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--raw-dir", default=RAW_DIR)
     parser.add_argument("--out", default=OUT_PATH)
     parser.add_argument("--no-censored", action="store_true",
                         help="skip AID 1851's censored inactives, keeping only fitted values")
+    parser.add_argument("--extra", action="store_true",
+                        help="add ChEMBL-37 and Octant's CYP3A4 release as their own heads")
     args = parser.parse_args()
 
     if args.no_censored:
@@ -115,6 +161,9 @@ def main():
                   "qhts": build_qhts(args.raw_dir)}
     for name, paths in PUBLIC_SOURCES.items():
         groups[name] = read_source(paths, args.raw_dir)
+    if args.extra:
+        groups["chembl"] = read_chembl(args.raw_dir)
+        groups["octant"] = read_octant(args.raw_dir)
 
     merged = None
     for name, frame in groups.items():
