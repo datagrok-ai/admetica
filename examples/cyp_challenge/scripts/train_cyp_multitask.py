@@ -30,9 +30,13 @@ RDLogger.DisableLog("rdApp.*")
 CHALLENGE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO_ROOT = os.path.dirname(os.path.dirname(CHALLENGE_DIR))
 DATA_DIR = os.path.join(CHALLENGE_DIR, "data")
+DATA_PATH = os.path.join(DATA_DIR, "processed", "multisource_pac50.csv")
 DEFAULT_WORK_DIR = os.path.join(CHALLENGE_DIR, "results", "chemeleon_multitask")
 
 ENDPOINTS = ["cyp1a2", "cyp2c9", "cyp2d6", "cyp3a4"]
+# Only the challenge heads are scored; every other column is an auxiliary head that trains the
+# shared encoder without putting its own assay's scale into the scored output.
+SCORED = [f"challenge_{e}" for e in ENDPOINTS]
 
 # Matched to the single-task runs so the comparison is like for like
 NUM_FOLDS = 5
@@ -54,8 +58,8 @@ def build_loader(datapoints, scaler=None, shuffle=True):
     return data.build_dataloader(dset, num_workers=0, shuffle=shuffle), fitted
 
 
-def build_model(scaler, pretrained=None):
-    """Four-output regression head; encoder optionally warm-started from pretrained weights."""
+def build_model(scaler, n_tasks, pretrained=None):
+    """One output per source and isoform; encoder optionally warm-started from pretrained weights."""
     if pretrained:
         checkpoint = torch.load(pretrained, weights_only=True)
         message_passing = nn.BondMessagePassing(**checkpoint["hyper_parameters"])
@@ -64,7 +68,7 @@ def build_model(scaler, pretrained=None):
         message_passing = nn.BondMessagePassing()
 
     predictor = nn.RegressionFFN(
-        n_tasks=len(ENDPOINTS),
+        n_tasks=n_tasks,
         output_transform=nn.UnscaleTransform.from_standard_scaler(scaler),
         input_dim=message_passing.output_dim,
     )
@@ -91,7 +95,7 @@ def score(observed, predicted):
     }
 
 
-def run_fold(df, targets, fold, work_dir, pretrained):
+def run_fold(df, targets, columns, fold, work_dir, pretrained):
     kfold = KFold(n_splits=NUM_FOLDS, shuffle=True, random_state=RANDOM_STATE)
     splits = list(kfold.split(np.arange(len(df))))
     train_index, test_index = splits[fold - 1]
@@ -105,7 +109,7 @@ def run_fold(df, targets, fold, work_dir, pretrained):
     test_loader, _ = build_loader(
         datapoints_from(df.iloc[test_index], targets[test_index]), scaler=scaler, shuffle=False)
 
-    model = build_model(scaler, pretrained)
+    model = build_model(scaler, len(columns), pretrained)
     trainer = make_trainer(callbacks=[EarlyStopping(monitor="val_loss", mode="min",
                                                     patience=PATIENCE)])
     started = time.time()
@@ -114,7 +118,9 @@ def run_fold(df, targets, fold, work_dir, pretrained):
 
     test = df.iloc[test_index]
     rows, oof = [], []
-    for column, endpoint in enumerate(ENDPOINTS):
+    for scored_column in SCORED:
+        column = columns.index(scored_column)
+        endpoint = scored_column.replace("challenge_", "")
         observed = targets[test_index][:, column]
         measured = ~np.isnan(observed)
         if measured.sum() < 30:
@@ -122,14 +128,14 @@ def run_fold(df, targets, fold, work_dir, pretrained):
 
         endpoint_pred = predicted[measured, column]
         endpoint_obs = observed[measured]
-        in_domain = test[f"{endpoint}_challenge"].values[measured].astype(bool)
+        # every row of a challenge_* column is challenge-origin by construction
+        in_domain = np.ones(int(measured.sum()), dtype=bool)
 
         row = score(endpoint_obs, endpoint_pred)
         row.update(endpoint=endpoint, fold=fold, epochs=trainer.current_epoch,
-                   n_test=int(measured.sum()), n_challenge=int(in_domain.sum()))
-        if in_domain.sum() > 30:
-            row.update({f"challenge_{k}": v for k, v in
-                        score(endpoint_obs[in_domain], endpoint_pred[in_domain]).items()})
+                   n_test=int(measured.sum()), n_challenge=int(measured.sum()))
+        row.update({f"challenge_{k}": v for k, v in row.items()
+                    if k in ("MAE", "RMSE", "R2", "Spearman")})
         rows.append(row)
 
         oof.append(pd.DataFrame({
@@ -148,7 +154,7 @@ def run_fold(df, targets, fold, work_dir, pretrained):
         f"({time.time() - started:.0f}s)")
 
 
-def run_production(df, targets, work_dir, pretrained, accelerator="cpu"):
+def run_production(df, targets, columns, work_dir, pretrained, accelerator="cpu"):
     metrics = pd.concat(
         [pd.read_csv(p) for p in
          [os.path.join(work_dir, f"cv_fold_metrics_fold{f}.csv") for f in range(1, NUM_FOLDS + 1)]
@@ -157,7 +163,7 @@ def run_production(df, targets, work_dir, pretrained, accelerator="cpu"):
     log(f"production model on all {len(df)} compounds for {epochs} epochs")
 
     loader, scaler = build_loader(datapoints_from(df, targets), shuffle=True)
-    model = build_model(scaler, pretrained)
+    model = build_model(scaler, len(columns), pretrained)
     trainer = make_trainer(max_epochs=epochs, accelerator=accelerator)
     trainer.fit(model, loader)
 
@@ -173,6 +179,7 @@ def main():
     parser.add_argument("--fold", type=int, choices=range(1, NUM_FOLDS + 1))
     parser.add_argument("--production", action="store_true")
     parser.add_argument("--work-dir", default=DEFAULT_WORK_DIR)
+    parser.add_argument("--data", default=DATA_PATH)
     parser.add_argument("--pretrained", default=None,
                         help="path to pretrained message-passing weights, e.g. chemeleon_mp.pt")
     parser.add_argument("--accelerator", default="cpu", choices=["cpu", "mps"],
@@ -180,15 +187,20 @@ def main():
     args = parser.parse_args()
 
     os.makedirs(args.work_dir, exist_ok=True)
-    df = pd.read_csv(os.path.join(DATA_DIR, "multitask_pac50.csv"))
-    targets = df[ENDPOINTS].to_numpy(dtype=float)
-    log(f"{len(df)} compounds, label density {np.mean(~np.isnan(targets)):.1%}"
+    df = pd.read_csv(args.data)
+    columns = [c for c in df.columns if c != "SMILES"]
+    missing = [c for c in SCORED if c not in columns]
+    if missing:
+        raise SystemExit(f"{args.data} is missing scored columns: {missing}")
+    targets = df[columns].to_numpy(dtype=float)
+    log(f"{len(df)} compounds, {len(columns)} heads ({len(SCORED)} scored), "
+        f"label density {np.mean(~np.isnan(targets)):.1%}"
         + (f", pretrained encoder {os.path.basename(args.pretrained)}" if args.pretrained else ""))
 
     if args.production:
-        run_production(df, targets, args.work_dir, args.pretrained, args.accelerator)
+        run_production(df, targets, columns, args.work_dir, args.pretrained, args.accelerator)
     elif args.fold:
-        run_fold(df, targets, args.fold, args.work_dir, args.pretrained)
+        run_fold(df, targets, columns, args.fold, args.work_dir, args.pretrained)
     else:
         raise SystemExit("pass --fold N or --production")
 
