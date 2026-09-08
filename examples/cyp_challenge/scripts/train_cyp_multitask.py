@@ -11,13 +11,14 @@ Usage:
 """
 
 import argparse
+import hashlib
 import os
 import time
 
 import numpy as np
 import pandas as pd
 import torch
-from sklearn.model_selection import KFold, train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from scipy.stats import spearmanr
 from lightning import pytorch as pl
@@ -34,8 +35,7 @@ DATA_PATH = os.path.join(DATA_DIR, "processed", "multisource_pac50.csv")
 DEFAULT_WORK_DIR = os.path.join(CHALLENGE_DIR, "results", "chemeleon_multitask")
 
 ENDPOINTS = ["cyp1a2", "cyp2c9", "cyp2d6", "cyp3a4"]
-# Only the challenge heads are scored; every other column is an auxiliary head that trains the
-# shared encoder without putting its own assay's scale into the scored output.
+# Auxiliary columns train the shared encoder but never reach the scored output.
 SCORED = [f"challenge_{e}" for e in ENDPOINTS]
 
 # Matched to the single-task runs so the comparison is like for like
@@ -71,6 +71,7 @@ def build_model(scaler, n_tasks, pretrained=None):
         n_tasks=n_tasks,
         output_transform=nn.UnscaleTransform.from_standard_scaler(scaler),
         input_dim=message_passing.output_dim,
+        criterion=nn.BoundedMSELoss(),
     )
     return models.MPNN(message_passing, nn.MeanAggregation(), predictor, batch_norm=True,
                        metrics=[nn.metrics.RMSEMetric(), nn.metrics.MAEMetric()])
@@ -82,8 +83,13 @@ def make_trainer(max_epochs=MAX_EPOCHS, callbacks=None, accelerator="cpu"):
                       callbacks=callbacks or [])
 
 
-def datapoints_from(df, targets):
-    return [data.MoleculeDatapoint.from_smi(s, y) for s, y in zip(df.SMILES.values, targets)]
+def datapoints_from(df, targets, lt):
+    """lt marks left-censored targets, where the true value is at most y."""
+    # BoundedMSELoss dereferences both masks, so gt_mask must be present even though nothing is
+    # right-censored
+    gt = np.zeros_like(lt)
+    return [data.MoleculeDatapoint.from_smi(s, y, lt_mask=m, gt_mask=g)
+            for s, y, m, g in zip(df.SMILES.values, targets, lt, gt)]
 
 
 def score(observed, predicted):
@@ -95,23 +101,32 @@ def score(observed, predicted):
     }
 
 
-def run_fold(df, targets, columns, fold, work_dir, pretrained):
-    kfold = KFold(n_splits=NUM_FOLDS, shuffle=True, random_state=RANDOM_STATE)
-    splits = list(kfold.split(np.arange(len(df))))
-    train_index, test_index = splits[fold - 1]
+def assign_folds(smiles):
+    """Fold follows the compound, not its row position, so datasets stay comparable as they grow."""
+    return np.array([int(hashlib.md5(f"{RANDOM_STATE}:{s}".encode()).hexdigest(), 16) % NUM_FOLDS
+                     for s in smiles])
+
+
+def run_fold(df, targets, columns, lt, fold, work_dir, pretrained, accelerator="cpu"):
+    assignment = assign_folds(df.SMILES.values)
+    test_index = np.where(assignment == fold - 1)[0]
+    train_index = np.where(assignment != fold - 1)[0]
     fit_index, val_index = train_test_split(train_index, test_size=VAL_FRACTION,
                                             random_state=RANDOM_STATE)
 
     train_loader, scaler = build_loader(
-        datapoints_from(df.iloc[fit_index], targets[fit_index]), shuffle=True)
+        datapoints_from(df.iloc[fit_index], targets[fit_index], lt[fit_index]), shuffle=True)
     val_loader, _ = build_loader(
-        datapoints_from(df.iloc[val_index], targets[val_index]), scaler=scaler, shuffle=False)
+        datapoints_from(df.iloc[val_index], targets[val_index], lt[val_index]),
+        scaler=scaler, shuffle=False)
     test_loader, _ = build_loader(
-        datapoints_from(df.iloc[test_index], targets[test_index]), scaler=scaler, shuffle=False)
+        datapoints_from(df.iloc[test_index], targets[test_index], lt[test_index]),
+        scaler=scaler, shuffle=False)
 
     model = build_model(scaler, len(columns), pretrained)
     trainer = make_trainer(callbacks=[EarlyStopping(monitor="val_loss", mode="min",
-                                                    patience=PATIENCE)])
+                                                    patience=PATIENCE)],
+                           accelerator=accelerator)
     started = time.time()
     trainer.fit(model, train_loader, val_loader)
     predicted = np.concatenate(trainer.predict(model, test_loader))
@@ -128,7 +143,6 @@ def run_fold(df, targets, columns, fold, work_dir, pretrained):
 
         endpoint_pred = predicted[measured, column]
         endpoint_obs = observed[measured]
-        # every row of a challenge_* column is challenge-origin by construction
         in_domain = np.ones(int(measured.sum()), dtype=bool)
 
         row = score(endpoint_obs, endpoint_pred)
@@ -154,7 +168,7 @@ def run_fold(df, targets, columns, fold, work_dir, pretrained):
         f"({time.time() - started:.0f}s)")
 
 
-def run_production(df, targets, columns, work_dir, pretrained, accelerator="cpu"):
+def run_production(df, targets, columns, lt, work_dir, pretrained, accelerator="cpu"):
     metrics = pd.concat(
         [pd.read_csv(p) for p in
          [os.path.join(work_dir, f"cv_fold_metrics_fold{f}.csv") for f in range(1, NUM_FOLDS + 1)]
@@ -162,7 +176,7 @@ def run_production(df, targets, columns, work_dir, pretrained, accelerator="cpu"
     epochs = max(int(metrics.epochs.median()), 1)
     log(f"production model on all {len(df)} compounds for {epochs} epochs")
 
-    loader, scaler = build_loader(datapoints_from(df, targets), shuffle=True)
+    loader, scaler = build_loader(datapoints_from(df, targets, lt), shuffle=True)
     model = build_model(scaler, len(columns), pretrained)
     trainer = make_trainer(max_epochs=epochs, accelerator=accelerator)
     trainer.fit(model, loader)
@@ -188,19 +202,24 @@ def main():
 
     os.makedirs(args.work_dir, exist_ok=True)
     df = pd.read_csv(args.data)
-    columns = [c for c in df.columns if c != "SMILES"]
+    columns = [c for c in df.columns if c != "SMILES" and not c.endswith("__lt")]
     missing = [c for c in SCORED if c not in columns]
     if missing:
         raise SystemExit(f"{args.data} is missing scored columns: {missing}")
     targets = df[columns].to_numpy(dtype=float)
+    lt = np.column_stack([df[f"{c}__lt"] if f"{c}__lt" in df.columns else np.zeros(len(df), bool)
+                          for c in columns]).astype(bool)
     log(f"{len(df)} compounds, {len(columns)} heads ({len(SCORED)} scored), "
         f"label density {np.mean(~np.isnan(targets)):.1%}"
+        + f", {int(lt.sum())} censored"
         + (f", pretrained encoder {os.path.basename(args.pretrained)}" if args.pretrained else ""))
 
     if args.production:
-        run_production(df, targets, columns, args.work_dir, args.pretrained, args.accelerator)
+        run_production(df, targets, columns, lt, args.work_dir, args.pretrained,
+                       args.accelerator)
     elif args.fold:
-        run_fold(df, targets, columns, args.fold, args.work_dir, args.pretrained)
+        run_fold(df, targets, columns, lt, args.fold, args.work_dir, args.pretrained,
+                 args.accelerator)
     else:
         raise SystemExit("pass --fold N or --production")
 

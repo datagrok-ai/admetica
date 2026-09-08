@@ -204,3 +204,11 @@ pyrightconfig.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,jupyternotebooks
+### CYP challenge scratch (examples/cyp_challenge)
+# Lightning training logs and per-run checkpoints
+examples/lightning_logs/
+# Third-party CheMeleon pretrained encoder, fetched from HuggingFace (~33 MB)
+examples/chemeleon_mp.pt
+examples/cyp_challenge/**/chemeleon_mp.pt
+# Intermediate experiment working directories
+examples/cyp_training_data*/

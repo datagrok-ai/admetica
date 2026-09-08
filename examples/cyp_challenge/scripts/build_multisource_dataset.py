@@ -25,10 +25,10 @@ CHALLENGE_DATASET = "openadmet/cyp-challenge-train-test"
 
 ENDPOINTS = ["cyp1a2", "cyp2c9", "cyp2d6", "cyp3a4"]
 
-# Veith and NCGC are two extractions of one campaign (rho 0.99, mean abs difference 0.006), so they
-# are averaged into a single qHTS group rather than counted as independent evidence.
+QHTS_FITTED = ["veith.csv", "ncgc.csv"]
+# every value in this file is an upper bound (4.244), never a measurement
+QHTS_CENSORED = "aid1851_inactives.csv"
 PUBLIC_SOURCES = {
-    "qhts": ["veith.csv", "ncgc.csv"],
     "pharmabench": ["pharmabench.csv"],
     "tox21": ["tox21_luciferase_kept.csv"],
 }
@@ -40,7 +40,7 @@ def canonical(smiles):
 
 
 def value_column(frame, endpoint):
-    """Source files use pac50_<endpoint> or pic50_<endpoint>; return whichever exists."""
+    """Source files use either pac50_<endpoint> or pic50_<endpoint>."""
     for prefix in ("pac50_", "pic50_"):
         if prefix + endpoint in frame.columns:
             return prefix + endpoint
@@ -52,6 +52,9 @@ def read_source(paths, raw_dir):
     frames = []
     for name in paths:
         frame = pd.read_csv(os.path.join(raw_dir, name))
+        if "luciferase_artifact" in frame.columns:
+            # luciferase inhibitors read as CYP inhibitors in this luminogenic assay
+            frame = frame[~frame.luciferase_artifact.astype(bool)]
         frame["SMILES"] = [canonical(s) for s in frame.SMILES]
         frame = frame.dropna(subset=["SMILES"])
         keep = {"SMILES": frame.SMILES}
@@ -73,36 +76,75 @@ def read_challenge():
     return pd.DataFrame(keep).groupby("SMILES", as_index=False).mean()
 
 
+def build_qhts(raw_dir):
+    """The qHTS group: fitted values from every export, plus AID 1851's inactives as bounds.
+
+    An inactive only says "at most this potent", so a fitted measurement from any export always
+    wins over AID 1851's censored bound for the same compound.
+    """
+    fitted = read_source(QHTS_FITTED, raw_dir).set_index("SMILES")
+
+    bounds = pd.read_csv(os.path.join(raw_dir, QHTS_CENSORED))
+    bounds["SMILES"] = [canonical(s) for s in bounds.SMILES]
+    bounds = bounds.dropna(subset=["SMILES"]).drop_duplicates("SMILES").set_index("SMILES")
+
+    index = sorted(set(fitted.index) | set(bounds.index))
+    out = pd.DataFrame({"SMILES": index}).set_index("SMILES")
+    for endpoint in ENDPOINTS:
+        bound = bounds.get(f"pac50_{endpoint}", pd.Series(dtype=float)).reindex(index)
+        observed = fitted[endpoint].reindex(index) if endpoint in fitted else pd.Series(np.nan, index)
+
+        out[endpoint] = observed.where(observed.notna(), bound)
+        out[f"{endpoint}__lt"] = observed.isna() & bound.notna()
+    return out.reset_index()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--raw-dir", default=RAW_DIR)
     parser.add_argument("--out", default=OUT_PATH)
+    parser.add_argument("--no-censored", action="store_true",
+                        help="skip AID 1851's censored inactives, keeping only fitted values")
     args = parser.parse_args()
 
-    groups = {"challenge": read_challenge()}
+    if args.no_censored:
+        groups = {"challenge": read_challenge(),
+                  "qhts": read_source(QHTS_FITTED, args.raw_dir)}
+    else:
+        groups = {"challenge": read_challenge(),
+                  "qhts": build_qhts(args.raw_dir)}
     for name, paths in PUBLIC_SOURCES.items():
         groups[name] = read_source(paths, args.raw_dir)
 
     merged = None
     for name, frame in groups.items():
-        frame = frame.rename(columns={e: f"{name}_{e}" for e in ENDPOINTS})
+        renames = {e: f"{name}_{e}" for e in ENDPOINTS}
+        renames.update({f"{e}__lt": f"{name}_{e}__lt" for e in ENDPOINTS})
+        frame = frame.rename(columns=renames)
         merged = frame if merged is None else merged.merge(frame, on="SMILES", how="outer")
 
-    # drop all-empty columns (PharmaBench has no CYP1A2) and rows with no measurement at all
-    targets = [c for c in merged.columns if c != "SMILES" and merged[c].notna().any()]
-    merged = merged[["SMILES"] + targets]
+    # PharmaBench has no CYP1A2, so some columns come out empty
+    targets = [c for c in merged.columns
+               if c != "SMILES" and not c.endswith("__lt") and merged[c].notna().any()]
+    flags = [f"{c}__lt" for c in targets if f"{c}__lt" in merged.columns]
+    merged = merged[["SMILES"] + targets + flags]
     merged = merged[merged[targets].notna().any(axis=1)].reset_index(drop=True)
+    for flag in flags:
+        merged[flag] = merged[flag] == True  # noqa: E712 - NaN must become False, not NaN
 
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     merged.to_csv(args.out, index=False)
 
     print(f"{len(merged)} compounds, {len(targets)} target columns "
           f"({merged[targets].notna().to_numpy().mean():.1%} label density)\n")
-    print(f"  {'column':26} {'n':>7} {'mean':>8} {'sd':>8}")
+    print(f"  {'column':26} {'n':>7} {'mean':>8} {'sd':>8} {'censored':>9}")
     for column in targets:
         values = merged[column].dropna()
+        flag = f"{column}__lt"
+        n_censored = int((merged[flag] & merged[column].notna()).sum()) if flag in merged else 0
         marker = "  <- scored" if column.startswith("challenge_") else ""
-        print(f"  {column:26} {len(values):7d} {values.mean():8.3f} {values.std():8.3f}{marker}")
+        print(f"  {column:26} {len(values):7d} {values.mean():8.3f} {values.std():8.3f}"
+              f" {n_censored:9d}{marker}")
     print(f"\nwrote {args.out}")
 
 
