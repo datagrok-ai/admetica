@@ -67,7 +67,7 @@ def build_loader(datapoints, scaler=None, shuffle=True):
     return data.build_dataloader(dset, num_workers=0, shuffle=shuffle), fitted
 
 
-def build_model(scaler, n_tasks, pretrained=None):
+def build_model(scaler, n_tasks, pretrained=None, learning_rates=None):
     """One output per source and isoform; encoder optionally warm-started from pretrained weights."""
     if pretrained:
         checkpoint = torch.load(pretrained, weights_only=True)
@@ -83,7 +83,33 @@ def build_model(scaler, n_tasks, pretrained=None):
         criterion=nn.BoundedMSELoss(),
     )
     return models.MPNN(message_passing, nn.MeanAggregation(), predictor, batch_norm=True,
-                       metrics=[nn.metrics.RMSEMetric(), nn.metrics.MAEMetric()])
+                       metrics=[nn.metrics.RMSEMetric(), nn.metrics.MAEMetric()],
+                       **(learning_rates or {}))
+
+
+# A tenth of the default schedule: the encoder arrives trained, so fine-tuning adapts it rather
+# than relearning it, and a full-size learning rate would wash the pretraining out.
+FINETUNE_LR = {"init_lr": 1e-5, "max_lr": 1e-4, "final_lr": 1e-5, "warmup_epochs": 1}
+
+
+def load_for_finetune(checkpoint_path, scaler, n_tasks):
+    """Restart from a trained multi-head model, keeping only the scored heads."""
+    model = models.MPNN.load_from_checkpoint(checkpoint_path, map_location="cpu")
+    predictor = nn.RegressionFFN(
+        n_tasks=n_tasks,
+        output_transform=nn.UnscaleTransform.from_standard_scaler(scaler),
+        input_dim=model.message_passing.output_dim,
+        criterion=nn.BoundedMSELoss(),
+    )
+    # the trained hidden layer transfers; only the final task layer is resized
+    trained = model.predictor.ffn.state_dict()
+    fresh = predictor.ffn.state_dict()
+    for key, value in trained.items():
+        if key in fresh and fresh[key].shape == value.shape:
+            fresh[key] = value
+    predictor.ffn.load_state_dict(fresh)
+    return models.MPNN(model.message_passing, nn.MeanAggregation(), predictor, batch_norm=True,
+                       metrics=[nn.metrics.RMSEMetric(), nn.metrics.MAEMetric()], **FINETUNE_LR)
 
 
 def make_trainer(max_epochs=MAX_EPOCHS, callbacks=None, accelerator="cpu", checkpointing=False):
@@ -117,7 +143,7 @@ def assign_folds(smiles):
 
 
 def run_fold(df, targets, columns, lt, fold, work_dir, pretrained, accelerator="cpu",
-             monitor_scored=False):
+             monitor_scored=False, finetune_from=None):
     assignment = assign_folds(df.SMILES.values)
     test_index = np.where(assignment == fold - 1)[0]
     train_index = np.where(assignment != fold - 1)[0]
@@ -145,7 +171,8 @@ def run_fold(df, targets, columns, lt, fold, work_dir, pretrained, accelerator="
         datapoints_from(df.iloc[test_index], targets[test_index], lt[test_index]),
         scaler=scaler, shuffle=False)
 
-    model = build_model(scaler, len(columns), pretrained)
+    model = (load_for_finetune(finetune_from, scaler, len(columns)) if finetune_from
+             else build_model(scaler, len(columns), pretrained))
     callbacks = [EpochLogger(),
                  EarlyStopping(monitor="val_loss", mode="min", patience=PATIENCE)]
     checkpoint_cb = None
@@ -205,7 +232,8 @@ def run_fold(df, targets, columns, lt, fold, work_dir, pretrained, accelerator="
         f"({time.time() - started:.0f}s)")
 
 
-def run_production(df, targets, columns, lt, work_dir, pretrained, accelerator="cpu"):
+def run_production(df, targets, columns, lt, work_dir, pretrained, accelerator="cpu",
+                   finetune_from=None):
     metrics = pd.concat(
         [pd.read_csv(p) for p in
          [os.path.join(work_dir, f"cv_fold_metrics_fold{f}.csv") for f in range(1, NUM_FOLDS + 1)]
@@ -214,7 +242,8 @@ def run_production(df, targets, columns, lt, work_dir, pretrained, accelerator="
     log(f"production model on all {len(df)} compounds for {epochs} epochs")
 
     loader, scaler = build_loader(datapoints_from(df, targets, lt), shuffle=True)
-    model = build_model(scaler, len(columns), pretrained)
+    model = (load_for_finetune(finetune_from, scaler, len(columns)) if finetune_from
+             else build_model(scaler, len(columns), pretrained))
     trainer = make_trainer(max_epochs=epochs, accelerator=accelerator)
     trainer.fit(model, loader)
 
@@ -238,6 +267,9 @@ def main():
     parser.add_argument("--monitor-scored", action="store_true",
                         help="early-stop on the challenge heads' validation loss only, "
                              "and predict with the best epoch's weights")
+    parser.add_argument("--finetune-from",
+                        help="continue from this trained checkpoint at a reduced learning rate; "
+                             "pair with --data holding only the columns to fine-tune on")
     args = parser.parse_args()
 
     os.makedirs(args.work_dir, exist_ok=True)
@@ -256,10 +288,10 @@ def main():
 
     if args.production:
         run_production(df, targets, columns, lt, args.work_dir, args.pretrained,
-                       args.accelerator)
+                       args.accelerator, args.finetune_from)
     elif args.fold:
         run_fold(df, targets, columns, lt, args.fold, args.work_dir, args.pretrained,
-                 args.accelerator, args.monitor_scored)
+                 args.accelerator, args.monitor_scored, args.finetune_from)
     else:
         raise SystemExit("pass --fold N or --production")
 
