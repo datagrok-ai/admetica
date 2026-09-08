@@ -213,3 +213,4 @@ examples/cyp_challenge/**/chemeleon_mp.pt
 # Intermediate experiment working directories
 examples/cyp_training_data*/
 examples/cyp_challenge/results/**/ckpt_fold*/
+examples/cyp_challenge/results/**/models/*.ckpt
